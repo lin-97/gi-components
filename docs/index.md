@@ -17,8 +17,8 @@ hero:
 features:
   - title: 特性 A
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: 特性B
+  - title: 特性 B
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: 特性C
+  - title: 特性 C
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
