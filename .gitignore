@@ -1,0 +1,33 @@
+# Node.js dependencies
+node_modules/
+
+# VitePress cache and build outputs
+.vitepress/cache/
+.vitepress/dist/
+
+# IDE/Editor configurations
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+
+# Logs and databases
+*.log
+*.sqlite
+
+# OS generated files
+Thumbs.db
+.DS_Store
+Icon
+
+# TypeScript compiler output
+*.tsbuildinfo
