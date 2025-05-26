@@ -3,7 +3,7 @@ node_modules/
 
 # VitePress cache and build outputs
 .vitepress/cache/
-.vitepress/dist/
+# .vitepress/dist/
 
 # IDE/Editor configurations
 .idea/
