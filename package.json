@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.13.2",
+    "@element-plus/icons-vue": "^2.3.1",
     "@vitejs/plugin-vue": "^5.2.4",
     "element-plus": "^2.9.11",
     "eslint": "^9.27.0",

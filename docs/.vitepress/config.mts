@@ -9,14 +9,14 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '首页', link: '/' },
-      { text: '组件', link: '/components' }
+      { text: '组件', link: '/examples/gi-button' }
     ],
     sidebar: [
       {
         text: '组件',
         items: [
-          { text: 'GiButton', link: '/examples/GiButton' },
-          { text: 'GiCard', link: '/examples/GiCard' }
+          { text: '按钮 GiButton', link: '/examples/gi-button' },
+          { text: '卡片 GiCard', link: '/examples/gi-card' }
         ]
       }
     ],
