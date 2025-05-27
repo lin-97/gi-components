@@ -2,6 +2,7 @@ import elementplus from 'element-plus'
 import DefaultTheme from 'vitepress/theme'
 import GiComponents from '../../../packages/index'
 import 'element-plus/dist/index.css'
+import 'element-plus/theme-chalk/dark/css-vars.css'
 
 export default {
   ...DefaultTheme,

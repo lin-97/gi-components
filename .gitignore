@@ -8,7 +8,7 @@ docs/.vitepress/cache/
 
 # IDE/Editor configurations
 .idea/
-.vscode/
+# .vscode/
 *.suo
 *.ntvs*
 *.njsproj

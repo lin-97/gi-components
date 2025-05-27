@@ -5,12 +5,12 @@
 </template>
 
 <script setup lang="ts">
-import type { btnProps } from 'element-plus'
-import { Delete, Edit, Plus, Search } from '@element-plus/icons-vue'
+import type { ButtonProps } from 'element-plus'
+import { Delete, Download, Edit, Plus, Search, Upload } from '@element-plus/icons-vue'
 import { computed, useAttrs } from 'vue'
 
-interface Props {
-  type?: 'add' | 'edit' | 'delete' | 'search' | ''
+interface Props extends Omit<ButtonProps, 'type'> {
+  type?: 'add' | 'edit' | 'delete' | 'search' | 'upload' | 'download' | ''
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -19,16 +19,19 @@ const props = withDefaults(defineProps<Props>(), {
 
 const attrs = useAttrs()
 
-const obj = {
+const obj: Record<string, { btnProps: Partial<ButtonProps>, btnText: string }> = {
   add: { btnProps: { icon: Plus, type: 'primary' }, btnText: '新增' },
   edit: { btnProps: { icon: Edit, type: 'primary' }, btnText: '编辑' },
   delete: { btnProps: { icon: Delete, type: 'danger' }, btnText: '删除' },
-  search: { btnProps: { icon: Search, type: 'primary' }, btnText: '搜索' }
+  search: { btnProps: { icon: Search, type: 'primary' }, btnText: '搜索' },
+  upload: { btnProps: { icon: Upload, type: 'primary' }, btnText: '上传' },
+  download: { btnProps: { icon: Download, type: 'primary' }, btnText: '下载' }
 }
 
 const btnProps = computed(() => {
   return { ...attrs, ...(obj?.[props.type]?.btnProps || { type: props.type }) }
 })
+
 const btnText = computed(() => {
   return obj[props.type].btnText
 })

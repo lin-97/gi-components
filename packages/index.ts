@@ -1,7 +1,7 @@
 import type { App } from 'vue'
 
-import GiButton from './components/gi-button'
-import GiCard from './components/gi-card'
+import GiButton from './components/button'
+import GiCard from './components/card'
 
 const components = {
   GiButton,
