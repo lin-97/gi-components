@@ -15,10 +15,10 @@ hero:
       link: https://github.com/lin-97/gi-components
 
 features:
-  - title: 特性 A
+  - title: 特性A
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: 特性 B
+  - title: 特性B
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: 特性 C
+  - title: 特性C
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
