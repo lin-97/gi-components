@@ -1,11 +1,23 @@
 {
   "name": "gi-components",
+  "type": "module",
   "version": "0.0.1",
+  "private": true,
   "description": "Vue3中基于Element Plus二次封装基础组件库",
   "author": "lin",
   "license": "MIT",
-  "private": true,
-  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lin-97/gi-components.git"
+  },
+  "keywords": [
+    "element-plus",
+    "vitepress",
+    "vue3",
+    "gi-components",
+    "二次封装组件",
+    "封装组件"
+  ],
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
@@ -25,17 +37,5 @@
     "vitepress": "^1.6.3",
     "vue": "^3.5.15",
     "vue-tsc": "^2.2.10"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/lin-97/gi-components.git"
-  },
-  "keywords": [
-    "element-plus",
-    "vitepress",
-    "vue3",
-    "gi-components",
-    "二次封装组件",
-    "封装组件"
-  ]
+  }
 }
