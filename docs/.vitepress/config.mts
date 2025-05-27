@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: '/docs/',
+  base: '/gi-components/',
   title: "Gi Components",
   description: "A VitePress Site",
   themeConfig: {
