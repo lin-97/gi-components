@@ -3,8 +3,8 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   base: '/gi-components/',
-  title: "Gi Components",
-  description: "A VitePress Site",
+  title: 'Gi Components',
+  description: 'A VitePress Site',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -15,8 +15,8 @@ export default defineConfig({
       {
         text: '组件',
         items: [
-          { text: '组件1', link: '/components' },
-          { text: '组件2', link: '/api-examples' }
+          { text: 'GiButton', link: '/examples/GiButton' },
+          { text: 'GiCard', link: '/examples/GiCard' }
         ]
       }
     ],
