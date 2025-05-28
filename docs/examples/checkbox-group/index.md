@@ -1,4 +1,4 @@
-# RadioGroup 下拉组合
+# CheckboxGroup 下拉组合
 
 ## 基础用法
 

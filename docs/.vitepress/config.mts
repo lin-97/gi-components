@@ -21,7 +21,8 @@ export default defineConfig({
           { text: '单选组合 RadioGroup', link: '/examples/radio-group' },
           { text: '多选组合 CheckboxGroup', link: '/examples/checkbox-group' },
           { text: '标签页 Tabs', link: '/examples/tabs' },
-          { text: '输入框组 InputGroup', link: '/examples/input-group' }
+          { text: '输入框组 InputGroup', link: '/examples/input-group' },
+          { text: '栅格 Grid', link: '/examples/grid' }
         ]
       }
     ],
