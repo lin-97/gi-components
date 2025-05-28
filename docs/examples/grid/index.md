@@ -15,14 +15,14 @@ import Demo1 from './demo1.vue'
     <el-switch v-model="collapsed" />
   </div>
   <gi-grid :cols="3" :col-gap="12" :row-gap="16" class="grid-demo-grid" :collapsed="collapsed">
-    <gi-grid-item class="demo-item">item</gi-grid-item>
-    <gi-grid-item class="demo-item">item</gi-grid-item>
-    <gi-grid-item class="demo-item">item</gi-grid-item>
-    <gi-grid-item class="demo-item" :offset="1">item | offset - 1</gi-grid-item>
-    <gi-grid-item class="demo-item">item</gi-grid-item>
-    <gi-grid-item class="demo-item" :span="3">item | span - 3</gi-grid-item>
-    <gi-grid-item class="demo-item">item</gi-grid-item>
-    <gi-grid-item class="demo-item">item</gi-grid-item>
+    <gi-grid-item class="demo-item">item1</gi-grid-item>
+    <gi-grid-item class="demo-item">item2</gi-grid-item>
+    <gi-grid-item class="demo-item">item3</gi-grid-item>
+    <gi-grid-item class="demo-item" :offset="1">item4 | offset - 1</gi-grid-item>
+    <gi-grid-item class="demo-item">item5</gi-grid-item>
+    <gi-grid-item class="demo-item" :span="3">item6 | span - 3</gi-grid-item>
+    <gi-grid-item class="demo-item">item7</gi-grid-item>
+    <gi-grid-item class="demo-item">item8</gi-grid-item>
     <gi-grid-item class="demo-item" suffix #="{ overflow }">
       suffix | overflow: {{ overflow }}
     </gi-grid-item>
