@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: 开始
-      link: /examples
+      link: /examples/button
     - theme: alt
       text: Github
       link: https://github.com/lin-97/gi-components

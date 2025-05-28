@@ -16,7 +16,12 @@ export default defineConfig({
         text: '组件',
         items: [
           { text: '按钮 Button', link: '/examples/button' },
-          { text: '卡片 Card', link: '/examples/card' }
+          { text: '卡片 Card', link: '/examples/card' },
+          { text: '下拉选择 Select', link: '/examples/select' },
+          { text: '单选组合 RadioGroup', link: '/examples/radio-group' },
+          { text: '多选组合 CheckboxGroup', link: '/examples/checkbox-group' },
+          { text: '标签页 Tabs', link: '/examples/tabs' },
+          { text: '输入框组 InputGroup', link: '/examples/input-group' }
         ]
       }
     ],

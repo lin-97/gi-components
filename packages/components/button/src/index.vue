@@ -1,19 +1,17 @@
 <template>
-  <el-button v-bind="btnProps">
+  <el-button v-bind="bindProps">
     <slot>{{ btnText }}</slot>
   </el-button>
 </template>
 
 <script setup lang="ts">
-import type { ButtonProps } from 'element-plus'
+import type { ButtonProps } from './type.ts'
 import { Delete, Download, Edit, Plus, Search, Upload } from '@element-plus/icons-vue'
 import { computed, useAttrs } from 'vue'
 
-interface Props extends Omit<ButtonProps, 'type'> {
-  type?: 'add' | 'edit' | 'delete' | 'search' | 'upload' | 'download' | ''
-}
+defineOptions({ name: 'GiButton' })
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<ButtonProps>(), {
   type: ''
 })
 
@@ -28,7 +26,7 @@ const obj: Record<string, { btnProps: Partial<ButtonProps>, btnText: string }> =
   download: { btnProps: { icon: Download, type: 'primary' }, btnText: '下载' }
 }
 
-const btnProps = computed(() => {
+const bindProps = computed(() => {
   return { ...attrs, ...(obj?.[props.type]?.btnProps || { type: props.type }) }
 })
 
