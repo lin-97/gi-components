@@ -1,31 +1,23 @@
 # Button 按钮
 
+<script setup>
+import Demo1 from './demo1.vue'
+</script>
+
 ## 基础用法
 
-<div>
-  <el-space wrap>
-     <gi-button type="add"></gi-button>
-     <gi-button type="edit"></gi-button>
-     <gi-button type="delete"></gi-button>
-     <gi-button type="search"></gi-button>
-     <gi-button type="upload"></gi-button>
-     <gi-button type="download"></gi-button>
-     <gi-button type="success">按钮</gi-button>
-  </el-space>
-</div>
+<Demo1></Demo1>
 
-```vue
-<template>
-  <div>
-    <el-space wrap>
-      <gi-button type="add"></gi-button>
-      <gi-button type="edit"></gi-button>
-      <gi-button type="delete"></gi-button>
-      <gi-button type="search"></gi-button>
-      <gi-button type="upload"></gi-button>
-      <gi-button type="download"></gi-button>
-      <gi-button type="success">按钮</gi-button>
-    </el-space>
-  </div>
-</template>
-```
+::: details 查看代码
+<<< ./demo1.vue
+:::
+
+## API
+
+| 参数  | 说明  | 类型   | 默认值 |
+| :---- | :---- | :---- | :----  |
+| type  | 类型  | `add \| edit \| delete \| search \| upload \| download \| ElButtonProps['type']` |    -   |
+
+::: tip
+继承 `el-button` 的所有属性
+:::

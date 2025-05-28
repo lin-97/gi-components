@@ -19,5 +19,3 @@ const options = [
   { value: '3', label: '选项3' }
 ]
 </script>
-
-<style scoped></style>

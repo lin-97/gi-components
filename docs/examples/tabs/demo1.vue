@@ -1,14 +1,12 @@
 <template>
-  <div>
-    <gi-tabs v-model="value" :options="options">
-      <template #extra>
-        <el-space>
-          <el-button type="primary">保存</el-button>
-          <el-button>返回</el-button>
-        </el-space>
-      </template>
-    </gi-tabs>
-  </div>
+  <gi-tabs v-model="value" :options="options">
+    <template #extra>
+      <el-space>
+        <el-button type="primary">保存</el-button>
+        <el-button>返回</el-button>
+      </el-space>
+    </template>
+  </gi-tabs>
 </template>
 
 <script setup lang="ts">
@@ -22,5 +20,3 @@ const options = [
   { label: '页签4', name: '4' }
 ]
 </script>
-
-<style lang="scss" scoped></style>

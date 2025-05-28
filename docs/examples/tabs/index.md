@@ -1,34 +1,27 @@
 # Tabs 标签页
 
-## 基础用法
-
 <script setup>
 import Demo1 from './demo1.vue'
 </script>
 
+## 基础用法
+
 <Demo1></Demo1>
 
-```vue
-<template>
-  <gi-tabs v-model="value" :options="options">
-      <template #extra>
-        <el-space>
-          <el-button type="primary">保存</el-button>
-          <el-button>返回</el-button>
-        </el-space>
-      </template>
-  </gi-tabs>
-</template>
+::: details 查看代码
+<<< ./demo1.vue
+:::
 
-<script setup lang="ts">
-import { ref } from 'vue'
+## API
 
-const value = ref('1')
-const options = [
-  { label: '页签1', name: '1' },
-  { label: '页签2', name: '2' },
-  { label: '页签3', name: '3', disabled: true },
-  { label: '页签4', name: '4' }
-]
-</script>
-```
+### Props
+
+| 参数  | 说明  | 类型   | 默认值 |
+| :---- | :---- | :---- | :----  |
+| options | 选项列表 | `OptionItem[]` |    -   |
+
+### Slots
+
+| 名称  | 说明  |
+| :---- | :---- |
+| default | 自定义内容 |

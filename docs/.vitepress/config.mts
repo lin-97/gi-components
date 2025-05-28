@@ -31,5 +31,8 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/lin-97/gi-components' }
     ]
+  },
+  markdown: {
+    lineNumbers: false // 显示行号
   }
 })

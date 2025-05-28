@@ -1,22 +1,24 @@
 # RadioGroup 下拉组合
 
-## 基础用法
-
 <script setup>
 import Demo1 from './demo1.vue'
 </script>
 
+## 基础用法
+
 <Demo1></Demo1>
 
-```vue
-<template>
-  <gi-radio-group v-model="value" :options="options"></gi-radio-group>
-</template>
+::: details 查看代码
+<<< ./demo1.vue
+:::
 
-<script setup lang="ts">
-import { ref } from 'vue'
+## API
 
-const value = ref('')
-const options = [{ label: '男', value: '1' }, { label: '女', value: '2' }]
-</script>
-```
+### Props
+
+| 参数  | 说明  | 类型   | 默认值 |
+| :---- | :---- | :---- | :----  |
+| options | 选项列表 | `OptionItem[]` |    -   |
+
+::: tip
+继承 `el-radio-group` 的所有属性

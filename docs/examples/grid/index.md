@@ -1,55 +1,43 @@
 # Grid 栅格
 
-## 基础用法
-
 <script setup>
 import Demo1 from './demo1.vue'
 </script>
 
+## 基础用法
+
 <Demo1></Demo1>
+::: details 查看代码
+<<<./demo1.vue
+:::
 
-```vue
-<template>
-  <div style="margin-bottom: 20px;">
-    <el-text class="mx-1">折叠：</el-text>
-    <el-switch v-model="collapsed" />
-  </div>
-  <gi-grid :cols="3" :col-gap="12" :row-gap="16" class="grid-demo-grid" :collapsed="collapsed">
-    <gi-grid-item class="demo-item">item1</gi-grid-item>
-    <gi-grid-item class="demo-item">item2</gi-grid-item>
-    <gi-grid-item class="demo-item">item3</gi-grid-item>
-    <gi-grid-item class="demo-item" :offset="1">item4 | offset - 1</gi-grid-item>
-    <gi-grid-item class="demo-item">item5</gi-grid-item>
-    <gi-grid-item class="demo-item" :span="3">item6 | span - 3</gi-grid-item>
-    <gi-grid-item class="demo-item">item7</gi-grid-item>
-    <gi-grid-item class="demo-item">item8</gi-grid-item>
-    <gi-grid-item class="demo-item" suffix #="{ overflow }">
-      suffix | overflow: {{ overflow }}
-    </gi-grid-item>
-  </gi-grid>
-</template>
+## API
 
-<script setup lang="ts">
-import { ref } from 'vue'
+### Grid Props
 
-const collapsed = ref(false)
-</script>
+| 参数          | 说明                 | 类型                      | 默认值    |
+|------------------|----------------------|--------------------------|----------|
+| cols             | 每一行展示的列数      | `number \| ResponsiveValue` | 24       |
+| row-gap          | 行与行之间的间距       | `number \| ResponsiveValue` | 0        |
+| col-gap          | 列与列之间的间距       | `number \| ResponsiveValue` | 0        |
+| collapsed         | 是否折叠              | `boolean`                | false    |
+| collapsed-rows    | 折叠时显示的行数       | `number`                 | 1        |
 
-<style lang="scss" scoped>
-.grid-demo-grid .demo-item,
-.grid-demo-grid .demo-suffix {
-  height: 48px;
-  line-height: 48px;
-  color: var(--el-color-white);
-  text-align: center;
-}
+### GridItem Props
 
-.grid-demo-grid .demo-item:nth-child(2n) {
-  background-color: var(--el-color-primary);
-}
+| 参数  | 说明           | 类型                      | 默认值   |
+|---------|----------------|--------------------------|----------|
+| span    | 跨越的格数      | `number \| ResponsiveValue` | 1        |
+| offset  | 左侧的间隔格数  | `number \| ResponsiveValue` | 0        |
+| suffix  | 是否是后缀元素  | `boolean`                | false    |
 
-.grid-demo-grid .demo-item:nth-child(2n + 1) {
-  background-color: var(--el-color-success);
-}
-</style>
-```
+### ResponsiveValue
+
+| 参数名 | 描述                   | 类型     | 默认值 |
+|--------|------------------------|----------|--------|
+| xxl    | \>=1600px 响应式配置    | `number` | -      |
+| xl     | \>=1200px 响应式配置    | `number` | -      |
+| lg     | \>=992px 响应式配置     | `number` | -      |
+| md     | \>=768px 响应式配置     | `number` | -      |
+| sm     | \>=576px 响应式配置     | `number` | -      |
+| xs     | <576px 响应式配置       | `number` | -      |

@@ -1,9 +1,7 @@
 <template>
-  <div class="demo-search">
-    <gi-form ref="GiFormRef" v-model="form" :columns="columns" search
-      :grid-item-props="{ span: { xs: 24, sm: 12, md: 12, lg: 12, xl: 8, xxl: 8 } }" @search="search" @reset="reset">
-    </gi-form>
-  </div>
+  <gi-form ref="GiFormRef" v-model="form" :columns="columns" search
+    :grid-item-props="{ span: { xs: 24, sm: 12, md: 12, lg: 12, xl: 8, xxl: 8 } }" @search="search" @reset="reset">
+  </gi-form>
 </template>
 
 <script lang="ts" setup>
@@ -74,12 +72,4 @@ const columns = computed(() => {
 })
 </script>
 
-<style lang="scss" scoped>
-.demo-search {
-  box-sizing: border-box;
-  padding: 20px;
-  margin-bottom: 50px;
-  overflow: hidden;
-  background-color: var(--el-bg-color);
-}
-</style>
+<style lang="scss" scoped></style>

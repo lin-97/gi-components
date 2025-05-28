@@ -1,22 +1,24 @@
 # CheckboxGroup 下拉组合
 
-## 基础用法
-
 <script setup>
 import Demo1 from './demo1.vue'
 </script>
 
+## 基础用法
+
 <Demo1></Demo1>
 
-```vue
-<template>
-  <gi-checkbox-group v-model="value" :options="options"></gi-checkbox-group>
-</template>
+::: details 查看代码
+<<< ./demo1.vue
+:::
 
-<script setup lang="ts">
-import { ref } from 'vue'
+## API
 
-const value = ref(['1'])
-const options = [{ label: '游戏', value: '1' }, { label: '音乐', value: '2' }, { label: '电影', value: '3' }]
-</script>
-```
+### Props
+
+| 参数  | 说明  | 类型   | 默认值 |
+| :---- | :---- | :---- | :----  |
+| options | 选项列表 | `OptionItem[]` |    -   |
+
+::: tip
+继承 `el-checkbox-group` 的所有属性
