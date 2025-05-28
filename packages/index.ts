@@ -3,6 +3,7 @@ import type { App } from 'vue'
 import GiButton from './components/button'
 import GiCard from './components/card'
 import GiCheckboxGroup from './components/checkbox-group'
+import GiForm from './components/form'
 import { Grid as GiGrid, GridItem as GiGridItem } from './components/grid'
 import GiInputGroup from './components/input-group'
 import GiRadioGroup from './components/radio-group'
@@ -18,7 +19,8 @@ const components = {
   GiTabs,
   GiInputGroup,
   GiGrid,
-  GiGridItem
+  GiGridItem,
+  GiForm
 }
 
 const obj = {
