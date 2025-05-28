@@ -332,4 +332,12 @@ defineExpose({ formRef })
     line-height: inherit;
   }
 }
+
+:deep(.hide-label) {
+
+  // 隐藏el-form-item__label才能完整占满插槽宽度
+  .el-form-item__label {
+    display: none;
+  }
+}
 </style>

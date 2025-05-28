@@ -1,12 +1,16 @@
 <template>
-  <gi-card title="配置表单示例">
+  <gi-card title="配置表单示例" bordered>
     <template #extra>
-      <el-radio-group v-model="labelPosition" size="small">
-        <el-radio-button label="左侧" value="left" />
-        <el-radio-button label="右侧" value="right" />
-        <el-radio-button label="顶部" value="top" />
-      </el-radio-group>
+      <el-space>
+        <el-switch v-model="disabled" active-text="禁用"></el-switch>
+        <el-radio-group v-model="labelPosition" size="small">
+          <el-radio-button label="左侧" value="left" />
+          <el-radio-button label="右侧" value="right" />
+          <el-radio-button label="顶部" value="top" />
+        </el-radio-group>
+      </el-space>
     </template>
+
     <gi-form ref="GiFormRef" v-model="form" :columns="columns" :disabled="disabled" label-width="auto"
       :label-position="labelPosition" :grid-item-props="{ span: { xs: 24, sm: 24, md: 24, lg: 12, xl: 12, xxl: 12 } }">
       <template #customSlot="{ item }"> {{ form.status }}-----------{{ item.field }} </template>
@@ -16,23 +20,24 @@
         <el-alert title="Warning alert" type="warning" effect="dark" />
         <el-alert title="Error alert" type="error" effect="dark" />
       </template>
+      <template #btns>
+        <el-space>
+          <el-button @click="reset">重置</el-button>
+          <el-button type="primary" @click="submit"> 提交 </el-button>
+        </el-space>
+      </template>
     </gi-form>
-
-    <el-space>
-      <el-button>重置</el-button>
-      <el-button type="primary" @click="submit"> 提交 </el-button>
-      <el-button type="primary" @click="disabled = !disabled"> 禁用 </el-button>
-    </el-space>
   </gi-card>
 </template>
 
 <script lang="ts" setup>
-import type { FormColumnItem } from '../../../packages/components/form'
+import type { FormColumnItem, FormInstance } from '../../../packages/components/form'
 import { ElTag } from 'element-plus'
 import { computed, h, reactive, ref } from 'vue'
+import { treeData } from './data'
 
+const GiFormRef = ref<FormInstance | null>()
 const disabled = ref(false)
-
 const labelPosition = ref<any>('right')
 
 const form = reactive({
@@ -40,13 +45,11 @@ const form = reactive({
   age: 18,
   sex: '男',
   address: '北京',
-  hobby: ['吃饭', '睡觉', '打豆豆'],
+  sex: '1',
   desc: '我是一个描述',
   date: '2021-01-01',
   datetime: '',
   time: '12:00:00',
-  transfer: ['1', '2'],
-  autocomplete: '1',
   status: false,
   star: 3,
   radio: '吃饭',
@@ -57,88 +60,8 @@ const form = reactive({
   endTime: ''
 })
 
-const GiFormRef = ref()
-async function submit() {
-  await GiFormRef.value?.formRef?.validate()
-}
-
-const treeData = [
-  {
-    value: '1',
-    label: 'Level one 1',
-    children: [
-      {
-        value: '1-1',
-        label: 'Level two 1-1',
-        children: [
-          {
-            value: '1-1-1',
-            label: 'Level three 1-1-1'
-          }
-        ]
-      }
-    ]
-  },
-  {
-    value: '2',
-    label: 'Level one 2',
-    children: [
-      {
-        value: '2-1',
-        label: 'Level two 2-1',
-        children: [
-          {
-            value: '2-1-1',
-            label: 'Level three 2-1-1'
-          }
-        ]
-      },
-      {
-        value: '2-2',
-        label: 'Level two 2-2',
-        children: [
-          {
-            value: '2-2-1',
-            label: 'Level three 2-2-1'
-          }
-        ]
-      }
-    ]
-  },
-  {
-    value: '3',
-    label: 'Level one 3',
-    children: [
-      {
-        value: '3-1',
-        label: 'Level two 3-1',
-        children: [
-          {
-            value: '3-1-1',
-            label: 'Level three 3-1-1'
-          }
-        ]
-      },
-      {
-        value: '3-2',
-        label: 'Level two 3-2',
-        children: [
-          {
-            value: '3-2-1',
-            label: 'Level three 3-2-1'
-          }
-        ]
-      }
-    ]
-  }
-]
-
 const columns = computed(() => {
   return [
-    // {
-    //   type: 'title',
-    //   label: '基本信息'
-    // },
     {
       type: 'input',
       label: '姓名',
@@ -155,6 +78,17 @@ const columns = computed(() => {
       formItemProps: { style: { alignItems: 'baseline' } },
       slots: {
         prepend: '+86'
+      }
+    },
+    {
+      type: 'select',
+      label: '性别',
+      field: 'sex',
+      props: {
+        options: [
+          { label: '男', value: '1' },
+          { label: '女', value: '2' }
+        ]
       }
     },
     {
@@ -178,18 +112,6 @@ const columns = computed(() => {
       type: 'rate',
       label: '评分',
       field: 'star'
-    },
-    {
-      type: 'select',
-      label: '兴趣',
-      field: 'hobby',
-      props: {
-        options: [
-          { label: '吃饭', value: '吃饭' },
-          { label: '睡觉', value: '睡觉' },
-          { label: '打豆豆', value: '打豆豆' }
-        ]
-      }
     },
     {
       type: 'date-picker',
@@ -267,7 +189,7 @@ const columns = computed(() => {
       label: '',
       field: 'customSlot2',
       span: 24,
-      formItemProps: { labelWidth: 0, class: 'custom-item-class' },
+      formItemProps: { labelWidth: 0, class: 'hide-label' },
       tip: '暂满宽度的插槽示例'
     },
     {
@@ -275,17 +197,23 @@ const columns = computed(() => {
       label: '备注',
       field: 'remark',
       span: 24
+    },
+    {
+      type: 'slot',
+      label: '提交按钮',
+      field: 'btns',
+      span: 24,
+      formItemProps: { labelWidth: 0, class: 'hide-label', style: { marginBottom: 0 } }
     }
   ] as FormColumnItem[]
 })
+
+async function submit() {
+  await GiFormRef.value?.formRef?.validate()
+}
+function reset() {
+  GiFormRef.value?.formRef?.resetFields()
+}
 </script>
 
-<style lang="scss" scoped>
-:deep(.custom-item-class) {
-
-  // 隐藏el-form-item__label才能完整占满插槽宽度
-  .el-form-item__label {
-    display: none;
-  }
-}
-</style>
+<style lang="scss" scoped></style>

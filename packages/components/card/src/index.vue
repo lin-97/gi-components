@@ -83,6 +83,10 @@ const getHeaderClass = computed(() => {
     box-sizing: border-box;
   }
 
+  &__extra {
+    display: flex;
+  }
+
   &--bordered {
     border-bottom: 1px solid var(--el-border-color);
   }
