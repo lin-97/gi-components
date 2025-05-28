@@ -23,11 +23,11 @@ export default defineConfig({
           { text: '标签页 Tabs', link: '/examples/tabs' },
           { text: '输入框组 InputGroup', link: '/examples/input-group' },
           { text: '栅格 Grid', link: '/examples/grid' },
-          { text: '配置表单 Form', link: '/examples/form' }
+          { text: '配置表单 Form', link: '/examples/form' },
+          { text: '页面布局 PageLayout', link: '/examples/page-layout' }
         ]
       }
     ],
-
     socialLinks: [
       { icon: 'github', link: 'https://github.com/lin-97/gi-components' }
     ]

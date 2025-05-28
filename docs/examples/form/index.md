@@ -4,6 +4,7 @@
 
 <script setup>
 import Demo1 from './demo1.vue'
+import Demo2 from './demo2.vue'
 </script>
 
 <Demo1></Demo1>
@@ -228,4 +229,8 @@ function reset() {
 </script>
 
 <style lang="scss" scoped></style>
-``
+```
+
+## 搜索表单
+
+<Demo2></Demo2>

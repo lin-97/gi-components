@@ -63,10 +63,10 @@
 
       <GridItem v-if="props.search" :suffix="props.search" :span="props?.gridItemProps?.span">
         <el-space class="search-bar">
-          <jxtech-search-button @click="emit('search')"> {{ searchText }} </jxtech-search-button>
-          <jxtech-reset-button @click="emit('reset')"> 重置 </jxtech-reset-button>
+          <el-button type="primary" @click="emit('search')"> {{ searchText }} </el-button>
+          <el-button @click="emit('reset')"> 重置 </el-button>
           <el-button v-if="!props.hideFoldBtn" class="form__fold-btn" type="primary"
-            :icon="collapsed ? ArrowDown : ArrowUp" text @click="collapsed = !collapsed">
+            :icon="collapsed ? ArrowDown : ArrowUp" text size="small" @click="collapsed = !collapsed">
             {{ collapsed ? '展开' : '收起' }}
           </el-button>
         </el-space>
@@ -214,7 +214,7 @@ const getPlaceholder = (item: ColumnItem) => {
     return `请选择${item.label}`
   }
   if (['date-picker'].includes(item.type)) {
-    return `请选择请选择日期`
+    return `请选择日期`
   }
   if (['time-picker'].includes(item.type)) {
     return `请选择时间`
@@ -269,6 +269,15 @@ function isDisabled(item: ColumnItem) {
 function updateModelValue(value: any, item: ColumnItem) {
   emit('update:modelValue', Object.assign(props.modelValue, { [item.field]: value }))
 }
+
+watch(
+  () => props.modelValue,
+  () => {
+    // eslint-disable-next-line no-console
+    console.log('form', toRaw(props.modelValue))
+  },
+  { deep: true }
+)
 
 defineExpose({ formRef })
 </script>

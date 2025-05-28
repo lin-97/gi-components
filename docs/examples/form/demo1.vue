@@ -43,9 +43,8 @@ const labelPosition = ref<any>('right')
 const form = reactive({
   name: '',
   age: 18,
-  sex: '男',
-  address: '北京',
   sex: '1',
+  address: '北京',
   desc: '我是一个描述',
   date: '2021-01-01',
   datetime: '',

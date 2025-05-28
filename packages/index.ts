@@ -6,6 +6,7 @@ import GiCheckboxGroup from './components/checkbox-group'
 import GiForm from './components/form'
 import { Grid as GiGrid, GridItem as GiGridItem } from './components/grid'
 import GiInputGroup from './components/input-group'
+import GiPageLayout from './components/page-layout'
 import GiRadioGroup from './components/radio-group'
 import GiSelect from './components/select'
 import GiTabs from './components/tabs'
@@ -20,7 +21,8 @@ const components = {
   GiInputGroup,
   GiGrid,
   GiGridItem,
-  GiForm
+  GiForm,
+  GiPageLayout
 }
 
 const obj = {
