@@ -8,7 +8,7 @@ import Demo1 from './demo1.vue'
 
 <Demo1></Demo1>
 
-::: details
+::: details 查看代码
 <<< ./demo1.vue
 :::
 

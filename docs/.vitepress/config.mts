@@ -28,6 +28,7 @@ export default defineConfig({
           { text: '对话框 Dialog', link: '/examples/dialog' },
           { text: '函数对话框 Dialog', link: '/examples/dialog2' },
           { text: '页面布局 PageLayout', link: '/examples/page-layout' },
+          { text: '表格 Table', link: '/examples/table' },
           { text: '编辑 EditTable', link: '/examples/edit-table' }
         ]
       }

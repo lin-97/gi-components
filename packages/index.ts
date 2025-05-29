@@ -11,6 +11,7 @@ import GiInputGroup from './components/input-group'
 import GiPageLayout from './components/page-layout'
 import GiRadioGroup from './components/radio-group'
 import GiSelect from './components/select'
+import GiTable from './components/table'
 import GiTabs from './components/tabs'
 
 export * from './components/dialog'
@@ -28,7 +29,8 @@ const components = {
   GiForm,
   GiPageLayout,
   GiDialog,
-  GiEditTable
+  GiEditTable,
+  GiTable
 }
 
 const obj = {
