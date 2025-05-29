@@ -27,7 +27,8 @@ export default defineConfig({
           { text: '配置表单 Form', link: '/examples/form' },
           { text: '对话框 Dialog', link: '/examples/dialog' },
           { text: '函数对话框 Dialog', link: '/examples/dialog2' },
-          { text: '页面布局 PageLayout', link: '/examples/page-layout' }
+          { text: '页面布局 PageLayout', link: '/examples/page-layout' },
+          { text: '编辑 EditTable', link: '/examples/edit-table' }
         ]
       }
     ],
