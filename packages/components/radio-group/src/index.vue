@@ -10,8 +10,6 @@
 import type { RadioGroupProps } from './type'
 import { computed, useAttrs } from 'vue'
 
-defineOptions({ name: 'GiRadioGroup' })
-
 const props = withDefaults(defineProps<RadioGroupProps>(), {
   options: () => []
 })

@@ -21,8 +21,6 @@
 import type { TabsProps } from './type.ts'
 import { computed, useAttrs, useSlots } from 'vue'
 
-defineOptions({ name: 'GiTabs' })
-
 const props = withDefaults(defineProps<TabsProps>(), {
   options: () => []
 })

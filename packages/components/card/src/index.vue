@@ -21,8 +21,6 @@
 import type { CardProps } from './type'
 import { computed, useSlots } from 'vue'
 
-defineOptions({ name: 'GiCard' })
-
 const props = withDefaults(defineProps<CardProps>(), {
   title: '',
   extra: '',

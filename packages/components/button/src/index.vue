@@ -9,8 +9,6 @@ import type { ButtonProps } from './type.ts'
 import { Delete, Download, Edit, Plus, Search, Upload } from '@element-plus/icons-vue'
 import { computed, useAttrs } from 'vue'
 
-defineOptions({ name: 'GiButton' })
-
 const props = withDefaults(defineProps<ButtonProps>(), {
   type: ''
 })

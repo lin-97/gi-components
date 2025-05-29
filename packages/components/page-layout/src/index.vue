@@ -21,8 +21,6 @@
 import type { PageLayoutProps } from './type'
 import { useSlots } from 'vue'
 
-defineOptions({ name: 'PageLayout' })
-
 const props = withDefaults(defineProps<PageLayoutProps>(), {
   bordered: false,
   leftStyle: () => ({}),

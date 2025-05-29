@@ -10,8 +10,6 @@
 import type { CheckboxGroupProps } from './type'
 import { computed, useAttrs } from 'vue'
 
-defineOptions({ name: 'GiCheckboxGroup' })
-
 const props = withDefaults(defineProps<CheckboxGroupProps>(), {
   options: () => []
 })

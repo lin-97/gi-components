@@ -8,8 +8,6 @@
 import type { SelectProps } from './type'
 import { computed, useAttrs } from 'vue'
 
-defineOptions({ name: 'GiSelect' })
-
 const props = withDefaults(defineProps<SelectProps>(), {
   options: () => []
 })

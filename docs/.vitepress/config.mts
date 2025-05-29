@@ -25,6 +25,8 @@ export default defineConfig({
           { text: '输入框组 InputGroup', link: '/examples/input-group' },
           { text: '栅格 Grid', link: '/examples/grid' },
           { text: '配置表单 Form', link: '/examples/form' },
+          { text: '对话框 Dialog', link: '/examples/dialog' },
+          { text: '函数对话框 Dialog', link: '/examples/dialog2' },
           { text: '页面布局 PageLayout', link: '/examples/page-layout' }
         ]
       }

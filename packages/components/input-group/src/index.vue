@@ -5,7 +5,6 @@
 </template>
 
 <script lang="ts" setup>
-defineOptions({ name: 'GiInputGroup' })
 </script>
 
 <style lang="scss" scoped>

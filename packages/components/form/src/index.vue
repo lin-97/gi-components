@@ -86,8 +86,6 @@ import { Grid, GridItem } from '../../grid'
 import RadioGroup from '../../radio-group'
 import Select from '../../select'
 
-defineOptions({ name: 'GiForm' })
-
 const props = withDefaults(defineProps<Props>(), {
   columns: () => [],
   labelWidth: '60px',
