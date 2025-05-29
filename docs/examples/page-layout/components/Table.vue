@@ -32,12 +32,3 @@ const tableData = [
   }
 ]
 </script>
-
-<style lang="scss" scoped>
-:deep(table) {
-  display: inherit;
-  border-collapse: inherit;
-  margin: inherit;
-  overflow-x: inherit;
-}
-</style>

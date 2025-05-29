@@ -11,8 +11,7 @@ import { computed, useAttrs } from 'vue'
 defineOptions({ name: 'GiSelect' })
 
 const props = withDefaults(defineProps<SelectProps>(), {
-  options: () => [],
-  placeholder: '请选择'
+  options: () => []
 })
 
 const attrs = useAttrs()
