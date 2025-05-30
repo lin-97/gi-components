@@ -19,6 +19,7 @@
     "封装组件"
   ],
   "scripts": {
+    "dev": "vite --host",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
@@ -27,6 +28,7 @@
     "@antfu/eslint-config": "^4.13.2",
     "@element-plus/icons-vue": "^2.3.1",
     "@vitejs/plugin-vue": "^5.2.4",
+    "@vitejs/plugin-vue-jsx": "^4.2.0",
     "element-plus": "^2.9.11",
     "eslint": "^9.27.0",
     "markdown-it": "^14.1.0",
@@ -34,6 +36,7 @@
     "sass": "^1.89.0",
     "sass-loader": "^16.0.5",
     "typescript": "^5.8.3",
+    "unplugin-vue-components": "^28.7.0",
     "vite": "^6.3.5",
     "vitepress": "^1.6.3",
     "vue": "^3.5.15",

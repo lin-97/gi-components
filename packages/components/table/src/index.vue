@@ -6,25 +6,26 @@
       </template>
     </el-table>
 
-    <el-pagination v-bind="paginationProps" />
+    <el-pagination size="small" layout="prev, pager, next" :total="50" />
   </div>
 </template>
 
 <script lang="ts" setup>
+import type { TableProps as ElTableProps, PaginationProps, TableColumnInstance } from 'element-plus'
 import type { TableProps } from './type'
 import { computed, useAttrs } from 'vue'
 
-const props = withDefaults(defineProps<TableProps<any>>(), {
+const props = withDefaults(defineProps<TableProps>(), {
   columns: () => [],
   pagination: () => ({})
 })
 
-const attrs = useAttrs()
+const attrs = useAttrs() as unknown as ElTableProps<any>
 
 const tableProps = computed(() => {
   return {
-    ...props,
     ...attrs,
+    ...props,
     columns: undefined,
     pagination: undefined
   }
@@ -32,10 +33,11 @@ const tableProps = computed(() => {
 
 const paginationProps = computed(() => {
   return {
-    // background: true,
-    // pagerCount: 7,
-    // layout: 'prev, pager, next, jumper, ->, total',
-    // pageSizes: [10, 20, 50, 100],
+    background: true,
+    pagerCount: 7,
+    layout: 'prev, pager, next, jumper, ->, total',
+    pageSizes: [10, 20, 50, 100],
+    total: 100,
     ...props.pagination
   }
 })

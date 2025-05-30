@@ -1,6 +1,7 @@
 import type { TableProps as ElTableProps, PaginationProps, TableColumnInstance } from 'element-plus'
+import type { ExtractPropTypes } from 'vue'
 
-export interface TableProps<T> extends Partial<ElTableProps<T>> {
-  columns?: TableColumnInstance['$props']
-  pagination?: PaginationProps
+export interface TableProps extends ExtractPropTypes<ElTableProps<any>> {
+  columns?: TableColumnInstance['$props'][]
+  pagination?: Partial<PaginationProps>
 }
