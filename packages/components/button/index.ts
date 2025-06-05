@@ -1,4 +1,4 @@
-import Button from './src/index.vue'
+import Button from './src/button.vue'
 
 export type ButtonInstance = InstanceType<typeof Button>
 export * from './src/type'

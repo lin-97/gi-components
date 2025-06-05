@@ -33,9 +33,4 @@ const btnText = computed(() => {
 })
 </script>
 
-<style lang="scss" scoped>
-.button {
-  background-color: pink;
-  padding: 10px;
-}
-</style>
+<style lang="scss" scoped></style>

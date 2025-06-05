@@ -1,4 +1,4 @@
-import Dialog from './src/index.vue'
+import Dialog from './src/dialog.vue'
 
 export type DialogInstance = InstanceType<typeof Dialog>
 export * from './src/dialog'

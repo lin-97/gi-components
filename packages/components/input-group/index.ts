@@ -1,4 +1,4 @@
-import InputGroup from './src/index.vue'
+import InputGroup from './src/input-group.vue'
 
 export type InputGroupInstance = InstanceType<typeof InputGroup>
 export * from './src/type'

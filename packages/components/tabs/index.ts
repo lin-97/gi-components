@@ -1,4 +1,4 @@
-import Tabs from './src/index.vue'
+import Tabs from './src/tabs.vue'
 
 export type TabsInstance = InstanceType<typeof Tabs>
 export * from './src/type'

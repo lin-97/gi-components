@@ -23,18 +23,15 @@ export default defineConfig(({ mode }) => {
         extensions: ['vue', 'tsx'],
         // 配置文件生成位置
         dts: 'packages/components.d.ts',
-        directoryAsNamespace: true
-        // resolvers: [
-        //   (name) => {
-        //     // 统一使用 @/components 下的组件
-        //     if (name.startsWith('B')) {
-        //       return {
-        //         name: name.slice(1),
-        //         from: 'packages/components'
-        //       }
-        //     }
-        //   }
-        // ]
+        directoryAsNamespace: false,
+        globalNamespaces: ['global'],
+        include: [/\.vue($|\?)/],
+ resolvers: [
+    (name) => {
+      return { name: `Gi${name}` }
+    },
+  ],
+        dumpComponentsInfo: true,
       })
     ],
     // 构建

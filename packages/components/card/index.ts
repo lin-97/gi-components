@@ -1,4 +1,4 @@
-import Card from './src/index.vue'
+import Card from './src/card.vue'
 
 export type CardInstance = InstanceType<typeof Card>
 export * from './src/type'

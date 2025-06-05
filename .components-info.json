@@ -1,0 +1,72 @@
+[
+  {
+    "name": "default",
+    "as": "GridSrcGridItem",
+    "from": "E:/gi-components/packages/components/grid/src/grid-item.vue"
+  },
+  {
+    "name": "default",
+    "as": "GridSrcGrid",
+    "from": "E:/gi-components/packages/components/grid/src/grid.vue"
+  },
+  {
+    "name": "default",
+    "as": "ButtonSrcButton",
+    "from": "E:/gi-components/packages/components/button/src/button.vue"
+  },
+  {
+    "name": "default",
+    "as": "CardSrcCard",
+    "from": "E:/gi-components/packages/components/card/src/card.vue"
+  },
+  {
+    "name": "default",
+    "as": "CheckboxGroupSrcCheckboxGroup",
+    "from": "E:/gi-components/packages/components/checkbox-group/src/checkbox-group.vue"
+  },
+  {
+    "name": "default",
+    "as": "DialogSrcDialog",
+    "from": "E:/gi-components/packages/components/dialog/src/dialog.vue"
+  },
+  {
+    "name": "default",
+    "as": "EditTableSrcEditTable",
+    "from": "E:/gi-components/packages/components/edit-table/src/edit-table.vue"
+  },
+  {
+    "name": "default",
+    "as": "FormSrcForm",
+    "from": "E:/gi-components/packages/components/form/src/form.vue"
+  },
+  {
+    "name": "default",
+    "as": "InputGroupSrcInputGroup",
+    "from": "E:/gi-components/packages/components/input-group/src/input-group.vue"
+  },
+  {
+    "name": "default",
+    "as": "PageLayoutSrcPageLayout",
+    "from": "E:/gi-components/packages/components/page-layout/src/page-layout.vue"
+  },
+  {
+    "name": "default",
+    "as": "RadioGroupSrcRadioGroup",
+    "from": "E:/gi-components/packages/components/radio-group/src/radio-group.vue"
+  },
+  {
+    "name": "default",
+    "as": "SelectSrcSelect",
+    "from": "E:/gi-components/packages/components/select/src/select.vue"
+  },
+  {
+    "name": "default",
+    "as": "TableSrcTable",
+    "from": "E:/gi-components/packages/components/table/src/table.vue"
+  },
+  {
+    "name": "default",
+    "as": "TabsSrcTabs",
+    "from": "E:/gi-components/packages/components/tabs/src/tabs.vue"
+  }
+]

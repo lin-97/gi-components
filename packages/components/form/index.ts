@@ -1,4 +1,4 @@
-import Form from './src/index.vue'
+import Form from './src/form.vue'
 
 export type FormInstance = InstanceType<typeof Form>
 export * from './src/type'
