@@ -1,5 +1,5 @@
 <template>
-  <div class="gi-card" :class="{ 'gi-card--bordered': props.bordered }">
+  <div class="gi-card" :class="getCardClass">
     <div class="gi-card-header" :class="getHeaderClass" :style="props.headerStyle">
       <div class="gi-card-header__title">
         <slot name="title">{{ props.title }}</slot>
@@ -24,6 +24,7 @@ import { computed, useSlots } from 'vue'
 const props = withDefaults(defineProps<CardProps>(), {
   title: '',
   extra: '',
+  size: 'middle' as const,
   bordered: false,
   headerBordered: true,
   headerStyle: () => ({}),
@@ -39,6 +40,15 @@ defineSlots<{
 
 const slot = useSlots()
 
+const getCardClass = computed(() => {
+  const arr: string[] = []
+  if (props.bordered) {
+    arr.push('gi-card--bordered')
+  }
+  arr.push(`gi-card--${props.size}`)
+  return arr.join(' ')
+})
+
 const getHeaderClass = computed(() => {
   return {
     'gi-card-header--bordered': props.headerBordered
@@ -49,8 +59,6 @@ const getHeaderClass = computed(() => {
 <style lang="scss" scoped>
 .gi-card {
   background-color: var(--el-bg-color);
-  flex: 1;
-  height: 100%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -102,5 +110,21 @@ const getHeaderClass = computed(() => {
 .gi-card-footer {
   padding: 0 var(--gi-card-padding);
   box-sizing: border-box;
+}
+
+.gi-card--small {
+  .gi-card-header {
+    font-size: 14px;
+    height: 36px;
+    padding: 0 10px;
+  }
+
+  .gi-card-body {
+    padding: 10px;
+  }
+
+  .gi-card-footer {
+    padding: 0 10px;
+  }
 }
 </style>

@@ -1,0 +1,18 @@
+.gi-card-title {
+  .gi-card-header__title {
+    padding-left: 8px;
+    position: relative;
+
+    &::before {
+      content: '';
+      width: 4px;
+      height: 20px;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: var(--el-color-primary);
+      border-radius: 0 4px 4px 0;
+    }
+  }
+}

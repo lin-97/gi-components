@@ -26,12 +26,12 @@ export default defineConfig(({ mode }) => {
         directoryAsNamespace: false,
         globalNamespaces: ['global'],
         include: [/\.vue($|\?)/],
- resolvers: [
-    (name) => {
-      return { name: `Gi${name}` }
-    },
-  ],
-        dumpComponentsInfo: true,
+        resolvers: [
+          (name) => {
+            return { name: `Gi${name}` }
+          }
+        ],
+        dumpComponentsInfo: true
       })
     ],
     // 构建

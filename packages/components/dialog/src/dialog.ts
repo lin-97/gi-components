@@ -2,7 +2,7 @@ import type { AppContext } from 'vue'
 import type { DialogInstance as GiDialogInstance } from '../index'
 import ElementPlus from 'element-plus'
 import { createApp, h, ref } from 'vue'
-import GiDialog from './index.vue'
+import GiDialog from './dialog.vue'
 
 type DialogOptions = Partial<GiDialogInstance['$props']>
 

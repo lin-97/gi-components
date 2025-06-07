@@ -4,6 +4,7 @@ export interface CardProps {
   title?: string
   extra?: string
   bordered?: boolean
+  size?: 'small' | 'middle'
   headerBordered?: boolean
   headerStyle?: CSSProperties
   bodyStyle?: CSSProperties

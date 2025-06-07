@@ -8,19 +8,19 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    Button: typeof import('./components/button/src/button.vue')['default']
-    Card: typeof import('./components/card/src/card.vue')['default']
-    CheckboxGroup: typeof import('./components/checkbox-group/src/checkbox-group.vue')['default']
-    Dialog: typeof import('./components/dialog/src/dialog.vue')['default']
-    EditTable: typeof import('./components/edit-table/src/edit-table.vue')['default']
-    Form: typeof import('./components/form/src/form.vue')['default']
-    Grid: typeof import('./components/grid/src/grid.vue')['default']
-    GridItem: typeof import('./components/grid/src/grid-item.vue')['default']
-    InputGroup: typeof import('./components/input-group/src/input-group.vue')['default']
-    PageLayout: typeof import('./components/page-layout/src/page-layout.vue')['default']
-    RadioGroup: typeof import('./components/radio-group/src/radio-group.vue')['default']
-    Select: typeof import('./components/select/src/select.vue')['default']
-    Table: typeof import('./components/table/src/table.vue')['default']
-    Tabs: typeof import('./components/tabs/src/tabs.vue')['default']
+    GiButton: typeof import('./components/button/src/button.vue')['default']
+    GiCard: typeof import('./components/card/src/card.vue')['default']
+    GiCheckboxGroup: typeof import('./components/checkbox-group/src/checkbox-group.vue')['default']
+    GiDialog: typeof import('./components/dialog/src/dialog.vue')['default']
+    GiEditTable: typeof import('./components/edit-table/src/edit-table.vue')['default']
+    GiForm: typeof import('./components/form/src/form.vue')['default']
+    GiGrid: typeof import('./components/grid/src/grid.vue')['default']
+    GiGridItem: typeof import('./components/grid/src/grid-item.vue')['default']
+    GiInputGroup: typeof import('./components/input-group/src/input-group.vue')['default']
+    GiPageLayout: typeof import('./components/page-layout/src/page-layout.vue')['default']
+    GiRadioGroup: typeof import('./components/radio-group/src/radio-group.vue')['default']
+    GiSelect: typeof import('./components/select/src/select.vue')['default']
+    GiTable: typeof import('./components/table/src/table.vue')['default']
+    GiTabs: typeof import('./components/tabs/src/tabs.vue')['default']
   }
 }
