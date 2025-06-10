@@ -5,7 +5,7 @@
         <el-tabs v-bind="bindProps">
           <el-tab-pane v-for="item in props.options" :key="item.name" :name="item.name" :disabled="item?.disabled">
             <template #label>
-              <slot name="label" :record="item">{{ item.label }}</slot>
+              <slot name="label" :item="item">{{ item.label }}</slot>
             </template>
           </el-tab-pane>
         </el-tabs>
@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import type { TabsProps } from './type.ts'
+import type { TabsOptionItem, TabsProps } from './type.ts'
 import { computed, useAttrs, useSlots } from 'vue'
 
 const props = withDefaults(defineProps<TabsProps>(), {
@@ -28,7 +28,7 @@ const props = withDefaults(defineProps<TabsProps>(), {
 defineSlots<{
   default: () => void
   extra: () => void
-  label: (e: { record: OptionItem }) => void
+  label: (e: { item: TabsOptionItem }) => void
 }>()
 
 const slots = useSlots()
@@ -65,10 +65,6 @@ const bindProps = computed(() => {
     flex: 1;
     overflow: hidden;
 
-    :deep(.el-tabs) {
-      --el-tabs-header-height: 46px;
-    }
-
     :deep(.el-tabs__header) {
       margin-bottom: 0;
 
@@ -86,6 +82,25 @@ const bindProps = computed(() => {
 
   &__extra {
     margin-left: 10px;
+    align-self: flex-start;
+  }
+}
+
+:deep(.el-tabs--card) {
+  >.el-tabs__header {
+    border-bottom: none;
+  }
+}
+
+:deep(.el-tabs--border-card) {
+  border-bottom: none;
+
+  >.el-tabs__content {
+    display: none;
+  }
+
+  >.el-tabs__header {
+    border-bottom: none;
   }
 }
 </style>
