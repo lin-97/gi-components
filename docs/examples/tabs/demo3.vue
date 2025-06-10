@@ -6,9 +6,9 @@
         <el-button>返回</el-button>
       </el-space>
     </template>
-    <template #label="{ item }">
-      <span>{{ item.label }}</span>
-      <el-text type="danger">{{ countObj[item.name] }}</el-text>
+    <template #label="{ data }">
+      <span>{{ data.label }}</span>
+      <el-text type="danger">{{ countObj[data.name] }}</el-text>
     </template>
   </gi-tabs>
 </template>

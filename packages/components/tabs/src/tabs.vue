@@ -5,7 +5,7 @@
         <el-tabs v-bind="bindProps">
           <el-tab-pane v-for="item in props.options" :key="item.name" :name="item.name" :disabled="item?.disabled">
             <template #label>
-              <slot name="label" :item="item">{{ item.label }}</slot>
+              <slot name="label" :data="item">{{ item.label }}</slot>
             </template>
           </el-tab-pane>
         </el-tabs>
@@ -28,7 +28,7 @@ const props = withDefaults(defineProps<TabsProps>(), {
 defineSlots<{
   default: () => void
   extra: () => void
-  label: (e: { item: TabsOptionItem }) => void
+  label: (e: { data: TabsOptionItem }) => void
 }>()
 
 const slots = useSlots()
