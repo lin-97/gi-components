@@ -1,33 +1,33 @@
 # Tabs 标签页
 
 <script setup>
-import Demo1 from './demo1.vue'
-import Demo2 from './demo2.vue'
-import Demo3 from './demo3.vue'
+import Demo from './Demo.vue'
+import DemoCard from './DemoCard.vue'
+import DemoSlotExtra from './DemoSlotExtra.vue'
 </script>
 
 ## 基础用法
 
-<Demo1></Demo1>
+<Demo></Demo>
 
 ::: details 查看代码
-<<< ./demo1.vue
+<<< ./Demo.vue
 :::
 
 ## 卡片类型
 
-<Demo2></Demo2>
+<DemoCard></DemoCard>
 
 ::: details 查看代码
-<<< ./demo2.vue
+<<< ./DemoCard.vue
 :::
 
 ## 使用插槽
 
-<Demo3></Demo3>
+<DemoSlotExtra></DemoSlotExtra>
 
 ::: details 查看代码
-<<< ./demo3.vue
+<<< ./DemoSlotExtra.vue
 :::
 
 ## API

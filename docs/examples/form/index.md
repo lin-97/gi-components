@@ -1,28 +1,28 @@
 # Form 配置表单
 
 <script setup>
-import Demo1 from './demo1.vue'
-import Demo2 from './demo2.vue'
-import Demo3 from './demo3.vue'
+import Demo from './Demo.vue'
+import DemoSearch from './DemoSearch.vue'
+import DemoUseDict from './DemoUseDict.vue'
 </script>
 
 ## 基础用法
 
-<Demo1></Demo1>
+<Demo></Demo>
 ::: details 查看代码
-<<<./demo1.vue
+<<<./Demo.vue
 :::
 
 ## 搜索表单
 
-<Demo2></Demo2>
+<DemoSearch></DemoSearch>
 ::: details 查看代码
-<<<./demo2.vue
+<<<./DemoSearch.vue
 :::
 
 ## 结合字典
 
-<Demo3></Demo3>
+<DemoUseDict></DemoUseDict>
 ::: details 查看代码
-<<<./demo3.vue
+<<<./DemoUseDict.vue
 :::

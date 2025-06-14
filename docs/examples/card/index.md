@@ -1,9 +1,10 @@
 # Card 卡片
 
 <script setup>
-import Demo1 from './demo1.vue'
-import Demo2 from './demo2.vue'
-import Demo3 from './demo3.vue'
+import Demo from './Demo.vue'
+import DemoInnerClass from './DemoInnerClass.vue'
+import DemoSize from './DemoSize.vue'
+import DemoFooter from './DemoFooter.vue'
 </script>
 
 ## 基础用法
@@ -11,24 +12,32 @@ import Demo3 from './demo3.vue'
 <Demo1></Demo1>
 
 ::: details 查看代码
-<<< ./demo1.vue
+<<< ./demo.vue
 :::
 
 ## 内置类名
 内置类名提供了卡片标题伪元素样式
 
-<Demo2></Demo2>
+<DemoInnerClass></DemoInnerClass>
 
 ::: details 查看代码
-<<< ./demo2.vue
+<<< ./DemoInnerClass.vue
+:::
+
+## 底部插槽
+
+<DemoFooter></DemoFooter>
+
+::: details 查看代码
+<<< ./DemoFooter.vue
 :::
 
 ## 迷你卡片
 
-<Demo3></Demo3>
+<DemoSize></DemoSize>
 
 ::: details 查看代码
-<<< ./demo3.vue
+<<< ./DemoSize.vue
 :::
 
 ## API

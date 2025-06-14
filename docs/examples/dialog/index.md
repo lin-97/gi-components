@@ -1,38 +1,38 @@
 # Dialog 对话框
 
 <script setup>
-import Demo1 from './demo1.vue'
-import Demo2 from './demo2.vue'
-import Demo3 from './demo3.vue'
-import Demo4 from './demo4.vue'
+import Demo from './Demo.vue'
+import DemoAsync from './DemoAsync.vue'
+import DemoHideFooter from './DemoHideFooter.vue'
+import DemoButtonText from './DemoButtonText.vue'
 </script>
 
 ## 基础用法
 
-<Demo1></Demo1>
+<Demo></Demo>
 ::: details 查看代码
-<<< ./demo1.vue
+<<< ./Demo.vue
 :::
 
 ## 异步关闭
 
-<Demo2></Demo2>
+<DemoAsync></DemoAsync>
 ::: details 查看代码
-<<< ./demo2.vue
+<<< ./DemoAsync.vue
 :::
 
 ## 隐藏底部
 
-<Demo3></Demo3>
+<DemoHideFooter></DemoHideFooter>
 ::: details 查看代码
-<<< ./demo3.vue
+<<< ./DemoHideFooter.vue
 :::
 
 ## 修改按钮
 
-<Demo4></Demo4>
+<DemoButtonText></DemoButtonText>
 ::: details 查看代码
-<<< ./demo4.vue
+<<< ./DemoButtonText.vue
 :::
 
 ## API

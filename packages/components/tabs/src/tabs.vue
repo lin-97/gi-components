@@ -2,7 +2,8 @@
   <div class="gi-tabs">
     <div class="gi-tabs__default">
       <slot>
-        <el-tabs v-bind="bindProps">
+        <el-tabs v-model="model" :type="props.type" :stretch="props.stretch" @tab-click="props.onTabClick"
+          @tab-change="props.onTabChange">
           <el-tab-pane v-for="item in props.options" :key="item.name" :name="item.name" :disabled="item?.disabled">
             <template #label>
               <slot name="label" :data="item">{{ item.label }}</slot>
@@ -19,9 +20,12 @@
 
 <script setup lang="ts">
 import type { TabsOptionItem, TabsProps } from './type.ts'
-import { computed, useAttrs, useSlots } from 'vue'
+import { useSlots } from 'vue'
+
+const model = defineModel()
 
 const props = withDefaults(defineProps<TabsProps>(), {
+  type: '',
   options: () => []
 })
 
@@ -32,15 +36,6 @@ defineSlots<{
 }>()
 
 const slots = useSlots()
-const attrs = useAttrs()
-
-const bindProps = computed(() => {
-  return {
-    ...attrs,
-    ...props,
-    options: undefined
-  }
-})
 </script>
 
 <style lang="scss" scoped>

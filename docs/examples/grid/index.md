@@ -1,14 +1,14 @@
 # Grid 栅格
 
 <script setup>
-import Demo1 from './demo1.vue'
+import Demo from './Demo.vue'
 </script>
 
 ## 基础用法
 
 <Demo1></Demo1>
 ::: details 查看代码
-<<<./demo1.vue
+<<<./Demo.vue
 :::
 
 ## API

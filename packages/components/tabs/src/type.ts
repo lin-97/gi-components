@@ -1,4 +1,4 @@
-import type { TabsProps as ElTabsProps } from 'element-plus'
+import type { TabsProps as ElTabsProps, TabsEmits } from 'element-plus'
 
 export type TabsOptionItem = {
   label: string
@@ -7,5 +7,8 @@ export type TabsOptionItem = {
 }
 
 export interface TabsProps extends Partial<Pick<ElTabsProps, 'type' | 'stretch'>> {
+  type?: ElTabsProps['type']
   options?: TabsOptionItem[]
+  onTabClick?: TabsEmits['tabClick']
+  onTabChange?: TabsEmits['tabChange']
 }

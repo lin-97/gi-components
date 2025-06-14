@@ -108,7 +108,9 @@ const getHeaderClass = computed(() => {
 }
 
 .gi-card-footer {
-  padding: 0 var(--gi-card-padding);
+  padding: 8px var(--gi-card-padding);
+  box-sizing: border-box;
+  border-top: 1px solid var(--el-border-color);
   box-sizing: border-box;
 }
 
@@ -124,7 +126,8 @@ const getHeaderClass = computed(() => {
   }
 
   .gi-card-footer {
-    padding: 0 10px;
+    --gi-card-padding: 10px;
+    padding: 6px var(--gi-card-padding);
   }
 }
 </style>
