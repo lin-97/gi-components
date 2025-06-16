@@ -11,12 +11,12 @@
     <template v-if="props.footer" #footer>
       <slot name="footer">
         <template v-if="typeof props.footer === 'boolean'">
-          <el-button v-bind="props.cancelButtonProps" @click="handleCancel">{{ props.cancelText }}</el-button>
-          <el-button type="primary" v-bind="props.okButtonProps" :loading="okLoading" @click="handleOk">
-            {{
-              props.okText
-            }}
-          </el-button>
+          <el-space :size="10">
+            <el-button v-bind="props.cancelButtonProps" @click="handleCancel">{{ props.cancelText }}</el-button>
+            <el-button type="primary" v-bind="props.okButtonProps" :loading="okLoading" @click="handleOk">
+              {{ props.okText }}
+            </el-button>
+          </el-space>
         </template>
         <template v-else>
           <component :is="props.footer()"></component>

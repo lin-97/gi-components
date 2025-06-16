@@ -1,7 +1,6 @@
 <template>
   <div class="demo">
-    <gi-table :columns="columns" :data="data" :pagination="pagination" border max-height="400px"
-      tooltip-options=""></gi-table>
+    <gi-table :columns="columns" :data="data" :pagination="pagination" border max-height="400px"></gi-table>
   </div>
 </template>
 

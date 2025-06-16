@@ -19,11 +19,11 @@ const defaultOptions: DialogOptions = {
 }
 
 export function createDialog(appContext?: AppContext) {
-  const dialog = {
+  const Dialog = {
+    _context: {},
     // 核心创建方法
     create(options: DialogOptions): DialogInstance {
       const mergedOptions = { ...defaultOptions, ...options }
-      let context = null
       // 创建容器
       const container = document.createElement('div')
       document.body.appendChild(container)
@@ -35,8 +35,6 @@ export function createDialog(appContext?: AppContext) {
       // 创建弹窗应用
       const dialogApp = createApp({
         setup() {
-          // context = appContext || getCurrentInstance()?.appContext;
-          // console.log('getCurrentInstance', getCurrentInstance());
           // 关闭处理
           const closed = () => {
             dialogApp.unmount()
@@ -55,11 +53,8 @@ export function createDialog(appContext?: AppContext) {
 
       dialogApp.use(ElementPlus)
 
-      // 继承上下文
-      if (context) {
-        dialogApp._context = Object.assign({}, context)
-        // dialogApp.config.globalProperties = context.config.globalProperties;
-      }
+      // 继承主应用的上下文
+      Object.assign(dialogApp._context, Dialog._context);
 
       // 挂载
       dialogApp.mount(container)
@@ -86,7 +81,7 @@ export function createDialog(appContext?: AppContext) {
     }
   }
 
-  return dialog
+  return Dialog
 }
 
 // 默认导出实例

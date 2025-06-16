@@ -6,7 +6,7 @@ import Demo from './Demo.vue'
 
 ## 基础用法
 
-<Demo1></Demo1>
+<Demo></Demo>
 ::: details 查看代码
 <<<./Demo.vue
 :::

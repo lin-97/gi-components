@@ -6,7 +6,9 @@
       </template>
     </el-table>
 
-    <el-pagination size="small" layout="prev, pager, next" :total="50" />
+    <el-row justify="end" class="gi-table-pagination">
+      <el-pagination layout="prev, pager, next, jumper, ->, total" :total="50" background />
+    </el-row>
   </div>
 </template>
 
@@ -33,14 +35,24 @@ const tableProps = computed(() => {
 
 const paginationProps = computed(() => {
   return {
+    currentPage: 1,
+    pageSize: 10,
     background: true,
     pagerCount: 7,
     layout: 'prev, pager, next, jumper, ->, total',
     pageSizes: [10, 20, 50, 100],
     total: 100,
-    ...props.pagination
+    ...props.pagination || {}
   }
 })
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+:deep(.el-pagination__rightwrapper) {
+  flex: auto;
+}
+
+.gi-table-pagination {
+  margin-top: 10px;
+}
+</style>

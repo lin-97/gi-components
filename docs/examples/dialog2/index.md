@@ -34,3 +34,12 @@ import DemoDrag from './DemoDrag.vue'
 ::: details 查看代码
 <<< ./DemoDrag.vue
 :::
+
+如果要继承主应用的上下文
+```js
+// main.ts
+import { Dialog } from 'gi-components';
+
+const app = createApp(App);
+Dialog._context = app._context;
+```

@@ -3,9 +3,9 @@ import locale from 'element-plus/es/locale/lang/zh-cn'
 import DefaultTheme from 'vitepress/theme'
 import GiComponents from '../../../packages/index'
 import '../../../packages/styles/index.scss'
-// import '../../public/css/index.css'
 import 'element-plus/dist/index.css'
 import 'element-plus/theme-chalk/dark/css-vars.css'
+import '../../public/css/index.css'
 
 export default {
   ...DefaultTheme,
