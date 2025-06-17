@@ -1,9 +1,9 @@
 <template>
   <div>
     <el-table :data="tableData" style="width: 100%" border>
-      <el-table-column prop="date" label="Date" width="180" />
-      <el-table-column prop="name" label="Name" width="180" />
-      <el-table-column prop="address" label="Address" />
+      <el-table-column prop="date" label="Date" width="150" />
+      <el-table-column prop="name" label="Name" width="120" />
+      <el-table-column prop="address" label="Address" show-overflow-tooltip />
     </el-table>
   </div>
 </template>

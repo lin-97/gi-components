@@ -6,6 +6,6 @@ export type SelectOptionItem = {
   disabled?: boolean
 }
 
-export interface SelectProps extends Partial<typeof ElSelectProps> {
+export interface SelectProps extends Partial<ElSelectProps> {
   options?: SelectOptionItem[]
 }

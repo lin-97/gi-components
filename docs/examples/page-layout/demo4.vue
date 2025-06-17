@@ -1,5 +1,5 @@
 <template>
-  <gi-page-layout bordered :left-style="{ width: '80px' }">
+  <gi-page-layout bordered :size="80">
     <template #header>
       <Search></Search>
     </template>

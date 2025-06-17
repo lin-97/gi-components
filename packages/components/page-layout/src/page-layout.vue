@@ -1,27 +1,32 @@
 <template>
-  <div class="gi-page-layout" :class="{ 'gi-page-layout--bordered': props.bordered }">
-    <div v-if="slots.left" class="gi-page-layout__left" :style="props.leftStyle">
-      <slot name="left"></slot>
-    </div>
-    <section class="gi-page-layout__right">
-      <section v-if="slots.header" class="gi-page-layout__header" :style="props.headerStyle">
-        <slot name="header"></slot>
-      </section>
-      <section v-if="slots.tool" class="gi-page-layout__tool" :style="props.toolStyle">
-        <slot name="tool"></slot>
-      </section>
-      <div class="gi-page-layout__body" :style="props.bodyStyle">
-        <slot></slot>
+  <el-splitter class="gi-page-layout" :class="getClass">
+    <el-splitter-panel v-if="slots.left" :size="props.size">
+      <div class="gi-page-layout__left" :style="props.leftStyle">
+        <slot name="left"></slot>
       </div>
-    </section>
-  </div>
+    </el-splitter-panel>
+    <el-splitter-panel>
+      <div class="gi-page-layout__right">
+        <div v-if="slots.header" class="gi-page-layout__header" :style="props.headerStyle">
+          <slot name="header"></slot>
+        </div>
+        <div v-if="slots.tool" class="gi-page-layout__tool" :style="props.toolStyle">
+          <slot name="tool"></slot>
+        </div>
+        <div class="gi-page-layout__body" :style="props.bodyStyle">
+          <slot></slot>
+        </div>
+      </div>
+    </el-splitter-panel>
+  </el-splitter>
 </template>
 
 <script lang="ts" setup>
 import type { PageLayoutProps } from './type'
-import { useSlots } from 'vue'
+import { computed, useSlots } from 'vue'
 
 const props = withDefaults(defineProps<PageLayoutProps>(), {
+  size: 270,
   bordered: false,
   leftStyle: () => ({}),
   headerStyle: () => ({}),
@@ -37,6 +42,20 @@ defineSlots<{
 }>()
 
 const slots = useSlots()
+
+const getClass = computed(() => {
+  const arr: string[] = []
+  if (props.bordered) {
+    arr.push('gi-page-layout--bordered')
+  }
+  if (slots.header) {
+    arr.push('gi-page-layout--has-header')
+  }
+  if (slots.tool) {
+    arr.push('gi-page-layout--has-tool')
+  }
+  return arr.join(' ')
+})
 </script>
 
 <style lang="scss" scoped>
@@ -54,13 +73,14 @@ const slots = useSlots()
   }
 
   &__left {
-    height: auto;
+    height: 100%;
     width: 260px;
     border-right: 1px solid var(--el-border-color);
   }
 
   &__right {
     flex: 1;
+    height: 100%;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -92,5 +112,12 @@ const slots = useSlots()
   flex-direction: column;
   overflow: hidden;
   box-sizing: border-box;
+}
+
+.gi-page-layout--has-header,
+.gi-page-layout--has-tool {
+  .gi-page-layout__body {
+    padding-top: 10px;
+  }
 }
 </style>
