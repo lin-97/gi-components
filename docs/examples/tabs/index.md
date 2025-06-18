@@ -4,6 +4,7 @@
 import Demo from './Demo.vue'
 import DemoCard from './DemoCard.vue'
 import DemoSlotExtra from './DemoSlotExtra.vue'
+import DemoSize from './DemoSize.vue'
 </script>
 
 ## 基础用法
@@ -30,12 +31,21 @@ import DemoSlotExtra from './DemoSlotExtra.vue'
 <<< ./DemoSlotExtra.vue
 :::
 
+## 小型尺寸
+
+<DemoSize></DemoSize>
+
+::: details 查看代码
+<<< ./DemoSize.vue
+:::
+
 ## API
 
 ### Props
 
 | 参数  | 说明  | 类型   | 默认值 |
 | :---- | :---- | :---- | :----  |
+| size | 尺寸 | `small` \| `medium` |  `medium`  |
 | options | 选项列表 | `OptionItem[]` |    -   |
 
 ### Slots

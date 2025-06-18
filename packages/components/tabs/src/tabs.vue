@@ -1,5 +1,5 @@
 <template>
-  <div class="gi-tabs">
+  <div class="gi-tabs" :class="getClass">
     <div class="gi-tabs__default">
       <slot>
         <el-tabs v-model="model" :type="props.type" :stretch="props.stretch" @tab-click="props.onTabClick"
@@ -20,13 +20,14 @@
 
 <script setup lang="ts">
 import type { TabsOptionItem, TabsProps } from './type.ts'
-import { useSlots } from 'vue'
+import { computed, useSlots } from 'vue'
 
 const model = defineModel()
 
 const props = withDefaults(defineProps<TabsProps>(), {
   type: '',
-  options: () => []
+  options: () => [],
+  size: 'medium'
 })
 
 defineSlots<{
@@ -36,6 +37,12 @@ defineSlots<{
 }>()
 
 const slots = useSlots()
+
+const getClass = computed(() => {
+  const arr: string[] = []
+  arr.push(`gi-tabs--${props.size}`)
+  return arr.join(' ')
+})
 </script>
 
 <style lang="scss" scoped>
@@ -96,6 +103,16 @@ const slots = useSlots()
 
   >.el-tabs__header {
     border-bottom: none;
+  }
+}
+
+.gi-tabs--small {
+  :deep(.el-tabs) {
+    --el-tabs-header-height: 32px;
+
+    .el-tabs__item {
+      font-size: 12px;
+    }
   }
 }
 </style>

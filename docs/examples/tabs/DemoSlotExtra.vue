@@ -17,7 +17,7 @@
 import { ElMessage } from 'element-plus'
 import { ref } from 'vue'
 
-const activeName = ref('1')
+const activeName = ref('b')
 const options = [
   { label: '全部', name: 'a' },
   { label: '待审批', name: 'b' },

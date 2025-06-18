@@ -65,12 +65,9 @@
     }
   }
 
-  .gi-table {
-
-    ul,
-    ol {
-      padding-left: 0;
-      margin: 0;
-    }
+  ul,
+  ol {
+    padding-left: 0;
+    margin: 0;
   }
 }
