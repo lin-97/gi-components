@@ -18,20 +18,10 @@ export default defineConfig(({ mode }) => {
       vue(),
       vueJsx(),
       Components({
-        // 指定组件位置，默认是 src/components 自动导入自定义组件
         dirs: ['packages/components'],
         extensions: ['vue', 'tsx'],
-        // 配置文件生成位置
         dts: 'packages/components.d.ts',
-        directoryAsNamespace: false,
-        globalNamespaces: ['global'],
-        include: [/\.vue($|\?)/],
-        resolvers: [
-          (name) => {
-            return { name: `Gi${name}` }
-          }
-        ],
-        dumpComponentsInfo: true
+        prefix: 'Gi'
       })
     ],
     // 构建
