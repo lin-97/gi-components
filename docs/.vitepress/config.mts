@@ -23,6 +23,7 @@ export default defineConfig({
           { text: '多选组合 CheckboxGroup', link: '/examples/checkbox-group' },
           { text: '标签页 Tabs', link: '/examples/tabs' },
           { text: '输入框组 InputGroup', link: '/examples/input-group' },
+          { text: '搜索输入框 InputSearch', link: '/examples/input-search' },
           { text: '栅格 Grid', link: '/examples/grid' },
           { text: '配置表单 Form', link: '/examples/form' },
           { text: '对话框 Dialog', link: '/examples/dialog' },
@@ -30,6 +31,12 @@ export default defineConfig({
           { text: '页面布局 PageLayout', link: '/examples/page-layout' },
           { text: '表格 Table（开发中）', link: '/examples/table' },
           { text: '编辑 EditTable', link: '/examples/edit-table' }
+        ]
+      },
+      {
+        text: '工具方法',
+        items: [
+          { text: 'createSelectDialog', link: '/tools/createSelectDialog' }
         ]
       }
     ],

@@ -1,5 +1,5 @@
 <template>
-  <el-form ref="formRef" :model="form">
+  <el-form ref="formRef" :model="form" :class="b('edit-table')">
     <el-table :data="form.tableData" border v-bind="attrs">
       <el-table-column v-for="(column, index) in props.columns" :key="column.dataIndex + index" :width="column.width"
         v-bind="column.columnProps" :prop="column.dataIndex" :label="column.title"
@@ -26,6 +26,7 @@ import type { EditTableColumnItem, EditTableColumnItemType } from './type'
 import type { EditTableProps } from './type.ts'
 import * as El from 'element-plus'
 import { computed, h, reactive, ref, toRaw, useAttrs, watch } from 'vue'
+import { useBemClass } from '../../../hooks'
 import CheckboxGroup from '../../checkbox-group'
 import RadioGroup from '../../radio-group'
 import Select from '../../select'
@@ -37,6 +38,7 @@ const props = withDefaults(defineProps<EditTableProps>(), {
 })
 
 const attrs = useAttrs()
+const { b } = useBemClass()
 
 const COMP_MAP: Record<Exclude<EditTableColumnItemType, 'slot'>, any> = {
   'input': El.ElInput,

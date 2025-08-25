@@ -1,29 +1,28 @@
-import type { AppContext } from 'vue'
-import type { DialogInstance as GiDialogInstance } from '../index'
+import type { DialogInstance } from '../index'
 import ElementPlus from 'element-plus'
 import { createApp, h, ref } from 'vue'
 import GiDialog from './dialog.vue'
 
-type DialogOptions = Partial<GiDialogInstance['$props']>
+type DialogOptions = Partial<DialogInstance['$props']>
 
-export interface DialogInstance {
+export interface DialogReturnObject {
   close: () => void
   update: (newProps?: Record<string, any>) => void
 }
 
-const defaultOptions: DialogOptions = {
+const DEF_OPTIONS: DialogOptions = {
   // width: '600px',
   // center: false,
   // footer: true,
   // closeOnClickModal: true
 }
 
-export function createDialog(appContext?: AppContext) {
+export function createDialog() {
   const Dialog = {
     _context: {},
     // 核心创建方法
-    create(options: DialogOptions): DialogInstance {
-      const mergedOptions = { ...defaultOptions, ...options }
+    create(options: DialogOptions): DialogReturnObject {
+      const mergedOptions = { ...DEF_OPTIONS, ...options }
       // 创建容器
       const container = document.createElement('div')
       document.body.appendChild(container)
@@ -54,7 +53,7 @@ export function createDialog(appContext?: AppContext) {
       dialogApp.use(ElementPlus)
 
       // 继承主应用的上下文
-      Object.assign(dialogApp._context, Dialog._context);
+      Object.assign(dialogApp._context, Dialog._context)
 
       // 挂载
       dialogApp.mount(container)

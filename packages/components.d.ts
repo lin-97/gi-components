@@ -17,6 +17,7 @@ declare module 'vue' {
     GiGrid: typeof import('./components/grid/src/grid.vue')['default']
     GiGridItem: typeof import('./components/grid/src/grid-item.vue')['default']
     GiInputGroup: typeof import('./components/input-group/src/input-group.vue')['default']
+    GiInputSearch: typeof import('./components/input-search/src/input-search.vue')['default']
     GiPageLayout: typeof import('./components/page-layout/src/page-layout.vue')['default']
     GiRadioGroup: typeof import('./components/radio-group/src/radio-group.vue')['default']
     GiSelect: typeof import('./components/select/src/select.vue')['default']

@@ -1,5 +1,5 @@
 <template>
-  <el-dialog v-bind="dialogProps" v-model="visible" :title="props.title" :fullscreen="fullscreen">
+  <el-dialog v-bind="dialogProps" v-model="visible" :class="b('dialog')" :title="props.title" :fullscreen="fullscreen">
     <slot>
       <template v-if="typeof props.content === 'string'">
         <p>{{ props.content }}</p>
@@ -30,6 +30,7 @@
 import type { VNode } from 'vue'
 import type { DialogProps } from './type'
 import { computed, defineProps, defineSlots, ref } from 'vue'
+import { useBemClass } from '../../../hooks'
 
 const visible = defineModel('modelValue', {
   type: Boolean,
@@ -49,6 +50,8 @@ defineSlots<{
   footer: () => VNode
   default: () => VNode
 }>()
+
+const { b } = useBemClass()
 
 const dialogProps = computed(() => {
   return {

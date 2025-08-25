@@ -1,13 +1,18 @@
 <template>
-  <div class="gi-input-group">
+  <div :class="b('input-group')">
     <slot></slot>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { useBemClass } from '../../../hooks'
+
+const { b } = useBemClass()
 </script>
 
 <style lang="scss" scoped>
+@use '../../../styles/var.scss' as a;
+
 :deep(.el-button + .el-button) {
   margin-left: 0;
 }
@@ -27,7 +32,7 @@
   }
 }
 
-.gi-input-group {
+.#{a.$prefix}-input-group {
   display: flex;
 
   > :deep(*:not(:last-child)) {

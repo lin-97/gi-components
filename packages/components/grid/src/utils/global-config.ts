@@ -1,3 +1,6 @@
+import { useBemClass } from '../../../../hooks'
+
 export function getPrefixCls(name: string) {
-  return `gi-${name}`;
+  const { b } = useBemClass()
+  return b(name)
 }

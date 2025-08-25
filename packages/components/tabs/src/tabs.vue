@@ -1,6 +1,6 @@
 <template>
-  <div class="gi-tabs" :class="getClass">
-    <div class="gi-tabs__default">
+  <div :class="getClass">
+    <div :class="b('tabs__default')">
       <slot>
         <el-tabs v-model="model" :type="props.type" :stretch="props.stretch" @tab-click="props.onTabClick"
           @tab-change="props.onTabChange">
@@ -12,7 +12,7 @@
         </el-tabs>
       </slot>
     </div>
-    <div v-if="slots.extra" class="gi-tabs__extra">
+    <div v-if="slots.extra" :class="b('tabs__extra')">
       <slot name="extra"></slot>
     </div>
   </div>
@@ -21,6 +21,7 @@
 <script setup lang="ts">
 import type { TabsOptionItem, TabsProps } from './type.ts'
 import { computed, useSlots } from 'vue'
+import { useBemClass } from '../../../hooks'
 
 const model = defineModel()
 
@@ -37,15 +38,18 @@ defineSlots<{
 }>()
 
 const slots = useSlots()
+const { b } = useBemClass()
 
 const getClass = computed(() => {
-  const arr: string[] = []
-  arr.push(`gi-tabs--${props.size}`)
+  const arr: string[] = [b('tabs')]
+  arr.push(b(`tabs--${props.size}`))
   return arr.join(' ')
 })
 </script>
 
 <style lang="scss" scoped>
+@use '../../../styles/var.scss' as a;
+
 :deep(.el-tabs__nav-prev),
 :deep(.el-tabs__nav-next) {
   height: 100%;
@@ -54,7 +58,7 @@ const getClass = computed(() => {
   justify-content: center;
 }
 
-.gi-tabs {
+.#{a.$prefix}-tabs {
   width: 100%;
   padding: 0 10px;
   display: flex;
@@ -106,7 +110,7 @@ const getClass = computed(() => {
   }
 }
 
-.gi-tabs--small {
+.#{a.$prefix}-tabs--small {
   :deep(.el-tabs) {
     --el-tabs-header-height: 32px;
 

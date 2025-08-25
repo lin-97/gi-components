@@ -1,19 +1,24 @@
 <template>
-  <el-button v-bind="bindProps">
+  <el-button :class="b('button')" v-bind="bindProps">
     <slot>{{ btnText }}</slot>
   </el-button>
 </template>
 
 <script setup lang="ts">
+import type { ButtonEmits } from 'element-plus'
 import type { ButtonProps } from './type.ts'
 import { Delete, Download, Edit, Plus, Search, Upload } from '@element-plus/icons-vue'
 import { computed, useAttrs } from 'vue'
+import { useBemClass } from '../../../hooks'
 
 const props = withDefaults(defineProps<ButtonProps>(), {
   type: ''
 })
 
+defineEmits<ButtonEmits>()
+
 const attrs = useAttrs()
+const { b } = useBemClass()
 
 const obj: Record<string, { btnProps: Partial<ButtonProps>, btnText: string }> = {
   add: { btnProps: { icon: Plus, type: 'primary' }, btnText: '新增' },

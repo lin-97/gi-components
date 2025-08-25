@@ -1,11 +1,10 @@
 <template>
-  <el-form ref="formRef" class="gi-form" :class="{ 'search-form-mode': props.search }" v-bind="formProps"
-    :model="props.modelValue">
+  <el-form ref="formRef" :class="getClass" v-bind="formProps" :model="props.modelValue">
     <Grid class="w-full" :col-gap="12" v-bind="props.gridProps" :collapsed="collapsed">
       <template v-for="(item, index) in props.columns">
         <GridItem v-if="item.type === 'title'" :key="`title${index}`" :span="100">
           <el-form-item label-width="0">
-            <GiCard class="group-title" :title="typeof item.label === 'string' ? item.label : ''"
+            <GiCard :title="typeof item.label === 'string' ? item.label : ''" :header-style="{ padding: 0 }"
               :body-style="{ display: 'none' }"></GiCard>
           </el-form-item>
         </GridItem>
@@ -26,8 +25,8 @@
                 <slot :name="item.field" :item="item"></slot>
               </div>
               <template v-else>
-                <div class="form-item__content">
-                  <div class="form-item__content-comp">
+                <div :class="b('form-item__content')">
+                  <div :class="b('form-item__component')">
                     <component :is="CompMap[item.type] || item.type" :disabled="isDisabled(item)" class="w-full"
                       v-bind="getComponentBindProps(item)" :model-value="props.modelValue[item.field]"
                       :name="props.modelValue[item.fieldName ?? '']"
@@ -41,12 +40,12 @@
                         </template>
                       </template>
                     </component>
-                    <el-text v-if="item.tip" class="form-item__tip" type="info" size="small">
+                    <el-text v-if="item.tip" :class="b('form-item__tip')" type="info" size="small">
                       {{ item.tip }}
                     </el-text>
                   </div>
                   <!-- 额外信息 -->
-                  <div v-if="item.extra" class="form-item__extra">
+                  <div v-if="item.extra" :class="b('form-item__extra')">
                     <template v-if="typeof item.extra === 'string'">
                       <el-text type="info" size="small">{{ item.extra }}</el-text>
                     </template>
@@ -62,7 +61,7 @@
       </template>
 
       <GridItem v-if="props.search" :suffix="props.search" :span="props?.gridItemProps?.span">
-        <el-space class="search-bar">
+        <el-space :class="b('search-btns')">
           <el-button type="primary" @click="emit('search')"> {{ searchText }} </el-button>
           <el-button @click="emit('reset')"> 重置 </el-button>
           <el-button v-if="!props.hideFoldBtn" class="form__fold-btn" type="primary"
@@ -79,7 +78,8 @@
 import type { ColumnType, FormColumnItem } from './type'
 import { ArrowDown, ArrowUp } from '@element-plus/icons-vue'
 import * as El from 'element-plus'
-import { computed, h, reactive, ref, toRaw, watch } from 'vue'
+import { computed, ref, toRaw, watch } from 'vue'
+import { useBemClass } from '../../../hooks'
 import GiCard from '../../card'
 import CheckboxGroup from '../../checkbox-group'
 import { Grid, GridItem } from '../../grid'
@@ -132,6 +132,7 @@ interface Props {
   defaultCollapsed?: boolean | undefined
 }
 
+const { b } = useBemClass()
 const collapsed = ref(props?.defaultCollapsed ?? props.search)
 
 const formProps = computed(() => {
@@ -141,6 +142,14 @@ const formProps = computed(() => {
     gridProps: undefined,
     gridItemProps: undefined
   }
+})
+
+const getClass = computed(() => {
+  const arr: string[] = [b('form')]
+  if (props.search) {
+    arr.push(b('form--search'))
+  }
+  return arr.join(' ')
 })
 
 const CompMap: Record<Exclude<ColumnType, 'slot'>, any> = {
@@ -281,54 +290,10 @@ defineExpose({ formRef })
 </script>
 
 <style lang="scss" scoped>
-.form-item__content {
-  width: 100%;
-  display: flex;
-
-  &-comp {
-    flex: 1;
-  }
-}
-
-.form-item__tip {
-  line-height: 1.5;
-  color: var(--el-color-info-light-3);
-}
-
-.form-item__extra {
-  margin-left: 6px;
-}
-
-.form__fold-btn {
-  padding: 0 5px;
-}
-
-.search-form-mode {
-  :deep(.el-form-item) {
-    margin-bottom: 8px;
-  }
-}
-
-:deep(.w-full) {
-  width: 100%;
-
-  .el-date-editor {
-    width: 100%;
-  }
-}
+@use '../../../styles/var.scss' as a;
 
 .el-form {
   width: 100%;
-}
-
-.search-bar {
-  margin-bottom: 8px;
-}
-
-:deep(.group-title) {
-  .gi-card-header {
-    padding: 0;
-  }
 }
 
 :deep(.el-form-item) {
@@ -345,6 +310,46 @@ defineExpose({ formRef })
   // 隐藏el-form-item__label才能完整占满插槽宽度
   .el-form-item__label {
     display: none;
+  }
+}
+
+.#{a.$prefix}-form {
+  &-item {
+    &__content {
+      width: 100%;
+      display: flex;
+    }
+
+    &__component {
+      flex: 1;
+    }
+
+    &__tip {
+      line-height: 1.5;
+      color: var(--el-color-info-light-3);
+    }
+
+    &__extra {
+      margin-left: 6px;
+    }
+  }
+
+  &__search-btns {
+    margin-bottom: 8px;
+  }
+}
+
+.#{a.$prefix}-form--search {
+  :deep(.el-form-item) {
+    margin-bottom: 8px;
+  }
+}
+
+:deep(.w-full) {
+  width: 100%;
+
+  .el-date-editor {
+    width: 100%;
   }
 }
 </style>
