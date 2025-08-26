@@ -56,13 +56,6 @@
   table {
     display: table;
     width: 100%;
-
-  }
-
-  .el-table {
-    table {
-      display: block;
-    }
   }
 
   ul,
