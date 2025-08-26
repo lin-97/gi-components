@@ -60,7 +60,7 @@ const getClass = computed(() => {
 
 .#{a.$prefix}-tabs {
   width: 100%;
-  padding: 0 10px;
+  padding: 0 var(--padding-x);
   display: flex;
   align-items: center;
   border-bottom: 1px solid var(--el-border-color);
@@ -111,6 +111,8 @@ const getClass = computed(() => {
 }
 
 .#{a.$prefix}-tabs--small {
+  padding: 0 var(--padding-x-small);
+
   :deep(.el-tabs) {
     --el-tabs-header-height: 32px;
 

@@ -7,6 +7,7 @@
     </el-splitter-panel>
     <el-splitter-panel>
       <div :class="b('page-layout__right')">
+        <!-- <SplitButton></SplitButton> -->
         <div v-if="slots.header" :class="b('page-layout__header')" :style="props.headerStyle">
           <slot name="header"></slot>
         </div>
@@ -25,6 +26,7 @@
 import type { PageLayoutProps } from './type'
 import { computed, useSlots } from 'vue'
 import { useBemClass } from '../../../hooks'
+import SplitButton from './split-button.vue'
 
 const props = withDefaults(defineProps<PageLayoutProps>(), {
   size: 270,
@@ -77,7 +79,6 @@ const getClass = computed(() => {
   display: flex;
   overflow: hidden;
   background-color: var(--el-bg-color);
-  --page-layout-padding: 14px;
 
   &--bordered {
     border: 1px solid var(--el-border-color);
@@ -94,11 +95,12 @@ const getClass = computed(() => {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    position: relative;
   }
 }
 
 .#{a.$prefix}-page-layout__header {
-  padding: var(--page-layout-padding);
+  padding: var(--padding-x);
   padding-bottom: 0;
   border-bottom: 1px solid var(--el-border-color);
   box-sizing: border-box;
@@ -106,7 +108,7 @@ const getClass = computed(() => {
 
 .#{a.$prefix}-page-layout__tool {
   width: 100%;
-  padding: var(--page-layout-padding);
+  padding: var(--padding-x);
   padding-bottom: 0;
   display: flex;
   justify-content: end;
@@ -116,7 +118,7 @@ const getClass = computed(() => {
 
 .#{a.$prefix}-page-layout__body {
   flex: 1;
-  padding: var(--page-layout-padding);
+  padding: var(--padding-x);
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -126,14 +128,14 @@ const getClass = computed(() => {
 
 .#{a.$prefix}-page-layout--has-header {
   .#{a.$prefix}-page-layout__tool {
-    padding-top: 10px;
+    padding-top: var(--padding-y);
   }
 }
 
 .#{a.$prefix}-page-layout--has-header,
 .#{a.$prefix}-page-layout--has-tool {
   .#{a.$prefix}-page-layout__body {
-    padding-top: 10px;
+    padding-top: var(--padding-y);
   }
 }
 </style>

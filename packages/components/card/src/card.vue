@@ -1,19 +1,19 @@
 <template>
   <div :class="getCardClass">
-    <div :class="getHeaderClass" :style="props.headerStyle">
+    <section :class="getHeaderClass" :style="props.headerStyle">
       <div :class="b('card-header__title')">
         <slot name="title">{{ props.title }}</slot>
       </div>
       <div :class="b('card-header__extra')">
         <slot name="extra">{{ props.extra }}</slot>
       </div>
-    </div>
-    <div :class="b('card-body')" :style="props.bodyStyle">
+    </section>
+    <section :class="b('card-body')" :style="props.bodyStyle">
       <slot></slot>
-    </div>
-    <div v-if="slot.footer" :class="b('card-footer')">
+    </section>
+    <section v-if="slot.footer" :class="b('card-footer')">
       <slot name="footer"></slot>
-    </div>
+    </section>
   </div>
 </template>
 
@@ -69,7 +69,10 @@ const getHeaderClass = computed(() => {
   flex-direction: column;
   overflow: hidden;
   box-sizing: border-box;
-  --card-padding: 14px;
+  --card-padding-x: var(--padding-x);
+  --card-padding-x-small: var(--padding-x-small);
+  --card-padding-y: var(--padding-y);
+  --card-padding-y-small: var(--padding-y-small);
 
   &--bordered {
     border: 1px solid var(--el-border-color);
@@ -78,7 +81,7 @@ const getHeaderClass = computed(() => {
 
 .#{a.$prefix}-card-header {
   height: 46px;
-  padding: 0 var(--card-padding);
+  padding: 0 var(--card-padding-x);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -93,6 +96,7 @@ const getHeaderClass = computed(() => {
     white-space: nowrap;
     text-overflow: ellipsis;
     box-sizing: border-box;
+    font-weight: 500;
   }
 
   &__extra {
@@ -106,7 +110,7 @@ const getHeaderClass = computed(() => {
 
 .#{a.$prefix}-card-body {
   flex: 1;
-  padding: var(--card-padding);
+  padding: var(--card-padding-x);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -114,7 +118,7 @@ const getHeaderClass = computed(() => {
 }
 
 .#{a.$prefix}-card-footer {
-  padding: 8px var(--card-padding);
+  padding: var(--card-padding-y) var(--card-padding-x);
   box-sizing: border-box;
   border-top: 1px solid var(--el-border-color);
   box-sizing: border-box;
@@ -124,16 +128,15 @@ const getHeaderClass = computed(() => {
   .#{a.$prefix}-card-header {
     font-size: 14px;
     height: 36px;
-    padding: 0 10px;
+    padding: 0 var(--card-padding-x-small);
   }
 
   .#{a.$prefix}-card-body {
-    padding: 10px;
+    padding: var(--card-padding-x-small);
   }
 
   .#{a.$prefix}-card-footer {
-    --card-padding: 10px;
-    padding: 6px var(--card-padding);
+    padding: var(--card-padding-y-small) var(--card-padding-x-small);
   }
 }
 </style>

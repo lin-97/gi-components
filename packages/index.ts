@@ -36,11 +36,23 @@ const components = {
   Table
 }
 
+function capitalizeWord(word) {
+  // 检查输入是否为字符串且不为空
+  if (typeof word !== 'string' || word.length === 0) {
+    return word
+  }
+  // 首字母大写，其余字母小写
+  return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+}
+
 const obj = {
-  install(app: App) {
+  install(app: App, options?: { prefix?: string }) {
+    const prefix = options?.prefix || 'Gi'
     Object.entries(components).forEach(([name, component]) => {
-      app.component(`Gi${name}`, component)
+      app.component(`${capitalizeWord(prefix)}${name}`, component)
     })
+    // 将配置保存到全局属性
+    app.config.globalProperties.$config = options
   }
 }
 
