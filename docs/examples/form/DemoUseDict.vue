@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { FormColumnItem, FormInstance } from '../../../packages/components/form'
+import type { FormColumnItem, FormInstance } from 'gi-components'
 import { computed, reactive, ref } from 'vue'
 import { useDictStore } from './useDictStore'
 

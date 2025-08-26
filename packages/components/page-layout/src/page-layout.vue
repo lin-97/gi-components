@@ -63,6 +63,13 @@ const getClass = computed(() => {
 <style lang="scss" scoped>
 @use '../../../styles/var.scss' as a;
 
+:deep(.el-splitter-bar__dragger-horizontal) {
+  &::before,
+  &::after {
+    width: 1px;
+  }
+}
+
 .#{a.$prefix}-page-layout {
   flex: 1;
   width: 100%;

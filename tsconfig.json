@@ -5,8 +5,12 @@
       "ESNext",
       "DOM"
     ],
+    "baseUrl": ".",
     "module": "ESNext",
     "moduleResolution": "Node",
+    "paths": {
+      "gi-components": ["packages/index.ts"]
+    },
     "types": [
       "vite/client",
       "element-plus/global"
@@ -24,10 +28,5 @@
   ],
   "exclude": [
     "node_modules"
-  ],
-  "paths": {
-    "gi-components": [
-      "./packages/index.ts"
-    ] // 模块名到基于 baseUrl 的路径映射的列表
-  }
+  ]
 }

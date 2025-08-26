@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
 import { ElMessage } from 'element-plus'
-import { Dialog } from '../../../packages'
+import { Dialog } from 'gi-components'
 
 const openDialog = () => {
   Dialog.open({

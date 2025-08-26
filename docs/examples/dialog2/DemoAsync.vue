@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { Dialog } from '../../../packages'
+import { Dialog } from 'gi-components'
 
 const openDialog = () => {
   Dialog.open({

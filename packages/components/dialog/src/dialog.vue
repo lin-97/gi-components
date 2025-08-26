@@ -81,8 +81,8 @@ const handleOk = async () => {
     try {
       okLoading.value = true
       const flag = await props.onBeforeOk()
+      okLoading.value = false
       if (flag) {
-        okLoading.value = false
         visible.value = false
       }
     } catch (error) {

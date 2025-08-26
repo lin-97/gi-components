@@ -1,3 +1,4 @@
+import path from 'node:path'
 import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
@@ -6,6 +7,14 @@ export default defineConfig({
   base: '/gi-components/',
   title: 'Gi Components',
   description: 'A VitePress Site',
+  vite: {
+    resolve: {
+      alias: {
+        'gi-components': path.resolve(__dirname, '../../packages/index.ts')
+        // 添加你的别名映射
+      }
+    }
+  },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -29,7 +38,7 @@ export default defineConfig({
           { text: '对话框 Dialog', link: '/examples/dialog' },
           { text: '函数对话框 Dialog', link: '/examples/dialog2' },
           { text: '页面布局 PageLayout', link: '/examples/page-layout' },
-          { text: '表格 Table（开发中）', link: '/examples/table' },
+          { text: '表格 Table', link: '/examples/table' },
           { text: '编辑 EditTable', link: '/examples/edit-table' }
         ]
       },

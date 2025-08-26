@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { EditTableColumnItem } from '../../examples/edit-table'
+import type { EditTableColumnItem } from 'gi-components'
 import { ElMessage } from 'element-plus'
 import { computed, ref } from 'vue'
 
