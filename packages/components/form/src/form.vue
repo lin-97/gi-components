@@ -61,7 +61,7 @@
       </template>
 
       <GridItem v-if="props.search" :suffix="props.search" :span="props?.gridItemProps?.span">
-        <el-space :class="b('search-btns')">
+        <el-space :class="b('form__search-btns')">
           <el-button type="primary" @click="emit('search')"> {{ searchText }} </el-button>
           <el-button @click="emit('reset')"> 重置 </el-button>
           <el-button v-if="!props.hideFoldBtn" class="form__fold-btn" type="primary"
