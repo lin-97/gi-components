@@ -1,13 +1,15 @@
 <template>
   <el-splitter :class="getClass">
-    <el-splitter-panel v-if="slots.left" :size="props.size">
+    <el-splitter-panel v-if="slots.left" v-model:size="size">
       <div :class="b('page-layout__left')" :style="props.leftStyle">
         <slot name="left"></slot>
       </div>
     </el-splitter-panel>
+    <div v-if="slots.left && props.collapse" :class="b('page-layout__split')">
+      <SplitButton :collapsed="Number(size) === 0" @click="handleClick"></SplitButton>
+    </div>
     <el-splitter-panel>
       <div :class="b('page-layout__right')">
-        <!-- <SplitButton></SplitButton> -->
         <div v-if="slots.header" :class="b('page-layout__header')" :style="props.headerStyle">
           <slot name="header"></slot>
         </div>
@@ -24,13 +26,14 @@
 
 <script lang="ts" setup>
 import type { PageLayoutProps } from './type'
-import { computed, useSlots } from 'vue'
+import { computed, ref, useSlots } from 'vue'
 import { useBemClass } from '../../../hooks'
 import SplitButton from './split-button.vue'
 
 const props = withDefaults(defineProps<PageLayoutProps>(), {
   size: 270,
   bordered: false,
+  collapse: true,
   leftStyle: () => ({}),
   headerStyle: () => ({}),
   toolStyle: () => ({}),
@@ -46,6 +49,8 @@ defineSlots<{
 
 const slots = useSlots()
 const { b } = useBemClass()
+const size = ref(props.size)
+const collapsing = ref(false)
 
 const getClass = computed(() => {
   const arr: string[] = [b('page-layout')]
@@ -58,14 +63,26 @@ const getClass = computed(() => {
   if (slots.tool) {
     arr.push(b('page-layout--has-tool'))
   }
+  if (collapsing.value) {
+    arr.push(b('page-layout--collapsing'))
+  }
   return arr.join(' ')
 })
+
+function handleClick() {
+  collapsing.value = true
+  setTimeout(() => {
+    collapsing.value = false
+  }, 300)
+  size.value = Number(size.value) > 30 ? 0 : props.size
+}
 </script>
 
 <style lang="scss" scoped>
 @use '../../../styles/var.scss' as a;
 
 :deep(.el-splitter-bar__dragger-horizontal) {
+
   &::before,
   &::after {
     width: 1px;
@@ -126,6 +143,12 @@ const getClass = computed(() => {
   box-sizing: border-box;
 }
 
+.#{a.$prefix}-page-layout__split {
+  width: 1px;
+  height: auto;
+  position: relative;
+}
+
 .#{a.$prefix}-page-layout--has-header {
   .#{a.$prefix}-page-layout__tool {
     padding-top: var(--padding-y);
@@ -136,6 +159,12 @@ const getClass = computed(() => {
 .#{a.$prefix}-page-layout--has-tool {
   .#{a.$prefix}-page-layout__body {
     padding-top: var(--padding-y);
+  }
+}
+
+.#{a.$prefix}-page-layout--collapsing {
+  :deep(.el-splitter-panel) {
+    transition: flex-basis 0.3s;
   }
 }
 </style>

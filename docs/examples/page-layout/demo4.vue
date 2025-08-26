@@ -1,5 +1,5 @@
 <template>
-  <gi-page-layout bordered :size="80">
+  <gi-page-layout bordered :size="160">
     <template #header>
       <Search></Search>
     </template>

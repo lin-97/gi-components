@@ -1,14 +1,14 @@
 <template>
   <div :class="getClass" @click="handleClick">
     <el-icon :size="props.iconSize">
-      <ArrowRight v-if="collapsed" :size="iconSize" />
-      <ArrowLeft v-else :size="iconSize" />
+      <ArrowRightBold v-if="collapsed" :size="iconSize" />
+      <ArrowLeftBold v-else :size="iconSize" />
     </el-icon>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ArrowLeft, ArrowRight } from '@element-plus/icons-vue'
+import { ArrowLeftBold, ArrowRightBold } from '@element-plus/icons-vue'
 import { computed } from 'vue'
 import { useBemClass } from '../../../hooks'
 
@@ -36,7 +36,7 @@ interface Emits {
 const props = withDefaults(defineProps<Props>(), {
   collapsed: false,
   type: 'circle',
-  iconSize: 14,
+  iconSize: 10,
   disabled: false
 })
 
@@ -75,7 +75,7 @@ const handleClick = () => {
   align-items: center;
   z-index: 9;
   border: 1px solid var(--el-border-color);
-  background-color: var(--el-fill-color);
+  background-color: var(--el-bg-color);
   box-sizing: border-box;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
