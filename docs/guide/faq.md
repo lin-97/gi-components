@@ -15,10 +15,10 @@
 
 ```bash
 # npm
-npm install gi-components --legacy-peer-deps
+npm install @gi-components/el --legacy-peer-deps
 
 # pnpm
-pnpm install gi-components --force
+pnpm install @gi-components/el --force
 ```
 
 ### 2. 安装后无法找到模块
@@ -54,7 +54,7 @@ npm install
 import 'element-plus/dist/index.css'
 
 // 引入 Gi Components 样式
-import 'gi-components/dist/gi-components.css'
+import '@gi-components/el/dist/el.css'
 ```
 
 - 检查样式引入顺序，确保先引入 Element Plus 样式，再引入 Gi Components 样式
@@ -122,7 +122,7 @@ import 'gi-components/dist/gi-components.css'
   "compilerOptions": {
     "types": [
       "element-plus/global",
-      "gi-components/dist/index.d.ts"
+      "@gi-components/el/packages/components.d.ts"
     ]
   }
 }
@@ -140,7 +140,7 @@ import 'gi-components/dist/gi-components.css'
 
 ```ts
 // src/types/gi-components.d.ts
-declare module 'gi-components' {
+declare module '@gi-components/el' {
   // 自定义类型声明
 }
 ```
@@ -171,44 +171,7 @@ declare module 'gi-components' {
 
 ## 其他问题
 
-### 1. 国际化配置
-
-**问题描述**：需要将组件的文本翻译成其他语言。
-
-**解决方案**：
-
-Gi Components 基于 Element Plus，因此可以使用 Element Plus 的国际化配置：
-
-```js
-import { createApp } from 'vue'
-import ElementPlus from 'element-plus'
-import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
-import GiComponents from 'gi-components'
-
-const app = createApp(App)
-
-app.use(ElementPlus, { locale: zhCn })
-app.use(GiComponents)
-app.mount('#app')
-```
-
-### 2. 移动端适配
-
-**问题描述**：组件在移动端显示或使用体验不佳。
-
-**解决方案**：
-
-- 使用响应式布局
-- 配置适当的 viewport
-
-```html
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-```
-
-- 针对移动端优化组件大小和间距
-- 考虑使用触摸友好的交互方式
-
-### 3. 如何贡献代码或报告问题
+### 如何贡献代码或报告问题
 
 如果您在使用过程中发现了问题，或者有改进建议，欢迎通过以下方式参与：
 

@@ -12,40 +12,16 @@
 
 ## 安装依赖
 
-### 安装 Element Plus
-
-Gi Components 是基于 Element Plus 二次封装的组件库，因此需要先安装 Element Plus：
-
-```bash
-# 使用 npm
-npm install element-plus --save
-
-# 使用 pnpm
-pnpm install element-plus
-```
-
 ### 安装 Gi Components
 
 然后安装 Gi Components：
 
 ```bash
 # 使用 npm
-npm install gi-components --save
+npm install @gi-components/el --save
 
 # 使用 pnpm
-pnpm install gi-components
-```
-
-## 引入样式
-
-Element Plus 和 Gi Components 都需要引入各自的样式文件：
-
-```js
-// 引入 Element Plus 样式
-import 'element-plus/dist/index.css'
-
-// 引入 Gi Components 样式
-import 'gi-components/dist/index.css'
+pnpm install @gi-components/el
 ```
 
 ## 引入方式
@@ -60,10 +36,8 @@ import App from './App.vue'
 
 // 引入样式
 import 'element-plus/dist/index.css'
-import 'gi-components/dist/index.css'
-
-// 引入组件库
-import GiComponents from 'gi-components'
+import GiComponents from '@gi-components/el'
+import '@gi-components/el/dist/el.css'
 
 const app = createApp(App)
 
@@ -82,7 +56,7 @@ Gi Components 完全支持 TypeScript，您可以在项目中享受类型提示�
   "compilerOptions": {
     "types": [
       "element-plus/global",
-      "gi-components/dist/index.d.ts"
+      "@gi-components/el/packages/components.d.ts"
     ]
   }
 }

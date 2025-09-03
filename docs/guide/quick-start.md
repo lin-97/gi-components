@@ -6,13 +6,13 @@
 
 ```bash
 # 使用 npm
-npm install gi-components --save
+npm install @gi-components/el --save
 
 # 使用 yarn
-# yarn add gi-components
+# yarn add @gi-components/el
 
 # 使用 pnpm
-# pnpm install gi-components
+# pnpm install @gi-components/el
 ```
 
 ## 引入组件
@@ -29,8 +29,8 @@ import App from './App.vue'
 import 'element-plus/dist/index.css'
 
 // 引入 Gi Components
-import GiComponents from 'gi-components'
-import 'gi-components/dist/index.css'
+import GiComponents from '@gi-components/el'
+import '@gi-components/el/dist/el.css'
 
 const app = createApp(App)
 
