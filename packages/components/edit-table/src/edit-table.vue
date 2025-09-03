@@ -122,7 +122,7 @@ const getPlaceholder = (item: EditTableColumnItem) => {
 // 组件的默认props配置
 function getComponentBindProps(item: EditTableColumnItem) {
   // 获取默认配置
-  const defaultProps: any = STATIC_PROPS.get(item.type) || {}
+  const defaultProps: any = STATIC_PROPS.get(item.type || '') || {}
   defaultProps.placeholder = getPlaceholder(item)
   if (item.type === 'date-picker') {
     defaultProps.valueFormat = item?.props?.type === 'datetime' ? 'YYYY-MM-DD HH:mm:ss' : 'YYYY-MM-DD'

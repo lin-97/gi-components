@@ -31,7 +31,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { FormColumnItem, FormInstance } from 'gi-components'
+import type { FormColumnItem, FormInstance } from '@gi-components/el'
 import { ElTag } from 'element-plus'
 import { computed, h, reactive, ref } from 'vue'
 import { treeData } from './data'

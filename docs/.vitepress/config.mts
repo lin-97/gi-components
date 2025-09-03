@@ -10,8 +10,7 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        'gi-components': path.resolve(__dirname, '../../packages/index.ts')
-        // 添加你的别名映射
+        '@gi-components/el': path.resolve(__dirname, '../../packages/index.ts')
       }
     }
   },
@@ -65,7 +64,7 @@ export default defineConfig({
             { text: 'Dialog 对话框', link: '/components/dialog' },
             { text: 'Dialog 函数对话框', link: '/components/dialog2' },
             { text: 'Edit Table 可编辑表格', link: '/components/edit-table' },
-            { text: 'Table 表格', link: '/components/table' }
+            { text: 'Table 表格(开发中)', link: '/components/table' }
           ]
         }
       ],

@@ -38,7 +38,7 @@ import DemoDrag from './DemoDrag.vue'
 如果要继承主应用的上下文
 ```js
 // main.ts
-import { Dialog } from 'gi-components';
+import { Dialog } from '@gi-components/el';
 
 const app = createApp(App);
 Dialog._context = app._context;

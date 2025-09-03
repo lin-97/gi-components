@@ -36,7 +36,7 @@ const components = {
   Table
 }
 
-function capitalizeWord(word) {
+function capitalizeWord(word: string) {
   // 检查输入是否为字符串且不为空
   if (typeof word !== 'string' || word.length === 0) {
     return word

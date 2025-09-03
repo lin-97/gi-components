@@ -23,7 +23,7 @@ import type { TabsOptionItem, TabsProps } from './type.ts'
 import { computed, useSlots } from 'vue'
 import { useBemClass } from '../../../hooks'
 
-const model = defineModel()
+const model = defineModel<TabsProps['type']>()
 
 const props = withDefaults(defineProps<TabsProps>(), {
   type: '',

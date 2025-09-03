@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
 import { ElEmpty } from 'element-plus'
-import { Dialog } from 'gi-components'
+import { Dialog } from '@gi-components/el'
 import { h } from 'vue'
 
 const openDialog = () => {
