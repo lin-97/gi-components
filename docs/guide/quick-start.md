@@ -30,7 +30,7 @@ import 'element-plus/dist/index.css'
 
 // 引入 Gi Components
 import GiComponents from 'gi-components'
-import 'gi-components/dist/gi-components.css'
+import 'gi-components/dist/index.css'
 
 const app = createApp(App)
 

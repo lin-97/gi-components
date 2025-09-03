@@ -45,7 +45,7 @@ Element Plus 和 Gi Components 都需要引入各自的样式文件：
 import 'element-plus/dist/index.css'
 
 // 引入 Gi Components 样式
-import 'gi-components/dist/gi-components.css'
+import 'gi-components/dist/index.css'
 ```
 
 ## 引入方式
@@ -60,7 +60,7 @@ import App from './App.vue'
 
 // 引入样式
 import 'element-plus/dist/index.css'
-import 'gi-components/dist/gi-components.css'
+import 'gi-components/dist/index.css'
 
 // 引入组件库
 import GiComponents from 'gi-components'

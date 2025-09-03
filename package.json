@@ -1,5 +1,5 @@
 {
-  "name": "gi-components",
+  "name": "gi-components-vue",
   "type": "module",
   "version": "0.0.1",
   "description": "Vue3中基于Element Plus二次封装基础组件库",
@@ -9,8 +9,8 @@
     "type": "git",
     "url": "https://github.com/lin-97/gi-components.git"
   },
-  "main": "dist/gi-components.umd.js",
-  "module": "dist/gi-components.es.js",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist",

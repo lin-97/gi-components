@@ -59,7 +59,7 @@ export default defineConfig(({ mode }) => {
         lib: {
           entry: fileURLToPath(new URL('./packages/index.ts', import.meta.url)),
           name: 'GiComponents',
-          fileName: (format) => `gi-components.${format}.js`,
+          fileName: (format) => `index.${format}.js`,
           formats: ['es', 'umd']
         },
         // 生成TypeScript声明文件
