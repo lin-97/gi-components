@@ -1,21 +1,17 @@
 <template>
-  <gi-form ref="GiFormRef" :model-value="form" @update:model-value="handleModelUpdate" :columns="columns"
+  <gi-form ref="GiFormRef" v-model="form" :columns="columns"
     :grid-item-props="{ span: { xs: 24, sm: 12, md: 12, lg: 12, xl: 12, xxl: 12 } }">
   </gi-form>
 </template>
 
 <script lang="ts" setup>
 import type { FormColumnItem, FormInstance } from 'gi-components'
-import { computed, ref } from 'vue'
+import { computed, reactive, ref } from 'vue'
 import { useDictStore } from './useDictStore'
 
 const GiFormRef = ref<FormInstance | null>()
 
-function handleModelUpdate(value) {
-  form.value = value
-}
-
-const form = ref({
+const form = reactive({
   status: '1'
 })
 const { dict } = useDictStore(['SEX', 'STATUS', 'HOBBY'])

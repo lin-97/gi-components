@@ -1,5 +1,5 @@
 <template>
-  <gi-form ref="GiFormRef" :model-value="form" @update:model-value="handleModelUpdate" :columns="columns" search
+  <gi-form ref="GiFormRef" v-model="form" :columns="columns" search
     :grid-item-props="{ span: { xs: 24, sm: 12, md: 12, lg: 12, xl: 8, xxl: 8 } }" @search="search" @reset="reset">
   </gi-form>
 </template>
@@ -7,7 +7,7 @@
 <script lang="ts" setup>
 import type { FormColumnItem, FormInstance } from 'gi-components'
 import { ElMessage } from 'element-plus'
-import { computed, h, ref } from 'vue'
+import { computed, h, reactive, ref } from 'vue'
 
 const GiFormRef = ref<FormInstance | null>()
 
@@ -19,11 +19,7 @@ function reset() {
   ElMessage.info('点击了重置')
 }
 
-function handleModelUpdate(value) {
-  form.value = value
-}
-
-const form = ref({})
+const form = reactive({})
 
 const columns = computed(() => {
   return [
