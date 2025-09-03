@@ -8,8 +8,8 @@ hero:
   tagline: 提供高效组件，大幅度提高您的开发速度
   actions:
     - theme: brand
-      text: 开始
-      link: /examples/button
+      text: 开始使用
+      link: /guide/quick-start
     - theme: alt
       text: Github
       link: https://github.com/lin-97/gi-components

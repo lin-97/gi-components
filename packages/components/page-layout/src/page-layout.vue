@@ -144,7 +144,7 @@ function handleClick() {
 }
 
 .#{a.$prefix}-page-layout__split {
-  width: 1px;
+  width: 0;
   height: auto;
   position: relative;
 }

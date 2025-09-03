@@ -2,7 +2,6 @@
   "name": "gi-components",
   "type": "module",
   "version": "0.0.1",
-  "private": true,
   "description": "Vue3中基于Element Plus二次封装基础组件库",
   "author": "lin",
   "license": "MIT",
@@ -10,6 +9,13 @@
     "type": "git",
     "url": "https://github.com/lin-97/gi-components.git"
   },
+  "main": "dist/gi-components.umd.js",
+  "module": "dist/gi-components.es.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "packages"
+  ],
   "keywords": [
     "element-plus",
     "vitepress",
@@ -22,7 +28,13 @@
     "dev": "vite --host",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "build:lib": "vite build --mode lib",
+    "prepublishOnly": "npm run build:lib"
+  },
+  "peerDependencies": {
+    "element-plus": "^2.11.1",
+    "vue": "^3.5.15"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^5.2.1",
@@ -35,10 +47,12 @@
     "markdown-it-container": "^4.0.0",
     "sass": "^1.89.0",
     "sass-loader": "^16.0.5",
+    "terser": "^5.44.0",
     "typescript": "^5.8.3",
     "unplugin-vue-components": "^28.8.0",
-    "vite": "^6.3.5",
-    "vitepress": "^1.6.4",
+    "vite": "6.3.5",
+    "vite-plugin-dts": "^4.5.4",
+    "vitepress": "1.6.4",
     "vue": "^3.5.15",
     "vue-tsc": "^2.2.10"
   }

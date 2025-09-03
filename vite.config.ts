@@ -4,8 +4,13 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
+import { resolve } from 'path'
+import dts from 'vite-plugin-dts'
 
 export default defineConfig(({ mode }) => {
+  // 根据构建模式配置不同的输出
+  const isLibBuild = mode === 'lib'
+  
   return {
     // 路径别名
     resolve: {
@@ -23,6 +28,15 @@ export default defineConfig(({ mode }) => {
         extensions: ['vue', 'tsx'],
         dts: 'packages/components.d.ts',
         prefix: 'Gi'
+      }),
+      // 配置dts插件生成类型声明文件
+      dts({
+        include: ['packages/**/*.ts', 'packages/**/*.vue'],
+        outDir: 'dist',
+        entryRoot: 'packages',
+        rollupTypes: true,
+        // 排除不需要生成类型的文件
+        exclude: ['**/node_modules/**', '**/__tests__/**', '**/dist/**']
       })
     ],
     // 构建
@@ -40,14 +54,38 @@ export default defineConfig(({ mode }) => {
           comments: false // 删除注释
         }
       },
-      // 静态资源打包到dist下的不同目录
-      rollupOptions: {
-        output: {
-          chunkFileNames: 'static/js/[name]-[hash].js',
-          entryFileNames: 'static/js/[name]-[hash].js',
-          assetFileNames: 'static/[ext]/[name]-[hash].[ext]'
+      // 根据是否为库构建配置不同的rollup选项
+      ...(isLibBuild ? {
+        lib: {
+          entry: fileURLToPath(new URL('./packages/index.ts', import.meta.url)),
+          name: 'GiComponents',
+          fileName: (format) => `gi-components.${format}.js`,
+          formats: ['es', 'umd']
+        },
+        // 生成TypeScript声明文件
+        sourcemap: true,
+        emptyOutDir: false,
+        rollupOptions: {
+          // 确保外部化处理那些你不想打包进库的依赖
+          external: ['vue', 'element-plus'],
+          output: {
+            // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
+            globals: {
+              vue: 'Vue',
+              'element-plus': 'ElementPlus'
+            }
+          }
         }
-      }
+      } : {
+        // 静态资源打包到dist下的不同目录
+        rollupOptions: {
+          output: {
+            chunkFileNames: 'static/js/[name]-[hash].js',
+            entryFileNames: 'static/js/[name]-[hash].js',
+            assetFileNames: 'static/[ext]/[name]-[hash].[ext]'
+          }
+        }
+      })
     }
   }
 })
