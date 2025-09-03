@@ -4,8 +4,8 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   lang: 'cn-ZH',
-  base: '/gi-components/',
-  title: 'Gi Components',
+  base: '/gi-components-ele/',
+  title: 'Gi Components Ele',
   description: 'A VitePress Site',
   vite: {
     resolve: {
@@ -79,7 +79,7 @@ export default defineConfig({
       ],
     },
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/lin-97/gi-components' }
+      { icon: 'github', link: 'https://github.com/lin-97/gi-components-ele' }
     ]
   },
   markdown: {
