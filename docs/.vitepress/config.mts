@@ -18,7 +18,7 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '首页', link: '/' },
-      { text: '指南', link: '/guide/quick-start' },
+      { text: '指南', link: '/guide/introduction' },
       { text: '组件', link: '/components/button' },
       { text: '工具', link: '/tools/createSelectDialog' }
     ],
@@ -29,8 +29,9 @@ export default defineConfig({
         {
           text: '入门',
           items: [
-            { text: '快速开始', link: '/guide/quick-start' },
+            { text: '简介', link: '/guide/introduction' },
             { text: '安装指南', link: '/guide/installation' },
+            { text: '快速开始', link: '/guide/quick-start' },
             { text: '常见问题', link: '/guide/faq' }
           ]
         }
