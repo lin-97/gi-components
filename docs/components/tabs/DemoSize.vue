@@ -5,7 +5,7 @@
     <el-radio value="border-card">边框卡片</el-radio>
   </el-radio-group>
   <gi-tabs v-model="activeName" :options="options" :type="tabsType" style="padding: 0" size="small"
-    @tab-change="handleTabChange">
+    @tab-change="(name: string) => handleTabChange(name)">
     <template #extra>
       <el-space>
         <el-button type="primary" size="small">保存</el-button>
@@ -22,8 +22,9 @@
 <script setup lang="ts">
 import { ElMessage } from 'element-plus'
 import { ref } from 'vue'
+import type { TabsProps } from 'element-plus'
 
-const tabsType = ref('')
+const tabsType = ref<TabsProps['type']>('')
 const activeName = ref('a')
 const options = [
   { label: '全部', name: 'a' },
@@ -32,7 +33,7 @@ const options = [
   { label: '草稿', name: 'd' }
 ]
 
-const countObj = ref({ a: 5, b: 10, c: 15, d: 6 })
+const countObj = ref<Record<string, number>>({ a: 5, b: 10, c: 15, d: 6 })
 
 const handleTabChange = (name: string) => {
   ElMessage.info(`当前选中的标签页的值是：${name}`)

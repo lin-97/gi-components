@@ -10,16 +10,13 @@
         </GridItem>
 
         <template v-else>
-          <GridItem v-if="item.show !== undefined ? isShow(item) : !isHide(item)" :key="item.field + index"
+          <GridItem v-if="!isHide(item)" :key="item.field + index"
             v-bind="item.gridItemProps || props.gridItemProps"
             :span="item.span || item.gridItemProps?.span || props?.gridItemProps?.span">
-            <el-form-item :key="item.field + index" :prop="item.field" :rules="getFormItemRules(item)"
+            <el-form-item :key="item.field + index" :prop="item.field" :label="item.label" :rules="getFormItemRules(item)"
               v-bind="item.formItemProps">
-              <template #label>
-                <template v-if="typeof item.label === 'string'">
-                  {{ item.label }}
-                </template>
-                <component :is="item.label" v-else></component>
+              <template v-if="item?.labelRender" #label>
+                <component :is="item.labelRender"></component>
               </template>
               <div v-if="item.type === 'slot'" class="w-full">
                 <slot :name="item.field" :item="item"></slot>
@@ -28,8 +25,7 @@
                 <div :class="b('form-item__content')">
                   <div :class="b('form-item__component')">
                     <component :is="CompMap[item.type] || item.type" :disabled="isDisabled(item)" class="w-full"
-                      v-bind="getComponentBindProps(item)" :model-value="props.modelValue[item.field]"
-                      :name="props.modelValue[item.fieldName ?? '']"
+                      v-bind="getComponentBindProps(item)" :model-value="props.modelValue[(item.fieldName || item.field)]"
                       @update:model-value="updateModelValue($event, item)">
                       <template v-for="(slotValue, slotKey) in item?.slots || {}" :key="slotKey" #[slotKey]="scope">
                         <template v-if="typeof slotValue === 'string'">
@@ -85,6 +81,7 @@ import CheckboxGroup from '../../checkbox-group'
 import { Grid, GridItem } from '../../grid'
 import RadioGroup from '../../radio-group'
 import Select from '../../select'
+import InputSearch from '../../input-search'
 
 const props = withDefaults(defineProps<Props>(), {
   columns: () => [],
@@ -157,6 +154,7 @@ const CompMap: Record<Exclude<ColumnType, 'slot'>, any> = {
   'textarea': El.ElInput,
   'input-number': El.ElInputNumber,
   'input-tag': El.ElInputTag,
+  'input-search': InputSearch,
   'select': Select,
   'select-v2': El.ElSelectV2,
   'tree-select': El.ElTreeSelect,
@@ -247,14 +245,6 @@ function getFormItemRules(item: ColumnItem) {
     return [{ required: true, message: `${item.label}为必填项` }, ...(Array.isArray(item.rules) ? item.rules : [])]
   }
   return item.rules
-}
-
-/** 显示表单项 */
-function isShow(item: ColumnItem) {
-  if (typeof item.show === 'boolean') return item.show
-  if (typeof item.show === 'function') {
-    return item.show(props.modelValue)
-  }
 }
 
 /** 隐藏表单项 */

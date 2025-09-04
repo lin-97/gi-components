@@ -51,19 +51,13 @@ Gi Components 完全支持 TypeScript，您可以在项目中享受类型提示�
 }
 ```
 
-## 常见问题
+## 内置CSS变量
 
-### 样式冲突
-
-如果遇到样式冲突问题，可以尝试调整样式引入顺序，或者使用 CSS Modules 等方式进行样式隔离。
-
-### 组件不显示
-
-- 检查是否正确引入了样式文件
-- 确认组件名称是否正确（默认前缀为 `Gi`）
-- 检查 Vue 实例是否正确注册了组件
-
-### 版本兼容性
-
-- Gi Components 1.x 版本适用于 Vue 3.x 和 Element Plus 2.x
-- 如果您使用的是旧版本的 Element Plus，请考虑升级到最新版本
+```css
+body {
+  --padding-x: 14px;
+  --padding-x-small: 10px;
+  --padding-y: 10px;
+  --padding-y-small: 6px;
+}
+```

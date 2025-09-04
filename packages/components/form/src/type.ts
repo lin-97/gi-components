@@ -6,6 +6,7 @@ export type ColumnType =
   | 'textarea'
   | 'input-number'
   | 'input-tag'
+  | 'input-search'
   | 'select'
   | 'select-v2'
   | 'tree-select'
@@ -30,8 +31,8 @@ export type ColumnType =
 export type ColumnProps = El.InputProps &
   El.InputNumberProps &
   El.InputTagProps &
-  El.ISelectProps &
-  El.ISelectV2Props &
+  El.SelectProps &
+  El.SelectV2Props &
   El.TreeInstance['$props'] &
   El.CascaderProps &
   El.SliderProps &
@@ -61,17 +62,17 @@ export type ColumnSlots = El.InputInstance['$slots'] &
 
 export interface FormColumnItem<F = any> {
   type: ColumnType
-  label?: string | VNode
+  label?: string
+  labelRender?: () => VNode;
   field: string
   fieldName?: string
   span?: number
-  props?: ColumnProps & { options?: El.RadioProps & El.CheckboxProps & El.ISelectProps }
+  props?: ColumnProps & { options?: El.RadioProps & El.CheckboxProps & El.SelectProps }
   formItemProps?: El.FormItemProps
   gridItemProps?: any
   required?: boolean
   rules?: El.FormItemRule[]
   hide?: ColumnItemHide<F> // 是否隐藏
-  show?: ColumnItemShow<F> // 是否显示（优先级比hide高）
   tip?: string
   dictCode?: string // 字典编码
   slotName?: string

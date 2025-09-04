@@ -16,6 +16,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import type { TabsProps } from 'element-plus'
 
 const value = ref('1')
 const options = [
@@ -36,5 +37,5 @@ const options = [
   { label: '页签15', name: '15' }
 ]
 
-const tabsType = ref('')
+const tabsType = ref<TabsProps['type']>('')
 </script>

@@ -2,6 +2,7 @@
 
 <script setup>
 import Demo from './Demo.vue'
+import DemoMultiple from './DemoMultiple.vue'
 </script>
 
 ## 基础用法
@@ -10,6 +11,14 @@ import Demo from './Demo.vue'
 
 ::: details 查看代码
 <<< ./Demo.vue
+:::
+
+## 多选
+
+<DemoMultiple></DemoMultiple>
+
+::: details 查看代码
+<<< ./DemoMultiple.vue
 :::
 
 ## API

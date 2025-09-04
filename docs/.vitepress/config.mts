@@ -1,12 +1,13 @@
 import path from 'node:path'
 import { defineConfig } from 'vitepress'
+import packageJson from '../../package.json'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   lang: 'cn-ZH',
   base: '/gi-components/',
   title: 'Gi Components',
-  description: 'A VitePress Site',
+  description: 'Vue3中基于Element Plus二次封装基础组件库',
   vite: {
     resolve: {
       alias: {
@@ -20,7 +21,8 @@ export default defineConfig({
       { text: '首页', link: '/' },
       { text: '指南', link: '/guide/introduction' },
       { text: '组件', link: '/components/button' },
-      { text: '工具', link: '/tools/createSelectDialog' }
+      { text: '工具', link: '/tools/createSelectDialog' },
+      { text: `v${packageJson.version}`, link: '' }
     ],
     // 路径特定的侧边栏配置
     sidebar: {
@@ -32,7 +34,6 @@ export default defineConfig({
             { text: '简介', link: '/guide/introduction' },
             { text: '安装指南', link: '/guide/installation' },
             { text: '快速开始', link: '/guide/quick-start' },
-            { text: '常见问题', link: '/guide/faq' }
           ]
         }
       ],

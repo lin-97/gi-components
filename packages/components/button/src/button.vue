@@ -5,10 +5,10 @@
 </template>
 
 <script setup lang="ts">
-import type { ButtonEmits } from 'element-plus'
+import type { ButtonEmits, ButtonProps as ElButtonProps } from 'element-plus'
 import type { ButtonProps } from './type.ts'
-import { Delete, Download, Edit, Plus, Search, Upload } from '@element-plus/icons-vue'
-import { computed, useAttrs } from 'vue'
+import { Delete, Download, Edit, Plus, Search, Upload, Printer } from '@element-plus/icons-vue'
+import { computed } from 'vue'
 import { useBemClass } from '../../../hooks'
 
 const props = withDefaults(defineProps<ButtonProps>(), {
@@ -17,7 +17,6 @@ const props = withDefaults(defineProps<ButtonProps>(), {
 
 defineEmits<ButtonEmits>()
 
-const attrs = useAttrs()
 const { b } = useBemClass()
 
 const obj: Record<string, { btnProps: Partial<ButtonProps>, btnText: string }> = {
@@ -25,12 +24,15 @@ const obj: Record<string, { btnProps: Partial<ButtonProps>, btnText: string }> =
   edit: { btnProps: { icon: Edit, type: 'primary' }, btnText: '编辑' },
   delete: { btnProps: { icon: Delete, type: 'danger' }, btnText: '删除' },
   search: { btnProps: { icon: Search, type: 'primary' }, btnText: '搜索' },
+  reset: { btnProps: { type: undefined }, btnText: '重置' },
   upload: { btnProps: { icon: Upload, type: 'primary' }, btnText: '上传' },
-  download: { btnProps: { icon: Download, type: 'primary' }, btnText: '下载' }
+  download: { btnProps: { icon: Download, type: 'primary' }, btnText: '下载' },
+  print: { btnProps: { icon: Printer, type: 'primary' }, btnText: '打印' },
 }
 
 const bindProps = computed(() => {
-  return { ...attrs, ...(obj?.[props.type]?.btnProps || { type: props.type }) }
+  const btnProps = obj?.[props.type]?.btnProps || { type: props.type }
+  return { ...props, ...btnProps } as Omit<ElButtonProps, 'type'>
 })
 
 const btnText = computed(() => {

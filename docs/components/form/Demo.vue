@@ -32,7 +32,7 @@
 
 <script lang="ts" setup>
 import type { FormColumnItem, FormInstance } from '@gi-components/el'
-import { ElTag } from 'element-plus'
+import { ElTag, ElMessage } from 'element-plus'
 import { computed, h, reactive, ref } from 'vue'
 import { treeData } from './data'
 
@@ -56,7 +56,9 @@ const form = reactive({
   inputTag: ['音乐', '电影'],
   color: '#0077F7',
   startTime: '',
-  endTime: ''
+  endTime: '',
+  inputSearchId: '',
+  inputSearchName: ''
 })
 
 const columns = computed(() => {
@@ -98,7 +100,8 @@ const columns = computed(() => {
     },
     {
       type: 'switch',
-      label: () => h('span', { style: { color: 'red' } }, '启动'),
+      label: '启动',
+      labelRender: () => h('span', { style: { color: 'red' } }, '启动'),
       field: 'status'
     },
     {
@@ -163,6 +166,24 @@ const columns = computed(() => {
       type: 'input-tag',
       label: '标签输入',
       field: 'inputTag'
+    },
+    {
+      type: 'input-search',
+      label: '搜索输入',
+      field: 'inputSearchId',
+      fieldName: 'inputSearchName',
+      props: {
+        onSearch: () => {
+          ElMessage.success('点击了搜索')
+          form.inputSearchId = '111,222,333'
+          form.inputSearchName = 'aaa,bbb,ccc'
+        },
+        onClear: () => {
+          ElMessage.success('点击了清除')
+          form.inputSearchId = ''
+          form.inputSearchName = ''
+        }
+      }
     },
     {
       type: 'color-picker',
