@@ -1,5 +1,5 @@
 <template>
-  <el-button :class="b('button')" v-bind="bindProps">
+  <el-button :class="b('button')" v-bind="bindProps" @click="(e: MouseEvent) => emit('click', e)">
     <slot>{{ btnText }}</slot>
   </el-button>
 </template>
@@ -8,14 +8,18 @@
 import type { ButtonEmits, ButtonProps as ElButtonProps } from 'element-plus'
 import type { ButtonProps } from './type.ts'
 import { Delete, Download, Edit, Plus, Search, Upload, Printer } from '@element-plus/icons-vue'
-import { computed } from 'vue'
+import { computed, useAttrs } from 'vue'
 import { useBemClass } from '../../../hooks'
 
 const props = withDefaults(defineProps<ButtonProps>(), {
   type: ''
 })
 
-defineEmits<ButtonEmits>()
+const attrs = useAttrs()
+
+const emit = defineEmits<{
+  (e: 'click', event: MouseEvent): void
+}>()
 
 const { b } = useBemClass()
 
@@ -32,7 +36,7 @@ const obj: Record<string, { btnProps: Partial<ButtonProps>, btnText: string }> =
 
 const bindProps = computed(() => {
   const btnProps = obj?.[props.type]?.btnProps || { type: props.type }
-  return { ...props, ...btnProps } as Omit<ElButtonProps, 'type'>
+  return { ...attrs, ...btnProps } as Omit<ElButtonProps, 'type'>
 })
 
 const btnText = computed(() => {

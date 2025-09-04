@@ -14,6 +14,7 @@ import RadioGroup from './components/radio-group'
 import Select from './components/select'
 import Table from './components/table'
 import Tabs from './components/tabs'
+import './styles/index.scss'
 
 export * from './components/dialog'
 export * from './components/form'
