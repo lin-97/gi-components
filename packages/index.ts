@@ -40,22 +40,22 @@ const components = {
   Table
 }
 
-// 导出Gi前缀的组件
-export const GiButton = Button
-export const GiCard = Card
-export const GiSelect = Select
-export const GiRadioGroup = RadioGroup
-export const GiCheckboxGroup = CheckboxGroup
-export const GiTabs = Tabs
-export const GiInputGroup = InputGroup
-export const GiInputSearch = InputSearch
-export const GiGrid = Grid
-export const GiGridItem = GridItem
-export const GiForm = Form
-export const GiPageLayout = PageLayout
-export const GiDialog = Dialog
-export const GiEditTable = EditTable
-export const GiTable = Table
+// 导出Gi前缀的组件并添加明确类型注解
+export const GiButton: typeof Button = Button
+export const GiCard: typeof Card = Card
+export const GiSelect: typeof Select = Select
+export const GiRadioGroup: typeof RadioGroup = RadioGroup
+export const GiCheckboxGroup: typeof CheckboxGroup = CheckboxGroup
+export const GiTabs: typeof Tabs = Tabs
+export const GiInputGroup: typeof InputGroup = InputGroup
+export const GiInputSearch: typeof InputSearch = InputSearch
+export const GiGrid: typeof Grid = Grid
+export const GiGridItem: typeof GridItem = GridItem
+export const GiForm: typeof Form = Form
+export const GiPageLayout: typeof PageLayout = PageLayout
+export const GiDialog: typeof Dialog = Dialog
+export const GiEditTable: typeof EditTable = EditTable
+export const GiTable: typeof Table = Table
 
 function capitalizeWord(word: string) {
   // 检查输入是否为字符串且不为空
