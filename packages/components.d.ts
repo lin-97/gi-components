@@ -23,6 +23,7 @@ declare module 'vue' {
     GiSelect: typeof import('./components/select/src/select.vue')['default']
     GiSplitButton: typeof import('./components/page-layout/src/split-button.vue')['default']
     GiTable: typeof import('./components/table/src/table.vue')['default']
+    GiTableColumn: typeof import('./components/table/src/TableColumn.vue')['default']
     GiTabs: typeof import('./components/tabs/src/tabs.vue')['default']
   }
 }
