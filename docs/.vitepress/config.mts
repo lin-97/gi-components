@@ -47,9 +47,9 @@ export default defineConfig({
             { text: 'Button 按钮', link: '/components/button' },
             { text: 'Card 卡片', link: '/components/card' },
             { text: 'Grid 栅格', link: '/components/grid' },
-            { text: 'Input Group 输入框组', link: '/components/input-group' },
-            { text: 'Input Search 搜索输入框', link: '/components/input-search' },
-            { text: 'Page Layout 页面布局', link: '/components/page-layout' },
+            { text: 'InputGroup 输入框组', link: '/components/input-group' },
+            { text: 'InputSearch 搜索输入框', link: '/components/input-search' },
+            { text: 'PageLayout 页面布局', link: '/components/page-layout' },
             { text: 'Tabs 标签页', link: '/components/tabs' }
           ]
         },
@@ -57,8 +57,8 @@ export default defineConfig({
           text: '表单组件',
           items: [
             { text: 'Form 表单', link: '/components/form' },
-            { text: 'Radio Group 单选框组', link: '/components/radio-group' },
-            { text: 'Checkbox Group 多选框组', link: '/components/checkbox-group' },
+            { text: 'RadioGroup 单选框组', link: '/components/radio-group' },
+            { text: 'CheckboxGroup 多选框组', link: '/components/checkbox-group' },
             { text: 'Select 选择器', link: '/components/select' },
           ]
         },
@@ -67,8 +67,8 @@ export default defineConfig({
           items: [
             { text: 'Dialog 对话框', link: '/components/dialog' },
             { text: 'Dialog 函数对话框', link: '/components/dialog2' },
-            { text: 'Edit Table 可编辑表格', link: '/components/edit-table' },
-            { text: 'Table 表格(开发中)', link: '/components/table' }
+            { text: 'EditTable 可编辑表格', link: '/components/edit-table' },
+            { text: 'Table 表格', link: '/components/table' }
           ]
         }
       ],

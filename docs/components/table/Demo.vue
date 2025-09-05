@@ -1,55 +1,111 @@
 <template>
-  <div class="demo">
-    <gi-table :columns="columns" :data="data" :pagination="pagination" border max-height="400px"></gi-table>
-  </div>
+  <gi-card title="基础表格" bordered>
+    <el-row justify="end">
+      <el-space>
+        <el-input v-model="searchKeyword" placeholder="搜索姓名或地址" clearable style="width: 200px;" />
+        <el-button type="primary" @click="loadData()">搜索</el-button>
+      </el-space>
+    </el-row>
+    <gi-table class="gi-mt" v-loading="loading" :columns="columns" :data="data" :pagination="pagination" border
+      max-height="400px">
+      <template #action="scope">
+        <el-space>
+          <el-button type="primary" size="small" @click="onEdit(scope)">编辑</el-button>
+          <el-button type="danger" size="small">删除</el-button>
+        </el-space>
+      </template>
+    </gi-table>
+  </gi-card>
 </template>
 
 <script lang='ts' setup>
-import { reactive } from 'vue'
+import { reactive, ref, onMounted, watch } from 'vue'
+import { ElMessage } from 'element-plus'
+import { type TableColumnItem } from '@gi-components/el'
+import { fetchTableData, type TableData, type PaginationParams } from './tool'
 
-const columns = [
-  { prop: 'name', label: '姓名', width: 150 },
-  { prop: 'age', label: '年龄', width: 150 },
-  { prop: 'sex', label: '性别', width: 150 },
-  { prop: 'address', label: '地址' }
+const columns: TableColumnItem[] = [
+  { type: 'selection', width: 55, align: 'center', fixed: 'left' },
+  { type: 'index', label: '序号', width: 60, align: 'center' },
+  { prop: 'name', label: '姓名', width: 100, align: 'center', showOverflowTooltip: true },
+  { prop: 'age', label: '年龄', width: 60, align: 'center' },
+  { prop: 'sex', label: '性别', width: 60, align: 'center' },
+  {
+    prop: 'address', label: '地址', children: [
+      { prop: 'city', label: '城市', width: 150 },
+      { prop: 'district', label: '区县', width: 150 },
+    ]
+  },
+  { prop: 'remark', label: '描述', width: 150, showOverflowTooltip: true },
+  { prop: 'action', label: '操作', width: 150, align: 'center', slotName: 'action', fixed: 'right' },
 ]
 
-const data = [
-  { name: '张三', age: 18, sex: '男', address: '北京' },
-  { name: '李四', age: 20, sex: '女', address: '上海' },
-  { name: '王五', age: 22, sex: '男', address: '广州' },
-  { name: '赵六', age: 24, sex: '女', address: '深圳' },
-  { name: '钱七', age: 26, sex: '男', address: '杭州' },
-  { name: '孙八', age: 28, sex: '女', address: '成都' },
-  { name: '周九', age: 30, sex: '男', address: '武汉' },
-  { name: '吴十', age: 32, sex: '女', address: '厦门' },
-  { name: '郑十一', age: 34, sex: '男', address: '南京' },
-  { name: '冯十二', age: 36, sex: '女', address: '天津' },
-  { name: '陈十三', age: 38, sex: '男', address: '重庆' },
-  { name: '廖十四', age: 40, sex: '女', address: '沈阳' },
-  { name: '杨十五', age: 42, sex: '男', address: '济南' },
-  { name: '张十六', age: 44, sex: '女', address: '青岛' },
-  { name: '王十七', age: 46, sex: '男', address: '昆明' },
-  { name: '李十八', age: 48, sex: '女', address: '哈尔滨' },
-  { name: '张十九', age: 50, sex: '男', address: '长春' },
-  { name: '王二十', age: 52, sex: '女', address: '长沙' },
-  { name: '李二十一', age: 54, sex: '男', address: '石家庄' },
-  { name: '张二十二', age: 56, sex: '女', address: '郑州' },
-  { name: '王二十三', age: 58, sex: '男', address: '兰州' },
-  { name: '李二十四', age: 60, sex: '女', address: '太原' },
-  { name: '张二十五', age: 62, sex: '男', address: '西宁' },
-  { name: '王二十六', age: 64, sex: '女', address: '银川' },
-  { name: '李二十七', age: 66, sex: '男', address: '乌鲁木齐' },
-  { name: '张二十八', age: 68, sex: '女', address: '拉萨' },
-  { name: '王二十九', age: 70, sex: '男', address: '西宁' },
-  { name: '李三十', age: 72, sex: '女', address: '银川' },
-  { name: '张三十一', age: 74, sex: '男', address: '乌鲁木齐' }
-]
+// 响应式数据
+const data = ref<TableData[]>([])
+const loading = ref(false)
+const searchKeyword = ref('')
 
+// 分页配置
 const pagination = reactive({
   pageSize: 10,
   currentPage: 1,
-  total: data.length
+  total: 0,
+  // 监听分页变化，重新加载数据
+  onSizeChange: (size: number) => {
+    pagination.pageSize = size
+    loadData()
+  },
+  onCurrentChange: (current: number) => {
+    pagination.currentPage = current
+    loadData()
+  }
+})
+
+// 加载数据的函数
+async function loadData() {
+  loading.value = true
+
+  try {
+    const params: PaginationParams = {
+      currentPage: pagination.currentPage,
+      pageSize: pagination.pageSize,
+      keyword: searchKeyword.value.trim()
+    }
+
+    const response = await fetchTableData(params)
+    data.value = response.data
+    pagination.total = response.total
+
+    ElMessage.success(`成功加载 ${response.data.length} 条数据`)
+  } catch (error) {
+    ElMessage.error('数据加载失败')
+    console.error('Failed to load data:', error)
+  } finally {
+    loading.value = false
+  }
+}
+
+// 编辑操作
+function onEdit(scope: any) {
+  console.log('Edit row:', scope.row)
+  ElMessage.success(`编辑 ${scope.row.name}`)
+}
+
+// 监听搜索关键词变化
+watch(searchKeyword, (newValue, oldValue) => {
+  if (newValue !== oldValue) {
+    // 重置为第一页
+    pagination.currentPage = 1
+    // 延迟搜索，避免频繁请求
+    setTimeout(() => {
+      loadData()
+    }, 300)
+  }
+})
+
+// 组件挂载时加载初始数据
+onMounted(() => {
+  loadData()
 })
 </script>
 

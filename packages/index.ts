@@ -19,6 +19,7 @@ import './styles/index.scss'
 
 export * from './components/dialog'
 export * from './components/form'
+export * from './components/table'
 export * from './hooks'
 export * from './utils'
 
