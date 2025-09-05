@@ -22,6 +22,7 @@ export default defineConfig({
       { text: '指南', link: '/guide/introduction' },
       { text: '组件', link: '/components/button' },
       { text: '工具', link: '/tools/createSelectDialog' },
+      { text: '内置CSS类名', link: '/style' },
       { text: `v${packageJson.version}`, link: '' }
     ],
     // 路径特定的侧边栏配置
@@ -34,6 +35,7 @@ export default defineConfig({
             { text: '简介', link: '/guide/introduction' },
             { text: '安装指南', link: '/guide/installation' },
             { text: '快速开始', link: '/guide/quick-start' },
+            { text: '更新日志', link: '/guide/changelog' },
           ]
         }
       ],

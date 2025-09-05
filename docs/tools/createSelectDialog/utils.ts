@@ -1,7 +1,11 @@
-import { createSelectDialog } from '../../../packages/utils/createSelectDialog'
-import TreeTable from './components/TreeTable.vue'
+import { createSelectDialog } from '@gi-components/el'
+import TreeTable, { type TableDataItem } from './components/TreeTable.vue'
 
-export const selectUserListDialog = createSelectDialog({
+/**
+ * 选择用户列表对话框
+ * TreeTable组件需要暴露getSelectedData方法
+ */
+export const selectUserListDialog = createSelectDialog<TableDataItem[]>({
   title: '选择用户',
   component: TreeTable
 })

@@ -15,7 +15,6 @@
 - 💪 统一的组件设计规范和使用体验
 - 🔧 支持按需引入和全局注册
 - 📝 完善的文档和示例
-- 🌐 支持国际化
 
 ## 🚀 安装
 
@@ -50,101 +49,6 @@ const app = createApp(App)
 app.use(GiComponents)
 
 app.mount('#app')
-```
-
-## 📚 组件列表
-
-| 组件名称 | 组件描述 | 文档链接 |
-|---------|---------|---------|
-| GiButton | 按钮组件 | [文档](https://lin-97.github.io/gi-components/components/button/) |
-| GiCard | 卡片组件 | [文档](https://lin-97.github.io/gi-components/components/card/) |
-| GiCheckboxGroup | 复选框组 | [文档](https://lin-97.github.io/gi-components/components/checkbox-group/) |
-| GiDialog | 对话框 | [文档](https://lin-97.github.io/gi-components/components/dialog/) |
-| GiEditTable | 可编辑表格 | [文档](https://lin-97.github.io/gi-components/components/edit-table/) |
-| GiForm | 表单组件 | [文档](https://lin-97.github.io/gi-components/components/form/) |
-| GiGrid | 网格布局 | [文档](https://lin-97.github.io/gi-components/components/grid/) |
-| GiInputGroup | 输入组 | [文档](https://lin-97.github.io/gi-components/components/input-group/) |
-| GiInputSearch | 搜索输入框 | [文档](https://lin-97.github.io/gi-components/components/input-search/) |
-| GiPageLayout | 页面布局 | [文档](https://lin-97.github.io/gi-components/components/page-layout/) |
-| GiRadioGroup | 单选框组 | [文档](https://lin-97.github.io/gi-components/components/radio-group/) |
-| GiSelect | 选择器 | [文档](https://lin-97.github.io/gi-components/components/select/) |
-| GiTable | 表格组件 | [文档](https://lin-97.github.io/gi-components/components/table/) |
-| GiTabs | 标签页 | [文档](https://lin-97.github.io/gi-components/components/tabs/) |
-
-## 💡 使用示例
-
-### GiButton 示例
-
-```vue
-<template>
-  <div>
-    <GiButton type="primary">主要按钮</GiButton>
-    <GiButton>默认按钮</GiButton>
-    <GiButton type="success">成功按钮</GiButton>
-    <GiButton type="warning">警告按钮</GiButton>
-    <GiButton type="danger">危险按钮</GiButton>
-  </div>
-</template>
-```
-
-### GiForm 示例
-
-```vue
-<template>
-  <GiForm
-    :model="form"
-    :rules="rules"
-    ref="formRef"
-    label-width="100px"
-  >
-    <GiFormItem label="用户名" prop="username">
-      <el-input v-model="form.username" placeholder="请输入用户名" />
-    </GiFormItem>
-    <GiFormItem label="密码" prop="password">
-      <el-input v-model="form.password" type="password" placeholder="请输入密码" />
-    </GiFormItem>
-    <GiFormItem>
-      <GiButton type="primary" @click="submitForm">提交</GiButton>
-      <GiButton @click="resetForm">重置</GiButton>
-    </GiFormItem>
-  </GiForm>
-</template>
-
-<script setup lang="ts">
-import { reactive, ref } from 'vue'
-import type { ElForm } from 'element-plus'
-
-const formRef = ref<InstanceType<typeof ElForm>>()
-const form = reactive({
-  username: '',
-  password: ''
-})
-
-const rules = {
-  username: [
-    { required: true, message: '请输入用户名', trigger: 'blur' }
-  ],
-  password: [
-    { required: true, message: '请输入密码', trigger: 'blur' },
-    { min: 6, max: 20, message: '密码长度在 6 到 20 个字符', trigger: 'blur' }
-  ]
-}
-
-const submitForm = () => {
-  formRef.value?.validate((valid) => {
-    if (valid) {
-      console.log('submit!', form)
-    } else {
-      console.log('error submit!')
-      return false
-    }
-  })
-}
-
-const resetForm = () => {
-  formRef.value?.resetFields()
-}
-</script>
 ```
 
 ## 🔨 开发指南
@@ -214,29 +118,6 @@ Gi Components 完全支持 TypeScript，您可以在项目中享受类型提示�
 }
 ```
 
-## 常见问题
-
-### 样式冲突
-
-如果遇到样式冲突问题，可以尝试调整样式引入顺序，或者使用 CSS Modules 等方式进行样式隔离。
-
-### 组件不显示
-
-- 检查是否正确引入了样式文件
-- 确认组件名称是否正确（默认前缀为 `Gi`）
-- 检查 Vue 实例是否正确注册了组件
-
-### 版本兼容性
-
-- Gi Components 1.x 版本适用于 Vue 3.x 和 Element Plus 2.x
-- 如果您使用的是旧版本的 Element Plus，请考虑升级到最新版本
-
 ## 📝 许可证
 
 本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情
-
----
-
-<div align="center">
-  <p>Made with ❤️ by lin</p>
-</div>

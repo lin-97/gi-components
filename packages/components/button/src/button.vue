@@ -36,7 +36,7 @@ const obj: Record<string, { btnProps: Partial<ButtonProps>, btnText: string }> =
 
 const bindProps = computed(() => {
   const btnProps = obj?.[props.type]?.btnProps || { type: props.type }
-  return { ...attrs, ...btnProps } as Omit<ElButtonProps, 'type'>
+  return { ...attrs, ...props, ...btnProps } as Omit<ElButtonProps, 'type'>
 })
 
 const btnText = computed(() => {

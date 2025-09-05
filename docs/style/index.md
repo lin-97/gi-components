@@ -1,3 +1,6 @@
+# 内置CSS类名
+
+```css
 body {
   // 基础边距
   --padding: 14px;
@@ -132,4 +135,4 @@ body {
 .gi-p0 {
   padding: 0;
 }
-
+```

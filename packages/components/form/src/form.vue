@@ -10,11 +10,10 @@
         </GridItem>
 
         <template v-else>
-          <GridItem v-if="!isHide(item)" :key="item.field + index"
-            v-bind="item.gridItemProps || props.gridItemProps"
+          <GridItem v-if="!isHide(item)" :key="item.field + index" v-bind="item.gridItemProps || props.gridItemProps"
             :span="item.span || item.gridItemProps?.span || props?.gridItemProps?.span">
-            <el-form-item :key="item.field + index" :prop="item.field" :label="item.label" :rules="getFormItemRules(item)"
-              v-bind="item.formItemProps">
+            <el-form-item :key="item.field + index" :prop="item.field" :label="item.label"
+              :rules="getFormItemRules(item)" v-bind="item.formItemProps">
               <template v-if="item?.labelRender" #label>
                 <component :is="item.labelRender"></component>
               </template>
@@ -25,7 +24,8 @@
                 <div :class="b('form-item__content')">
                   <div :class="b('form-item__component')">
                     <component :is="CompMap[item.type] || item.type" :disabled="isDisabled(item)" class="w-full"
-                      v-bind="getComponentBindProps(item)" :model-value="props.modelValue[(item.fieldName || item.field)]"
+                      v-bind="getComponentBindProps(item)"
+                      :model-value="props.modelValue[(item.fieldName || item.field)]"
                       @update:model-value="updateModelValue($event, item)">
                       <template v-for="(slotValue, slotKey) in item?.slots || {}" :key="slotKey" #[slotKey]="scope">
                         <template v-if="typeof slotValue === 'string'">
@@ -71,10 +71,11 @@
 </template>
 
 <script lang="tsx" setup>
-import type { ColumnType, FormColumnItem } from './type'
+import type { FormColumnType, FormColumnItem } from './type'
 import { ArrowDown, ArrowUp } from '@element-plus/icons-vue'
 import * as El from 'element-plus'
-import { computed, ref, toRaw, watch } from 'vue'
+import type { FormInstance, FormProps } from 'element-plus'
+import { computed, ref, toRaw, watch, useAttrs } from 'vue'
 import { useBemClass } from '../../../hooks'
 import GiCard from '../../card'
 import CheckboxGroup from '../../checkbox-group'
@@ -101,43 +102,33 @@ const emit = defineEmits<{
   (e: 'reset'): void
 }>()
 
-type ColumnItem = FormColumnItem
 
-interface Props {
+interface Props extends Partial<FormProps> {
   modelValue: any
-  columns?: ColumnItem[]
+  columns?: FormColumnItem[]
   gridProps?: any
   gridItemProps?: any // grid-item默认配置
   search?: boolean
-  rules?: El.FormRules
-  inline?: El.FormProps['inline']
-  labelPosition?: El.FormProps['labelPosition']
-  labelWidth?: El.FormProps['labelWidth']
-  labelSuffix?: El.FormProps['labelSuffix']
-  hideRequiredAsterisk?: El.FormProps['hideRequiredAsterisk']
-  requireAsteriskPosition?: El.FormProps['requireAsteriskPosition']
-  showMessage?: El.FormProps['showMessage']
-  inlineMessage?: El.FormProps['inlineMessage']
-  statusIcon?: El.FormProps['statusIcon']
-  validateOnRuleChange?: El.FormProps['validateOnRuleChange']
-  size?: El.FormProps['size']
-  disabled?: El.FormProps['disabled']
-  scrollToError?: El.FormProps['scrollToError']
-  scrollIntoViewOptions?: El.FormProps['scrollIntoViewOptions']
   searchText?: string
   hideFoldBtn?: boolean
   defaultCollapsed?: boolean | undefined
 }
 
+const attrs = useAttrs()
 const { b } = useBemClass()
 const collapsed = ref(props?.defaultCollapsed ?? props.search)
 
 const formProps = computed(() => {
   return {
+    ...attrs,
     ...props,
     columns: undefined,
     gridProps: undefined,
-    gridItemProps: undefined
+    gridItemProps: undefined,
+    search: undefined,
+    searchText: undefined,
+    hideFoldBtn: undefined,
+    defaultCollapsed: undefined
   }
 })
 
@@ -149,7 +140,7 @@ const getClass = computed(() => {
   return arr.join(' ')
 })
 
-const CompMap: Record<Exclude<ColumnType, 'slot'>, any> = {
+const CompMap: Record<Exclude<FormColumnType, 'slot'>, any> = {
   'input': El.ElInput,
   'textarea': El.ElInput,
   'input-number': El.ElInputNumber,
@@ -176,7 +167,7 @@ const CompMap: Record<Exclude<ColumnType, 'slot'>, any> = {
   'title': El.ElAlert
 }
 
-const formRef = ref()
+const formRef = ref<FormInstance>()
 
 const clearable = false
 /** 组件静态配置 */
@@ -207,7 +198,7 @@ const STATIC_PROPS = new Map([
 ])
 
 /** 获取占位文本 */
-const getPlaceholder = (item: ColumnItem) => {
+const getPlaceholder = (item: FormColumnItem) => {
   if (!item.type) return undefined
   if (['input', 'input-number', 'input-tag'].includes(item.type)) {
     return `请输入${item.label}`
@@ -228,7 +219,7 @@ const getPlaceholder = (item: ColumnItem) => {
 }
 
 // 组件的默认props配置
-function getComponentBindProps(item: ColumnItem) {
+function getComponentBindProps(item: FormColumnItem) {
   // 获取默认配置
   const defaultProps: any = STATIC_PROPS.get(item.type) || {}
   defaultProps.placeholder = getPlaceholder(item)
@@ -240,7 +231,7 @@ function getComponentBindProps(item: ColumnItem) {
 }
 
 /** 表单项校验规则 */
-function getFormItemRules(item: ColumnItem) {
+function getFormItemRules(item: FormColumnItem) {
   if (item.required) {
     return [{ required: true, message: `${item.label}为必填项` }, ...(Array.isArray(item.rules) ? item.rules : [])]
   }
@@ -248,7 +239,7 @@ function getFormItemRules(item: ColumnItem) {
 }
 
 /** 隐藏表单项 */
-function isHide(item: ColumnItem) {
+function isHide(item: FormColumnItem) {
   if (typeof item.hide === 'boolean') return item.hide
   if (typeof item.hide === 'function') {
     return item.hide(props.modelValue)
@@ -257,13 +248,13 @@ function isHide(item: ColumnItem) {
 }
 
 /** 禁用表单项 */
-function isDisabled(item: ColumnItem) {
+function isDisabled(item: FormColumnItem) {
   if (item?.props?.disabled !== undefined) return item?.props?.disabled
   return false
 }
 
 /** 表单数据更新  */
-function updateModelValue(value: any, item: ColumnItem) {
+function updateModelValue(value: any, item: FormColumnItem) {
   emit('update:modelValue', Object.assign(props.modelValue, { [item.field]: value }))
 }
 

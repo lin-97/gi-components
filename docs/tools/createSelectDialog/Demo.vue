@@ -1,18 +1,31 @@
 <template>
   <div>
-    <el-button type="primary" @click="select">选择用户</el-button>
+    <gi-input-search v-model="form.userName" @search="search" @clear="clear"></gi-input-search>
   </div>
 </template>
 
 <script setup lang="ts">
+import { reactive } from 'vue'
 import { ElMessage } from 'element-plus'
 import { selectUserListDialog } from './utils'
 
-function select() {
+const form = reactive({
+  userIds: '',
+  userName: ''
+})
+
+function search() {
   selectUserListDialog({
-    onOk: () => {
+    onOk: (data) => {
       ElMessage.success('点击了确定按钮')
+      form.userIds = data.map(i=> i.id).join(',')
+      form.userName = data.map(i=> i.name).join(',')
     }
   })
+}
+
+function clear() {
+  form.userIds = ''
+  form.userName = ''
 }
 </script>

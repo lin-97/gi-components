@@ -86,8 +86,9 @@ const getHeaderClass = computed(() => {
   justify-content: space-between;
   align-items: center;
   color: var(--el-text-color-primary);
-  font-size: 16px;
   box-sizing: border-box;
+  position: relative;
+  flex-shrink: 0;
 
   &__title {
     position: relative;
@@ -97,6 +98,7 @@ const getHeaderClass = computed(() => {
     text-overflow: ellipsis;
     box-sizing: border-box;
     font-weight: 500;
+    font-size: 16px;
   }
 
   &__extra {
@@ -109,12 +111,10 @@ const getHeaderClass = computed(() => {
 }
 
 .#{a.$prefix}-card-body {
-  flex: 1;
   padding: var(--card-padding-x);
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
   overflow: hidden;
+  height: 100%;
 }
 
 .#{a.$prefix}-card-footer {
@@ -124,11 +124,23 @@ const getHeaderClass = computed(() => {
   box-sizing: border-box;
 }
 
+.#{a.$prefix}-card--full {
+  .#{a.$prefix}-card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .#{a.$prefix}-card--small {
   .#{a.$prefix}-card-header {
-    font-size: 14px;
+
     height: 36px;
     padding: 0 var(--card-padding-x-small);
+
+    &__title {
+      font-size: 14px;
+    }
   }
 
   .#{a.$prefix}-card-body {

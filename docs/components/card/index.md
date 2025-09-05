@@ -5,6 +5,7 @@ import Demo from './Demo.vue'
 import DemoInnerClass from './DemoInnerClass.vue'
 import DemoSize from './DemoSize.vue'
 import DemoFooter from './DemoFooter.vue'
+import DemoScroll from './DemoScroll.vue'
 </script>
 
 ## 基础用法
@@ -38,6 +39,14 @@ import DemoFooter from './DemoFooter.vue'
 
 ::: details 查看代码
 <<< ./DemoSize.vue
+:::
+
+## 内容滚动
+
+<DemoScroll></DemoScroll>
+
+::: details 查看代码
+<<< ./DemoScroll.vue
 :::
 
 ## API

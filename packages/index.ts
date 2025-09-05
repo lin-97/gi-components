@@ -6,7 +6,8 @@ import CheckboxGroup from './components/checkbox-group'
 import Dialog from './components/dialog'
 import EditTable from './components/edit-table'
 import Form from './components/form'
-import { Grid, GridItem } from './components/grid'
+import Grid from './components/grid/src/grid.vue'
+import GridItem from './components/grid/src/grid-item.vue'
 import InputGroup from './components/input-group'
 import InputSearch from './components/input-search'
 import PageLayout from './components/page-layout'
@@ -18,6 +19,8 @@ import './styles/index.scss'
 
 export * from './components/dialog'
 export * from './components/form'
+export * from './hooks'
+export * from './utils'
 
 const components = {
   Button,
@@ -37,6 +40,23 @@ const components = {
   Table
 }
 
+// 导出Gi前缀的组件
+export const GiButton = Button
+export const GiCard = Card
+export const GiSelect = Select
+export const GiRadioGroup = RadioGroup
+export const GiCheckboxGroup = CheckboxGroup
+export const GiTabs = Tabs
+export const GiInputGroup = InputGroup
+export const GiInputSearch = InputSearch
+export const GiGrid = Grid
+export const GiGridItem = GridItem
+export const GiForm = Form
+export const GiPageLayout = PageLayout
+export const GiDialog = Dialog
+export const GiEditTable = EditTable
+export const GiTable = Table
+
 function capitalizeWord(word: string) {
   // 检查输入是否为字符串且不为空
   if (typeof word !== 'string' || word.length === 0) {
@@ -46,7 +66,7 @@ function capitalizeWord(word: string) {
   return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
 }
 
-const obj = {
+export default {
   install(app: App, options?: { prefix?: string }) {
     const prefix = options?.prefix || 'Gi'
     Object.entries(components).forEach(([name, component]) => {
@@ -56,5 +76,3 @@ const obj = {
     app.config.globalProperties.$config = options
   }
 }
-
-export default obj

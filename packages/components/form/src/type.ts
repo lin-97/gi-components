@@ -1,7 +1,8 @@
 import type * as El from 'element-plus'
 import type { VNode } from 'vue'
+import type { InputSearchInstance } from '../../input-search'
 
-export type ColumnType =
+export type FormColumnType =
   | 'input'
   | 'textarea'
   | 'input-number'
@@ -28,7 +29,7 @@ export type ColumnType =
   | 'title'
   | 'slot'
 
-export type ColumnProps = El.InputProps &
+export type FormColumnProps = El.InputProps &
   El.InputNumberProps &
   El.InputTagProps &
   El.SelectProps &
@@ -48,12 +49,12 @@ export type ColumnProps = El.InputProps &
   El.ColorPickerProps &
   El.TransferProps &
   El.AutocompleteProps &
-  El.UploadProps
+  El.UploadProps &
+  InputSearchInstance['$props']
 
-export type ColumnItemHide<F> = boolean | ((form: F) => boolean)
-export type ColumnItemShow<F> = boolean | ((form: F) => boolean)
+export type FormColumnItemHide<F> = boolean | ((form: F) => boolean)
 
-export type ColumnSlots = El.InputInstance['$slots'] &
+export type FormColumnSlots = El.InputInstance['$slots'] &
   El.InputNumberInstance['$slots'] &
   El.InputTagInstance['$slots'] &
   El.AutocompleteInstance['$slots'] &
@@ -61,21 +62,21 @@ export type ColumnSlots = El.InputInstance['$slots'] &
   El.DatePickerInstance['$slots']
 
 export interface FormColumnItem<F = any> {
-  type: ColumnType
+  type: FormColumnType
   label?: string
   labelRender?: () => VNode;
   field: string
   fieldName?: string
   span?: number
-  props?: ColumnProps & { options?: El.RadioProps & El.CheckboxProps & El.SelectProps }
+  props?: FormColumnProps & { options?: El.RadioProps & El.CheckboxProps & El.SelectProps }
   formItemProps?: El.FormItemProps
   gridItemProps?: any
   required?: boolean
   rules?: El.FormItemRule[]
-  hide?: ColumnItemHide<F> // 是否隐藏
+  hide?: FormColumnItemHide<F> // 是否隐藏
   tip?: string
   dictCode?: string // 字典编码
   slotName?: string
-  slots?: ColumnSlots
-  extra?: string | VNode // 右侧额外内容
+  slots?: FormColumnSlots
+  extra?: string | (() => VNode) // 右侧额外内容
 }
