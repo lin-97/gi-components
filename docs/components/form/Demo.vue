@@ -96,7 +96,7 @@ const columns = computed(() => {
       type: 'input-number',
       label: '数量',
       field: 'num',
-      extra: () => h(ElTag, { type: 'danger' }, '个')
+      extra: () => h(ElTag, { type: 'danger' }, () => '个')
     },
     {
       type: 'switch',

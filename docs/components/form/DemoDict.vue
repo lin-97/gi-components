@@ -14,7 +14,7 @@ const GiFormRef = ref<FormInstance | null>()
 const form = reactive({
   status: '1'
 })
-const { dict } = useDictStore(['SEX', 'STATUS', 'HOBBY'])
+const { dict } = useDictStore(['HOBBY', 'STATUS'])
 
 const columns = computed(() => {
   return [
@@ -22,24 +22,20 @@ const columns = computed(() => {
       type: 'select',
       label: '性别',
       field: 'sex',
-      props: {
-        options: dict.SEX
-      }
+      dictCode: 'SEX' // 需要配置dictRequest
     },
     {
       type: 'radio-group',
       label: '状态',
       field: 'status',
-      props: {
-        options: dict.STATUS
-      }
+      dictCode: 'STATUS' // 需要配置dictRequest
     },
     {
       type: 'checkbox-group',
       label: '兴趣',
       field: 'hobby',
       props: {
-        options: dict.HOBBY
+        options: dict.HOBBY // 通过hooks获取字典数据
       }
     }
   ] as FormColumnItem[]

@@ -6,6 +6,7 @@ import 'element-plus/dist/index.css'
 import 'element-plus/theme-chalk/dark/css-vars.css'
 import '../../../packages/styles/index.scss'
 import '../../public/css/index.css'
+import { getDictData } from '../../_utils/dictRequest'
 
 export default {
   ...DefaultTheme,
@@ -16,6 +17,8 @@ export default {
     app.use(ElementPlus, {
       locale // 语言设置
     })
-    app.use(GiComponents) // 全局注册组件库的ap
+    app.use(GiComponents, {
+      dictRequest: (code: string) => getDictData(code)
+    })
   }
 }

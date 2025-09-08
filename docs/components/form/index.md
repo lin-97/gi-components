@@ -3,7 +3,7 @@
 <script setup>
 import Demo from './Demo.vue'
 import DemoSearch from './DemoSearch.vue'
-import DemoUseDict from './DemoUseDict.vue'
+import DemoDict from './DemoDict.vue'
 </script>
 
 ## 基础用法
@@ -22,9 +22,9 @@ import DemoUseDict from './DemoUseDict.vue'
 
 ## 结合字典
 
-<DemoUseDict></DemoUseDict>
+<DemoDict></DemoDict>
 ::: details 查看代码
-<<<./DemoUseDict.vue
+<<<./DemoDict.vue
 :::
 
 ## API 说明

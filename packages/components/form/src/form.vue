@@ -75,7 +75,7 @@ import type { FormColumnType, FormColumnItem } from './type'
 import { ArrowDown, ArrowUp } from '@element-plus/icons-vue'
 import * as El from 'element-plus'
 import type { FormInstance } from 'element-plus'
-import { computed, ref, toRaw, watch, useAttrs } from 'vue'
+import { computed, ref, toRaw, watch, useAttrs, getCurrentInstance, onMounted } from 'vue'
 import { useBemClass } from '../../../hooks'
 import GiCard from '../../card'
 import CheckboxGroup from '../../checkbox-group'
@@ -89,8 +89,7 @@ const props = withDefaults(defineProps<FormProps>(), {
   columns: () => [],
   labelWidth: 'auto',
   scrollToError: true,
-  // xs, sm, md, lg, xl, xxl
-  gridItemProps: { span: { xs: 24, sm: 24, md: 12 } },
+  gridItemProps: () => ({ span: { xs: 24, sm: 24, md: 12 } }), // xs, sm, md, lg, xl, xxl
   search: false,
   searchText: '查询',
   hideFoldBtn: false,
@@ -107,6 +106,90 @@ const emit = defineEmits<{
 const attrs = useAttrs()
 const { b } = useBemClass()
 const collapsed = ref(props?.defaultCollapsed ?? props.search)
+const instance = getCurrentInstance()
+
+const globalConfig = instance?.appContext.config.globalProperties.$config
+const clearable = globalConfig?.clearable ?? false
+// 字典数据存储
+const dictData = ref<Record<string, any[]>>({})
+
+/** 组件静态配置 */
+const STATIC_PROPS = new Map([
+  ['input', { clearable, maxlength: 20 }],
+  ['textarea', { clearable, type: 'textarea', maxlength: 200, showWordLimit: true }],
+  ['input-number', {}],
+  ['input-tag', { clearable }],
+  ['select', { clearable }],
+  ['select-v2', { clearable }],
+  ['tree-select', { clearable }],
+  ['cascader', { clearable }],
+  ['slider', {}],
+  ['switch', {}],
+  ['rate', {}],
+  ['checkbox-group', {}],
+  ['checkbox', {}],
+  ['radio-group', {}],
+  ['radio', {}],
+  ['date-picker', { clearable }],
+  ['time-picker', { clearable }],
+  ['time-select', { clearable }],
+  ['color-picker', {}],
+  ['transfer', {}],
+  ['autocomplete', {}],
+  ['upload', {}],
+  ['title', {}]
+])
+
+// 获取字典数据
+const loadDictData = async () => {
+  const dictCodes: string[] = []
+  // 收集所有需要的字典编码
+  props.columns?.forEach(item => {
+    if (item.dictCode) {
+      dictCodes.push(item.dictCode)
+    }
+  })
+  if (!dictCodes.length) return
+  if (!globalConfig?.dictRequest) {
+    return El.ElMessage.error('请配置全局字典请求方法dictRequest')
+  }
+  try {
+    // 使用Promise.all并行处理所有字典请求
+    const dictResponses = await Promise.all(
+      dictCodes.map(code => 
+        globalConfig.dictRequest(code).then((response: any) => ({ code, response }))
+      )
+    )
+    // 处理所有响应结果
+    dictResponses.forEach(({ code, response }) => {
+      dictData.value[code] = response
+    })
+  } catch (error) {
+    console.error('获取字典数据失败:', error)
+    El.ElMessage.error('获取字典数据失败')
+  }
+}
+
+// 组件挂载时获取字典数据
+onMounted(() => {
+  loadDictData()
+})
+
+// 组件的默认props配置
+function getComponentBindProps(item: FormColumnItem) {
+  // 获取默认配置
+  const defaultProps: any = STATIC_PROPS.get(item.type) || {}
+  defaultProps.placeholder = getPlaceholder(item)
+  if (item.type === 'date-picker') {
+    defaultProps.valueFormat = item?.props?.type === 'datetime' ? 'YYYY-MM-DD HH:mm:ss' : 'YYYY-MM-DD'
+  }
+  // 如果配置了dictCode且存在对应的字典数据，设置options
+  if (item.dictCode && dictData.value[item.dictCode]) {
+    defaultProps.options = dictData.value[item.dictCode]
+  }
+  // 合并默认配置和自定义配置
+  return { ...defaultProps, ...item.props }
+}
 
 const formProps = computed(() => {
   return {
@@ -159,34 +242,6 @@ const CompMap: Record<Exclude<FormColumnType, 'slot'>, any> = {
 
 const formRef = ref<FormInstance>()
 
-const clearable = false
-/** 组件静态配置 */
-const STATIC_PROPS = new Map([
-  ['input', { clearable, maxlength: 20 }],
-  ['textarea', { clearable, type: 'textarea', maxlength: 200, showWordLimit: true }],
-  ['input-number', {}],
-  ['input-tag', { clearable }],
-  ['select', { clearable }],
-  ['select-v2', { clearable }],
-  ['tree-select', { clearable }],
-  ['cascader', { clearable }],
-  ['slider', {}],
-  ['switch', {}],
-  ['rate', {}],
-  ['checkbox-group', {}],
-  ['checkbox', {}],
-  ['radio-group', {}],
-  ['radio', {}],
-  ['date-picker', { clearable }],
-  ['time-picker', { clearable }],
-  ['time-select', { clearable }],
-  ['color-picker', {}],
-  ['transfer', {}],
-  ['autocomplete', {}],
-  ['upload', {}],
-  ['title', {}]
-])
-
 /** 获取占位文本 */
 const getPlaceholder = (item: FormColumnItem) => {
   if (!item.type) return undefined
@@ -206,18 +261,6 @@ const getPlaceholder = (item: FormColumnItem) => {
     return `请选择时间`
   }
   return undefined
-}
-
-// 组件的默认props配置
-function getComponentBindProps(item: FormColumnItem) {
-  // 获取默认配置
-  const defaultProps: any = STATIC_PROPS.get(item.type) || {}
-  defaultProps.placeholder = getPlaceholder(item)
-  if (item.type === 'date-picker') {
-    defaultProps.valueFormat = item?.props?.type === 'datetime' ? 'YYYY-MM-DD HH:mm:ss' : 'YYYY-MM-DD'
-  }
-  // 合并默认配置和自定义配置
-  return { ...defaultProps, ...item.props }
 }
 
 /** 表单项校验规则 */

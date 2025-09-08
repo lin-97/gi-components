@@ -68,8 +68,15 @@ function capitalizeWord(word: string) {
   return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
 }
 
+// 全局默认配置
+export interface Config {
+  prefix?: string // 组件前缀
+  clearable?: boolean // 输入框是否可清除
+  dictRequest?: () => Promise<any> // 字典请求方法
+}
+
 export default {
-  install(app: App, options?: { prefix?: string }) {
+  install(app: App, options?: Config) {
     const prefix = options?.prefix || 'Gi'
     Object.entries(components).forEach(([name, component]) => {
       app.component(`${capitalizeWord(prefix)}${name}`, component)
