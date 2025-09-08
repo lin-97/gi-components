@@ -27,9 +27,6 @@ import type { EditTableProps } from './type.ts'
 import * as El from 'element-plus'
 import { computed, h, reactive, ref, toRaw, useAttrs, watch } from 'vue'
 import { useBemClass } from '../../../hooks'
-import CheckboxGroup from '../../checkbox-group'
-import RadioGroup from '../../radio-group'
-import Select from '../../select'
 
 const props = withDefaults(defineProps<EditTableProps>(), {
   rowKey: 'id',
@@ -45,16 +42,16 @@ const COMP_MAP: Record<Exclude<EditTableColumnItemType, 'slot'>, any> = {
   'textarea': El.ElInput,
   'input-number': El.ElInputNumber,
   'input-tag': El.ElInputTag,
-  'select': Select,
+  'select': El.ElSelect,
   'select-v2': El.ElSelectV2,
   'tree-select': El.ElTreeSelect,
   'cascader': El.ElCascader,
   'slider': El.ElSlider,
   'switch': El.ElSwitch,
   'rate': El.ElRate,
-  'checkbox-group': CheckboxGroup,
+  'checkbox-group': El.ElCheckboxGroup,
   'checkbox': El.ElCheckbox,
-  'radio-group': RadioGroup,
+  'radio-group': El.ElRadioGroup,
   'radio': El.ElRadio,
   'date-picker': El.ElDatePicker,
   'time-picker': El.ElTimePicker,

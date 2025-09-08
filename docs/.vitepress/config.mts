@@ -57,9 +57,6 @@ export default defineConfig({
           text: '表单组件',
           items: [
             { text: 'Form 表单', link: '/components/form' },
-            { text: 'RadioGroup 单选框组', link: '/components/radio-group' },
-            { text: 'CheckboxGroup 多选框组', link: '/components/checkbox-group' },
-            { text: 'Select 选择器', link: '/components/select' },
           ]
         },
         {

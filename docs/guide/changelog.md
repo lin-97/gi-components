@@ -1,5 +1,12 @@
 # 更新日志
 
+## v0.0.8
+
+**发布日期：** 2025-09-08
+
+- **调整**
+  - 请升级Element Plus 2.11.2版本，由于2.11.2版本的ElCheckboxGroup、ElRadioGroup、ElSelect已经支持options属性，所以删除了GiCheckboxGroup、GiRadioGroup、GiSelect
+
 ## v0.0.7
 
 **发布日期：** 2025-09-08

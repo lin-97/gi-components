@@ -78,10 +78,7 @@ import type { FormInstance } from 'element-plus'
 import { computed, ref, toRaw, watch, useAttrs, getCurrentInstance, onMounted } from 'vue'
 import { useBemClass } from '../../../hooks'
 import GiCard from '../../card'
-import CheckboxGroup from '../../checkbox-group'
 import { Grid, GridItem } from '../../grid'
-import RadioGroup from '../../radio-group'
-import Select from '../../select'
 import InputSearch from '../../input-search'
 import type { FormProps } from './type'
 
@@ -219,16 +216,16 @@ const CompMap: Record<Exclude<FormColumnType, 'slot'>, any> = {
   'input-number': El.ElInputNumber,
   'input-tag': El.ElInputTag,
   'input-search': InputSearch,
-  'select': Select,
+  'select': El.ElSelect,
   'select-v2': El.ElSelectV2,
   'tree-select': El.ElTreeSelect,
   'cascader': El.ElCascader,
   'slider': El.ElSlider,
   'switch': El.ElSwitch,
   'rate': El.ElRate,
-  'checkbox-group': CheckboxGroup,
+  'checkbox-group': El.ElCheckboxGroup,
   'checkbox': El.ElCheckbox,
-  'radio-group': RadioGroup,
+  'radio-group': El.ElRadioGroup,
   'radio': El.ElRadio,
   'date-picker': El.ElDatePicker,
   'time-picker': El.ElTimePicker,
