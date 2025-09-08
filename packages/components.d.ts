@@ -10,7 +10,6 @@ declare module 'vue' {
   export interface GlobalComponents {
     GiButton: typeof import('./components/button/src/button.vue')['default']
     GiCard: typeof import('./components/card/src/card.vue')['default']
-    GiCheckboxGroup: typeof import('./components/checkbox-group/src/checkbox-group.vue')['default']
     GiDialog: typeof import('./components/dialog/src/dialog.vue')['default']
     GiEditTable: typeof import('./components/edit-table/src/edit-table.vue')['default']
     GiForm: typeof import('./components/form/src/form.vue')['default']
@@ -19,8 +18,6 @@ declare module 'vue' {
     GiInputGroup: typeof import('./components/input-group/src/input-group.vue')['default']
     GiInputSearch: typeof import('./components/input-search/src/input-search.vue')['default']
     GiPageLayout: typeof import('./components/page-layout/src/page-layout.vue')['default']
-    GiRadioGroup: typeof import('./components/radio-group/src/radio-group.vue')['default']
-    GiSelect: typeof import('./components/select/src/select.vue')['default']
     GiSplitButton: typeof import('./components/page-layout/src/split-button.vue')['default']
     GiTable: typeof import('./components/table/src/table.vue')['default']
     GiTableColumn: typeof import('./components/table/src/TableColumn.vue')['default']
