@@ -35,20 +35,20 @@ pnpm install @gi-components/el
 ### 全局注册
 
 ```javascript
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from 'vue';
+import App from './App.vue';
 
 // 引入样式
-import 'element-plus/dist/index.css'
-import GiComponents from '@gi-components/el'
-import '@gi-components/el/dist/el.css'
+import 'element-plus/dist/index.css';
+import GiComponents from '@gi-components/el';
+import '@gi-components/el/dist/el.css';
 
-const app = createApp(App)
+const app = createApp(App);
 
 // 注册组件库
-app.use(GiComponents)
+app.use(GiComponents);
 
-app.mount('#app')
+app.mount('#app');
 ```
 
 ## 🔨 开发指南
@@ -56,14 +56,15 @@ app.mount('#app')
 ### 项目结构
 
 gi-components/
-├── docs/          # 文档站点
-│   └── guide/     # 使用指南
-├── packages/      # 组件源码
-├── dist/          # 构建输出目录
+├── docs/ # 文档站点
+│ └── guide/ # 使用指南
+├── packages/ # 组件源码
+├── dist/ # 构建输出目录
 ├── vite.config.ts # Vite配置
-├── tsconfig.json  # TypeScript配置
-└── package.json   # 项目配置
-```
+├── tsconfig.json # TypeScript配置
+└── package.json # 项目配置
+
+````
 
 ### 开发步骤
 
@@ -71,19 +72,22 @@ gi-components/
    ```bash
    git clone https://github.com/lin-97/gi-components.git
    cd gi-components
-   ```
+````
 
 2. 安装依赖
+
    ```bash
    pnpm install
    ```
 
 3. 启动开发服务器
+
    ```bash
    pnpm dev
    ```
 
 4. 构建文档
+
    ```bash
    pnpm docs:build
    ```
