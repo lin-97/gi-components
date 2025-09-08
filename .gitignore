@@ -1,35 +1,98 @@
-# Node.js dependencies
+# Dependencies
 node_modules/
-/dist/
+.pnpm-store/
+.pnpm-debug.log*
 
-# VitePress cache and build outputs
+# Build outputs
+dist/
+build/
+lib/
+es/
+*.tsbuildinfo
+
+# VitePress
 .vitepress/cache/
-docs/.vitepress/cache/
-# .vitepress/dist/
+.vitepress/dist/
+packages/docs/.vitepress/cache/
+packages/docs/.vitepress/dist/
 
-# IDE/Editor configurations
+# Turbo
+.turbo/
+
+# Coverage
+coverage/
+*.lcov
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# IDE/Editor
+.vscode/
 .idea/
-# .vscode/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
 
-# Environment variables
-.env
-.env.local
-.env.development
-.env.production
-
-# Logs and databases
+# Logs
 *.log
-*.sqlite
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
 
 # OS generated files
-Thumbs.db
 .DS_Store
-Icon
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Icon?
 
-# TypeScript compiler output
-*.tsbuildinfo
+# Temporary folders
+tmp/
+temp/
+
+# Package manager lockfiles (keep pnpm-lock.yaml)
+package-lock.json
+yarn.lock
+bun.lockb
+
+# Auto-generated files
+components.d.ts
+auto-imports.d.ts
+*.d.ts.map
+
+# Cache directories
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+.output/
+.vite-inspect/
+
+# Storybook
+storybook-static/
+
+# Changeset
+.changeset/
+
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
