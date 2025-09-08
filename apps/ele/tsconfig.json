@@ -1,19 +1,19 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "jsx": "preserve",
     "lib": ["ESNext", "DOM"],
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "types": ["vite/client", "element-plus/global"],
     "allowImportingTsExtensions": true,
-    "strict": true,
     "declaration": true,
     "declarationMap": true,
     "noEmit": false,
     "outDir": "dist",
-    "allowSyntheticDefaultImports": true,
+    "types": ["vite/client", "element-plus/global"],
+    "strict": true,
+    "jsx": "preserve",
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
   },
