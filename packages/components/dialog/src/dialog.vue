@@ -1,5 +1,6 @@
 <template>
-  <el-dialog v-bind="dialogProps" v-model="visible" :class="b('dialog')" :title="props.title" :fullscreen="fullscreen">
+  <el-dialog v-bind="dialogProps" v-model="visible" :class="getClass" :title="props.title"
+    :style="{ maxWidth: !props.fullscreen ? '480px' : '100%', ...props.style }">
     <slot>
       <template v-if="typeof props.content === 'string'">
         <p>{{ props.content }}</p>
@@ -42,7 +43,10 @@ const props = withDefaults(defineProps<DialogProps>(), {
   showClose: true,
   footer: true,
   okText: '确认',
-  cancelText: '取消'
+  cancelText: '取消',
+  width: 'calc(100% - 20px)',
+  alignCenter: true,
+  appendToBody: true,
 })
 
 defineSlots<{
@@ -52,6 +56,14 @@ defineSlots<{
 }>()
 
 const { b } = useBemClass()
+
+const getClass = computed(() => {
+  const arr: string[] = [b('dialog')]
+  if(props.simple) {
+    arr.push(b('dialog--simple'))
+  }
+  return arr.join(' ')
+})
 
 const dialogProps = computed(() => {
   return {
@@ -64,12 +76,12 @@ const dialogProps = computed(() => {
     cancelButtonProps: undefined,
     onOk: undefined,
     onBeforeOk: undefined,
-    onCancel: undefined
+    onCancel: undefined,
+    simple: undefined,
   }
 })
 
 const okLoading = ref(false)
-const fullscreen = ref(false)
 
 const handleCancel = () => {
   props.onCancel?.()

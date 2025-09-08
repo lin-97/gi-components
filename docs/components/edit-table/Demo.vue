@@ -1,13 +1,12 @@
 <template>
-  <gi-card title="基本使用">
+  <div>
     <el-row justify="end" style="margin-bottom: 8px">
       <el-space>
         <el-button type="success" @click="disabled = !disabled">禁用</el-button>
         <el-button type="primary" @click="onAddRow">新增</el-button>
       </el-space>
     </el-row>
-    <gi-edit-table ref="EditTableRef" :columns="columns" :data="data" :max-height="400" :disabled="disabled"
-      :cell-disabled="cellDisabled">
+    <gi-edit-table ref="EditTableRef" :columns="columns" :data="data" :max-height="400" :disabled="disabled">
       <template #action="{ $index }">
         <el-row justify="center" style="width: 100%">
           <el-button size="small" type="danger" @click="onDelete($index)">删除</el-button>
@@ -18,7 +17,7 @@
       <el-button type="primary" @click="submit">校验并提交</el-button>
     </el-row>
     <pre>{{ data }}</pre>
-  </gi-card>
+  </div>
 </template>
 
 <script lang="ts" setup>

@@ -10,6 +10,5 @@ export interface TabsProps extends Partial<Pick<ElTabsProps, 'type' | 'stretch'>
   type?: ElTabsProps['type']
   options?: TabsOptionItem[]
   size?: 'small' | 'medium'
-  onTabClick?: TabsEmits['tabClick']
-  onTabChange?: TabsEmits['tabChange']
+  inner?: boolean // 内嵌模式
 }

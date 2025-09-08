@@ -1,5 +1,5 @@
 <template>
-  <gi-tabs v-model="activeName" :options="options" type="card" style="padding: 0" @tab-change="handleTabChange">
+  <gi-tabs v-model="activeName" :options="options" type="card" inner @tab-change="handleTabChange">
     <template #extra>
       <el-space>
         <el-button type="primary">保存</el-button>
@@ -25,7 +25,7 @@ const options = [
   { label: '草稿', name: 'd' }
 ]
 
-const countObj = ref({ a: 5, b: 10, c: 15, d: 6 })
+const countObj = ref<Record<string, number>>({ a: 5, b: 10, c: 15, d: 6 })
 
 const handleTabChange = (name: string) => {
   ElMessage.info(`当前选中的标签页的值是：${name}`)

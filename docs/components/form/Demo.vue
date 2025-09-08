@@ -169,7 +169,7 @@ const columns = computed(() => {
     },
     {
       type: 'input-search',
-      label: '搜索输入',
+      label: '选择输入',
       field: 'inputSearchId',
       fieldName: 'inputSearchName',
       props: {

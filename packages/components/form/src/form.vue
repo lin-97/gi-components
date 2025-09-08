@@ -74,7 +74,7 @@
 import type { FormColumnType, FormColumnItem } from './type'
 import { ArrowDown, ArrowUp } from '@element-plus/icons-vue'
 import * as El from 'element-plus'
-import type { FormInstance, FormProps } from 'element-plus'
+import type { FormInstance } from 'element-plus'
 import { computed, ref, toRaw, watch, useAttrs } from 'vue'
 import { useBemClass } from '../../../hooks'
 import GiCard from '../../card'
@@ -83,17 +83,19 @@ import { Grid, GridItem } from '../../grid'
 import RadioGroup from '../../radio-group'
 import Select from '../../select'
 import InputSearch from '../../input-search'
+import type { FormProps } from './type'
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<FormProps>(), {
   columns: () => [],
-  labelWidth: '60px',
+  labelWidth: 'auto',
   scrollToError: true,
   // xs, sm, md, lg, xl, xxl
   gridItemProps: { span: { xs: 24, sm: 24, md: 12 } },
   search: false,
   searchText: '查询',
   hideFoldBtn: false,
-  defaultCollapsed: undefined
+  defaultCollapsed: undefined,
+  fc: () => ({})
 })
 
 const emit = defineEmits<{
@@ -101,18 +103,6 @@ const emit = defineEmits<{
   (e: 'search'): void
   (e: 'reset'): void
 }>()
-
-
-interface Props extends Partial<FormProps> {
-  modelValue: any
-  columns?: FormColumnItem[]
-  gridProps?: any
-  gridItemProps?: any // grid-item默认配置
-  search?: boolean
-  searchText?: string
-  hideFoldBtn?: boolean
-  defaultCollapsed?: boolean | undefined
-}
 
 const attrs = useAttrs()
 const { b } = useBemClass()
@@ -206,7 +196,7 @@ const getPlaceholder = (item: FormColumnItem) => {
   if (['textarea'].includes(item.type)) {
     return `请填写${item.label}`
   }
-  if (['select', 'select-v2', 'tree-select', 'cascader', 'time-select'].includes(item.type)) {
+  if (['select', 'select-v2', 'tree-select', 'cascader', 'time-select', 'input-search'].includes(item.type)) {
     return `请选择${item.label}`
   }
   if (['date-picker'].includes(item.type)) {
@@ -235,6 +225,12 @@ function getFormItemRules(item: FormColumnItem) {
   if (item.required) {
     return [{ required: true, message: `${item.label}为必填项` }, ...(Array.isArray(item.rules) ? item.rules : [])]
   }
+  if (props.fc?.[item.field]?.required) {
+    return [
+      { required: props.fc?.[item.field]?.required, message: `${item.label}为必填项` },
+      ...(Array.isArray(item.rules) ? item.rules : [])
+    ];
+  }
   return item.rules
 }
 
@@ -244,12 +240,14 @@ function isHide(item: FormColumnItem) {
   if (typeof item.hide === 'function') {
     return item.hide(props.modelValue)
   }
+  if (props.fc?.[item.field]?.hidden) return true;
   if (item.hide === undefined) return false
 }
 
 /** 禁用表单项 */
 function isDisabled(item: FormColumnItem) {
   if (item?.props?.disabled !== undefined) return item?.props?.disabled
+  if (props.fc?.[item.field]?.edit === false) return true;
   return false
 }
 

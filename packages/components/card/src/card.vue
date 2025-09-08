@@ -29,7 +29,8 @@ const props = withDefaults(defineProps<CardProps>(), {
   bordered: false,
   headerBordered: true,
   headerStyle: () => ({}),
-  bodyStyle: () => ({})
+  bodyStyle: () => ({}),
+  inner: false,
 })
 
 defineSlots<{
@@ -46,6 +47,9 @@ const getCardClass = computed(() => {
   const arr: string[] = [b('card')]
   if (props.bordered) {
     arr.push(b('card--bordered'))
+  }
+  if (props.inner) {
+    arr.push(b('card--inner'))
   }
   arr.push(b(`card--${props.size}`))
   return arr.join(' ')
@@ -129,6 +133,15 @@ const getHeaderClass = computed(() => {
     flex: 1;
     display: flex;
     flex-direction: column;
+  }
+}
+
+.#{a.$prefix}-card--inner {
+  .#{a.$prefix}-card-header,
+  .#{a.$prefix}-card-body,
+  .#{a.$prefix}-card-footer {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 

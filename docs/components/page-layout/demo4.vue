@@ -1,10 +1,10 @@
 <template>
   <gi-page-layout bordered :size="160">
-    <template #header>
-      <Search></Search>
-    </template>
     <template #left>
       <Tree></Tree>
+    </template>
+    <template #header>
+      <Search></Search>
     </template>
     <Table></Table>
   </gi-page-layout>

@@ -47,6 +47,7 @@ import DemoSize from './DemoSize.vue'
 | :---- | :---- | :---- | :----  |
 | size | 尺寸 | `small` \| `medium` |  `medium`  |
 | options | 选项列表 | `OptionItem[]` |    -   |
+| inner | 内嵌模式，消除左右内边距 | `boolean` |  `false`  |
 
 ### Slots
 

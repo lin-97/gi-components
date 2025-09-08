@@ -1,6 +1,8 @@
 import type * as El from 'element-plus'
+import type { FormProps as ElFormProps } from 'element-plus'
 import type { VNode } from 'vue'
 import type { InputSearchInstance } from '../../input-search'
+import type { GridProps, GridItemProps } from '../../grid/src/interface'
 
 export type FormColumnType =
   | 'input'
@@ -79,4 +81,16 @@ export interface FormColumnItem<F = any> {
   slotName?: string
   slots?: FormColumnSlots
   extra?: string | (() => VNode) // 右侧额外内容
+}
+
+export interface FormProps extends Partial<ElFormProps> {
+  modelValue: any
+  columns?: FormColumnItem[]
+  fc?: Record<string, { edit: boolean; hidden?: boolean; required?: boolean }> // 表单控制
+  gridProps?: GridProps // grid默认配置
+  gridItemProps?: GridItemProps  // grid-item默认配置
+  search?: boolean
+  searchText?: string
+  hideFoldBtn?: boolean
+  defaultCollapsed?: boolean | undefined
 }

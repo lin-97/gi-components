@@ -6,6 +6,7 @@ import DemoInnerClass from './DemoInnerClass.vue'
 import DemoSize from './DemoSize.vue'
 import DemoFooter from './DemoFooter.vue'
 import DemoScroll from './DemoScroll.vue'
+import DemoInner from './DemoInner.vue'
 </script>
 
 ## 基础用法
@@ -49,6 +50,14 @@ import DemoScroll from './DemoScroll.vue'
 <<< ./DemoScroll.vue
 :::
 
+## 内嵌模式
+
+<DemoInner></DemoInner>
+
+::: details 查看代码
+<<< ./DemoInner.vue
+:::
+
 ## API
 
 ### Props
@@ -61,6 +70,7 @@ import DemoScroll from './DemoScroll.vue'
 | size | 尺寸  | `samll` \| `middle` | middle |
 | headerStyle | 卡片头部区域的样式 | `CSSProperties` |    -   |
 | bodyStyle | 卡片内容区域的样式 | `CSSProperties` |    -   |
+| inner | 内嵌模式，消除左右内边距 | `boolean` |    false   |
 
 ### Slots
 

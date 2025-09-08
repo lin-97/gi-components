@@ -1,3 +1,5 @@
+@use './var.scss' as a;
+
 body {
   // 基础边距
   --padding: 14px;
@@ -133,3 +135,44 @@ body {
   padding: 0;
 }
 
+.el-dialog {
+  padding: 0 !important;
+
+  &.is-fullscreen {
+    overflow: hidden;
+    display: inline-flex;
+    flex-direction: column;
+
+    .el-dialog__body {
+      flex: 1;
+      overflow-y: auto;
+    }
+  }
+
+  .el-dialog__header {
+    height: 48px;
+    padding-left: var(--el-dialog-padding-primary);
+    padding-bottom: 0;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--el-border-color-lighter);
+  }
+
+  .el-dialog__body {
+    padding: var(--el-dialog-padding-primary);
+  }
+
+  .el-dialog__footer {
+    padding: 12px var(--el-dialog-padding-primary);
+    border-top: 1px solid var(--el-border-color-lighter);
+  }
+}
+
+.el-dialog.#{a.$prefix}-dialog--simple {
+  .el-dialog__header {
+    border-bottom: none;
+  }
+  .el-dialog__footer {
+    border-top: none;
+  }
+}

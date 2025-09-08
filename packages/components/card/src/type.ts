@@ -8,4 +8,5 @@ export interface CardProps {
   headerBordered?: boolean
   headerStyle?: CSSProperties
   bodyStyle?: CSSProperties
+  inner?: boolean // 内嵌模式
 }

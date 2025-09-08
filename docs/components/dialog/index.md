@@ -5,6 +5,9 @@ import Demo from './Demo.vue'
 import DemoAsync from './DemoAsync.vue'
 import DemoHideFooter from './DemoHideFooter.vue'
 import DemoButtonText from './DemoButtonText.vue'
+import DemoFullscreen from './DemoFullscreen.vue'
+import DemoSimple from './DemoSimple.vue'
+
 </script>
 
 ## 基础用法
@@ -35,6 +38,20 @@ import DemoButtonText from './DemoButtonText.vue'
 <<< ./DemoButtonText.vue
 :::
 
+## 全屏对话框
+
+<DemoFullscreen></DemoFullscreen>
+::: details 查看代码
+<<< ./DemoFullscreen.vue
+:::
+
+## 简单对话框
+
+<DemoSimple></DemoSimple>
+::: details 查看代码
+<<< ./DemoSimple.vue
+:::
+
 ## API
 
 ### Props
@@ -46,6 +63,7 @@ import DemoButtonText from './DemoButtonText.vue'
 | cancelButtonProps | 取消按钮的props | boolean | - |
 | content | 内容 | string | - |
 | footer | 显示尾部 | boolean | true |
+| simple | 简单模式 | boolean | false |
 
 ### Events
 | 事件名 | 说明 | 参数 |

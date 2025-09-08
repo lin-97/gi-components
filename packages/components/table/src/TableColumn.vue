@@ -1,7 +1,12 @@
 <template>
   <el-table-column v-bind="columnProps">
+    <!-- 处理render函数 -->
+    <template v-if="column.render" v-slot="scope">
+      <component :is="() => column.render(scope)" />
+    </template>
+
     <!-- 处理插槽内容 -->
-    <template v-if="column.slotName" v-slot="scope">
+    <template v-else-if="column.slotName" v-slot="scope">
       <slot :name="column.slotName" v-bind="scope" />
     </template>
 

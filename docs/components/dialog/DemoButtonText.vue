@@ -20,7 +20,7 @@ import { ref } from 'vue'
 
 const visible = ref(false)
 
-const onBeforeOk = async () => {
+const onBeforeOk = async (): Promise<boolean> => {
   return await new Promise((resolve) => setTimeout(() => resolve(true), 1000))
 }
 </script>

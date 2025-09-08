@@ -2,8 +2,8 @@
   <div :class="getClass">
     <div :class="b('tabs__default')">
       <slot>
-        <el-tabs v-model="model" :type="props.type" :stretch="props.stretch" @tab-click="props.onTabClick"
-          @tab-change="props.onTabChange">
+        <el-tabs v-model="model" :type="props.type" :stretch="props.stretch" @tab-click="(p, e)=> emits('tabClick', p, e)"
+          @tab-change="emits('tabChange', $event)">
           <el-tab-pane v-for="item in props.options" :key="item.name" :name="item.name" :disabled="item?.disabled">
             <template #label>
               <slot name="label" :data="item">{{ item.label }}</slot>
@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import type { TabsProps as ElTabsProps } from 'element-plus'
+import type { TabsProps as ElTabsProps, TabPaneInstance, TabsPaneContext } from 'element-plus'
 import type { TabsOptionItem, TabsProps } from './type.ts'
 import { computed, useSlots } from 'vue'
 import { useBemClass } from '../../../hooks'
@@ -29,8 +29,14 @@ const model = defineModel<ElTabsProps['modelValue']>()
 const props = withDefaults(defineProps<TabsProps>(), {
   type: '',
   options: () => [],
-  size: 'medium'
+  size: 'medium',
+  inner: false,
 })
+
+const emits = defineEmits<{
+  (e: 'tabClick', pane: TabsPaneContext, ev: Event): void
+  (e: 'tabChange', value: string): void
+}>()
 
 defineSlots<{
   default: () => void
@@ -44,6 +50,9 @@ const { b } = useBemClass()
 const getClass = computed(() => {
   const arr: string[] = [b('tabs')]
   arr.push(b(`tabs--${props.size}`))
+  if (props.inner) {
+    arr.push(b('tabs--inner'))
+  }
   return arr.join(' ')
 })
 </script>
@@ -121,5 +130,9 @@ const getClass = computed(() => {
       font-size: 12px;
     }
   }
+}
+
+.#{a.$prefix}-tabs--inner {
+  padding: 0;
 }
 </style>

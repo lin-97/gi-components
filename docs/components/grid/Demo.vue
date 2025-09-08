@@ -3,7 +3,7 @@
     <el-text class="mx-1">折叠：</el-text>
     <el-switch v-model="collapsed" />
   </div>
-  <gi-grid :cols="3" :col-gap="12" :row-gap="16" class="grid-demo-grid" :collapsed="collapsed">
+  <gi-grid :cols="3" :col-gap="12" :row-gap="8" class="grid-demo-grid" :collapsed="collapsed">
     <gi-grid-item class="demo-item">item1</gi-grid-item>
     <gi-grid-item class="demo-item">item2</gi-grid-item>
     <gi-grid-item class="demo-item">item3</gi-grid-item>
@@ -27,10 +27,14 @@ const collapsed = ref(false)
 <style lang="scss" scoped>
 .grid-demo-grid .demo-item,
 .grid-demo-grid .demo-suffix {
-  height: 48px;
-  line-height: 48px;
+  min-height: 48px;
   color: var(--el-color-white);
   text-align: center;
+  font-size: 12px;
+  line-height: 1.3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .grid-demo-grid .demo-item:nth-child(2n) {
