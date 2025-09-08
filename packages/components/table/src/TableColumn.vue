@@ -2,7 +2,7 @@
   <el-table-column v-bind="columnProps">
     <!-- 处理render函数 -->
     <template v-if="column.render" v-slot="scope">
-      <component :is="() => column.render(scope)" />
+      <component :is="column.render(scope)" />
     </template>
 
     <!-- 处理插槽内容 -->

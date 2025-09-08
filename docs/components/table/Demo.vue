@@ -25,9 +25,9 @@
 
 <script lang='ts' setup>
 import { reactive, ref, onMounted, watch, h } from 'vue'
-import { ElMessage, ElTag } from 'element-plus'
+import { ElMessage, ElTag, ElButton } from 'element-plus'
 import { type TableColumnItem } from '@gi-components/el'
-import { fetchTableData, type TableData, type PaginationParams } from './tool'
+import { fetchTableData, type TableData, type PaginationParams } from '../../_utils/mockTable'
 
 const columns: TableColumnItem[] = [
   { type: 'selection', width: 55, align: 'center', fixed: 'left' },
@@ -37,7 +37,7 @@ const columns: TableColumnItem[] = [
   {
     prop: 'sex',
     label: '性别',
-    width: 60,
+    width: 80,
     align: 'center',
     render: ({ row }) => {
       return h(ElTag, { type: row.sex === '男' ? 'primary' : 'danger' }, { default: () => row.sex })
