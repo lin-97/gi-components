@@ -20,6 +20,7 @@
   "devDependencies": {
     "element-plus": "^2.11.1",
     "typescript": "^5.8.3",
+    "vite": "6.3.5",
     "vitepress": "1.6.4",
     "vue": "^3.5.15",
     "vue-tsc": "^2.2.10"
