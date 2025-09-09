@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-import { execSync } from 'child_process';
-import { existsSync, rmSync } from 'fs';
-import { join } from 'path';
+import { execSync } from 'node:child_process';
+import { existsSync, rmSync } from 'node:fs';
+import { join } from 'node:path';
 
 const packages = [
-  { name: '@gi-components/ele', path: 'apps/ele' },
+  { name: '@gi-components/el', path: 'apps/el' },
   { name: '@gi-components/docs', path: 'packages/docs' }
 ];
 
@@ -24,8 +24,8 @@ function build() {
   console.log('🏗️  开始构建所有包...');
 
   // 构建组件库
-  console.log('📦 构建 @gi-components/ele...');
-  execSync('pnpm --filter @gi-components/ele build:lib', { stdio: 'inherit' });
+  console.log('📦 构建 @gi-components/el...');
+  execSync('pnpm --filter @gi-components/el build:lib', { stdio: 'inherit' });
 
   // 构建文档
   console.log('📚 构建 @gi-components/docs...');

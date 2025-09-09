@@ -1,6 +1,6 @@
 import path from 'node:path'
+import packageJson from '@gi-components/el/package.json'
 import { defineConfig } from 'vitepress'
-import packageJson from '@gi-components/ele/package.json'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -11,7 +11,7 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        '@gi-components/el': path.resolve(__dirname, '../../packages/index.ts'),
+        '@gi-components/el': path.resolve(__dirname, '../../packages/index.ts')
       }
     }
   },

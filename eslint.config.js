@@ -89,7 +89,7 @@ export default antfu(
   },
   {
     // 针对组件库的特定规则
-    files: ['apps/ele/**/*.{ts,tsx,vue}'],
+    files: ['apps/el/**/*.{ts,tsx,vue}'],
     rules: {
       'no-console': 'warn', // 组件库中警告 console
       'ts/no-explicit-any': 'warn', // 警告使用 any 类型

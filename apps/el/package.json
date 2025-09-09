@@ -1,5 +1,5 @@
 {
-  "name": "@gi-components/ele",
+  "name": "@gi-components/el",
   "type": "module",
   "version": "0.0.7",
   "description": "Vue3中基于Element Plus二次封装基础组件库",

@@ -6,7 +6,7 @@
 
 - **包管理**: pnpm workspace
 - **构建工具**: Turbo (增量构建、并行执行、智能缓存)
-- **组件库**: Vue3 + Element Plus + Vite
+- **组件库**: Vue3 + elment Plus + Vite
 - **文档**: VitePress
 
 ## 项目结构
@@ -14,7 +14,7 @@
 ```
 gi-components/
 ├── apps/                    # 应用目录
-│   └── ele/                # Element Plus 组件库
+│   └── el/                # elment Plus 组件库
 ├── packages/               # 包目录
 │   └── docs/              # 文档站点
 ├── scripts/               # 构建脚本
@@ -25,9 +25,9 @@ gi-components/
 
 ## 包说明
 
-### @gi-components/ele
+### @gi-components/el
 
-基于 Element Plus 二次封装的 Vue3 组件库
+基于 elment Plus 二次封装的 Vue3 组件库
 
 ### @gi-components/docs
 
@@ -100,10 +100,10 @@ pnpm type-check
 turbo run build
 
 # 运行特定包的 dev 任务
-turbo run dev --filter=@gi-components/ele
+turbo run dev --filter=@gi-components/el
 
 # 运行多个包的特定任务
-turbo run build --filter=@gi-components/ele --filter=@gi-components/docs
+turbo run build --filter=@gi-components/el --filter=@gi-components/docs
 ```
 
 ### 过滤选项
@@ -116,7 +116,7 @@ turbo run build --filter=...@gi-components/docs
 turbo run build --filter=@gi-components/docs...
 
 # 运行特定包及其依赖和依赖者
-turbo run build --filter=...@gi-components/ele...
+turbo run build --filter=...@gi-components/el...
 ```
 
 ### 缓存管理
@@ -135,7 +135,7 @@ turbo run build --dry-run
 
 ```bash
 # 为特定包添加依赖
-pnpm --filter @gi-components/ele add vue
+pnpm --filter @gi-components/el add vue
 pnpm --filter @gi-components/docs add vitepress
 
 # 为根目录添加开发依赖
@@ -146,13 +146,13 @@ pnpm add -D typescript -w
 
 ```bash
 # 使用 Turbo 运行特定包的任务
-turbo run build --filter=@gi-components/ele
+turbo run build --filter=@gi-components/el
 turbo run dev --filter=@gi-components/docs
 ```
 
 ## 工作流
 
-1. 在 `apps/ele` 中开发组件
+1. 在 `apps/el` 中开发组件
 2. 在 `packages/docs` 中编写文档和示例
 3. 使用 `pnpm build` 构建所有包 (Turbo 会自动处理依赖关系)
 4. 使用 `pnpm docs:preview` 预览文档

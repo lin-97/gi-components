@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { FormColumnItem, FormInstance } from '@gi-components/ele';
+import type { FormColumnItem, FormInstance } from '@gi-components/el';
 import { ElMessage } from 'element-plus';
 import { computed, reactive, ref } from 'vue';
 
