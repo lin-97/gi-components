@@ -24,18 +24,16 @@ jobs:
         with:
           fetch-depth: 0
 
-      # 2️⃣ 安装 pnpm
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 10.6.5
-
-      # 3️⃣ 安装 Node 并启用 pnpm 缓存
+      # 2️⃣ 安装 Node
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: pnpm
+
+      # 3️⃣ 安装 pnpm
+      - name: Install pnpm
+        run: npm install -g pnpm@10.6.5
 
       # 4️⃣ 确认 pnpm 可用
       - name: Check pnpm version
