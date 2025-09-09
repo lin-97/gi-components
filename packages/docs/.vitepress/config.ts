@@ -1,10 +1,9 @@
-import { resolve } from 'node:path';
-import { defineConfig } from 'vitepress';
+import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: 'GI Components',
   description: 'Vue3中基于Element Plus二次封装基础组件库',
-  base: '/docs/',
+  base: '/gi-components/',
 
   themeConfig: {
     nav: [
@@ -72,4 +71,4 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/lin-97/gi-components' }
     ]
   }
-});
+})
