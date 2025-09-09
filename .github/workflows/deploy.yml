@@ -12,46 +12,58 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      # 1️⃣ Checkout 仓库
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 10.6.5
-      - name: Setup Node
+
+      # 2️⃣ 设置 Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: pnpm
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
+
+      # 3️⃣ 设置 pnpm
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10.6.5
+
+      # 4️⃣ 安装依赖
       - name: Install dependencies
         run: pnpm install
-      - name: Build with VitePress
+
+      # 5️⃣ 构建 VitePress
+      - name: Build VitePress
         run: pnpm build:docs
+
+      # 6️⃣ 添加 .nojekyll，防止 GitHub Pages 忽略 _ 文件夹
       - name: Add .nojekyll
         run: touch packages/docs/.vitepress/dist/.nojekyll
+
+      # 7️⃣ 配置 Pages
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v4
+
+      # 8️⃣ 上传构建产物
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: packages/docs/.vitepress/dist
 
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
-    runs-on: ubuntu-latest
-    name: Deploy
-    steps:
+      # 9️⃣ 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      # 10️⃣ 打印访问 URL（可选）
+      - name: Show Pages URL
+        run: echo "Your site is published at ${{ steps.deployment.outputs.page_url }}"
