@@ -77,13 +77,5 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/lin-97/gi-components' }
     ]
-  },
-
-  vite: {
-    resolve: {
-      alias: {
-        '@gi-components/ele': resolve(__dirname, '../../apps/ele')
-      }
-    }
   }
 });

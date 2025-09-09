@@ -5,7 +5,7 @@ import DefaultTheme from 'vitepress/theme';
 import { getDictData } from '../../_utils/dictRequest';
 import 'element-plus/dist/index.css';
 import 'element-plus/theme-chalk/dark/css-vars.css';
-import '@gi-components/ele/styles/index.scss';
+import '@gi-components/ele/dist/ele.css';
 import '../../public/css/index.css';
 
 export default {
