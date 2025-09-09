@@ -24,46 +24,48 @@ jobs:
         with:
           fetch-depth: 0
 
-      # 2️⃣ 设置 Node.js
+      # 2️⃣ 安装 Node 并启用 pnpm 缓存
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: pnpm
 
-      # 3️⃣ 设置 pnpm
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 10.6.5
+      # 3️⃣ 安装 pnpm（确保在 PATH 中）
+      - name: Install pnpm
+        run: npm install -g pnpm@10.6.5
 
-      # 4️⃣ 安装依赖
+      # 4️⃣ 确认 pnpm 可用
+      - name: Check pnpm version
+        run: pnpm -v
+
+      # 5️⃣ 安装依赖
       - name: Install dependencies
         run: pnpm install
 
-      # 5️⃣ 构建 VitePress
+      # 6️⃣ 构建 VitePress
       - name: Build VitePress
         run: pnpm build:docs
 
-      # 6️⃣ 添加 .nojekyll，防止 GitHub Pages 忽略 _ 文件夹
+      # 7️⃣ 添加 .nojekyll，防止 GitHub Pages 忽略 _ 文件夹
       - name: Add .nojekyll
         run: touch packages/docs/.vitepress/dist/.nojekyll
 
-      # 7️⃣ 配置 Pages
+      # 8️⃣ 配置 GitHub Pages
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v4
 
-      # 8️⃣ 上传构建产物
+      # 9️⃣ 上传构建产物
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: packages/docs/.vitepress/dist
 
-      # 9️⃣ 部署到 GitHub Pages
+      # 🔟 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
 
-      # 10️⃣ 打印访问 URL（可选）
+      # 1️⃣1️⃣ 打印访问 URL（可选）
       - name: Show Pages URL
         run: echo "Your site is published at ${{ steps.deployment.outputs.page_url }}"
