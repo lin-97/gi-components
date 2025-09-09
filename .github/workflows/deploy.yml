@@ -51,8 +51,13 @@ jobs:
         run: |
           mkdir -p docs
           cp -r packages/docs/.vitepress/dist/* docs/
+          # Remove any SCSS files that might cause Jekyll issues
+          find docs -name "*.scss" -type f -delete
           echo "" > docs/.nojekyll
           echo "Created .nojekyll file to disable Jekyll processing"
+          ls -la docs/
+          echo "Contents of docs directory:"
+          find docs -name ".*" -type f
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
