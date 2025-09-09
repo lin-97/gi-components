@@ -47,14 +47,17 @@ jobs:
         run: pnpm install
       - name: Build with VitePress
         run: pnpm build:docs
+      - name: Create .nojekyll file in VitePress dist
+        run: |
+          echo "" > packages/docs/.vitepress/dist/.nojekyll
+          echo "Created .nojekyll file in VitePress dist directory"
       - name: Create docs directory and copy build artifacts
         run: |
           mkdir -p docs
           cp -r packages/docs/.vitepress/dist/* docs/
           # Remove any SCSS files that might cause Jekyll issues
           find docs -name "*.scss" -type f -delete
-          echo "" > docs/.nojekyll
-          echo "Created .nojekyll file to disable Jekyll processing"
+          echo "Copied VitePress build artifacts to docs directory"
           ls -la docs/
           echo "Contents of docs directory:"
           find docs -name ".*" -type f
