@@ -10,7 +10,7 @@
     "strict": true,
     "declaration": true,
     "declarationMap": true,
-    "noEmit": false,
+    "noEmit": true,
     "outDir": "dist",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
