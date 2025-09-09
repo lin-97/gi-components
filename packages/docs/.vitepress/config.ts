@@ -41,13 +41,7 @@ export default defineConfig({
           text: '输入组件',
           items: [
             { text: 'InputGroup 输入组', link: '/components/input-group' },
-            { text: 'InputSearch 搜索输入', link: '/components/input-search' },
-            { text: 'Select 选择器', link: '/components/select' },
-            { text: 'RadioGroup 单选框组', link: '/components/radio-group' },
-            {
-              text: 'CheckboxGroup 复选框组',
-              link: '/components/checkbox-group'
-            }
+            { text: 'InputSearch 搜索输入', link: '/components/input-search' }
           ]
         },
         {

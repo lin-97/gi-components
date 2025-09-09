@@ -2,7 +2,6 @@ import type { App } from 'vue';
 
 import Button from './components/button';
 import Card from './components/card';
-import CheckboxGroup from './components/checkbox-group';
 import Dialog from './components/dialog';
 import EditTable from './components/edit-table';
 import Form from './components/form';
@@ -11,8 +10,6 @@ import Grid from './components/grid/src/grid.vue';
 import InputGroup from './components/input-group';
 import InputSearch from './components/input-search';
 import PageLayout from './components/page-layout';
-import RadioGroup from './components/radio-group';
-import Select from './components/select';
 import Table from './components/table';
 import Tabs from './components/tabs';
 import './styles/index.scss';
@@ -27,9 +24,6 @@ export * from './utils';
 const components = {
   Button,
   Card,
-  Select,
-  RadioGroup,
-  CheckboxGroup,
   Tabs,
   InputGroup,
   InputSearch,
@@ -45,9 +39,6 @@ const components = {
 // 导出Gi前缀的组件并添加明确类型注解
 export const GiButton: typeof Button = Button;
 export const GiCard: typeof Card = Card;
-export const GiSelect: typeof Select = Select;
-export const GiRadioGroup: typeof RadioGroup = RadioGroup;
-export const GiCheckboxGroup: typeof CheckboxGroup = CheckboxGroup;
 export const GiTabs: typeof Tabs = Tabs;
 export const GiInputGroup: typeof InputGroup = InputGroup;
 export const GiInputSearch: typeof InputSearch = InputSearch;
