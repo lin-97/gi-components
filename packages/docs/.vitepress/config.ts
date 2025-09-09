@@ -4,7 +4,7 @@ import { defineConfig } from 'vitepress';
 export default defineConfig({
   title: 'GI Components',
   description: 'Vue3中基于Element Plus二次封装基础组件库',
-  base: '/gi-components/',
+  base: '/docs/',
 
   themeConfig: {
     nav: [

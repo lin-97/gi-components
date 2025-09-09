@@ -51,7 +51,8 @@ jobs:
         run: |
           mkdir -p docs
           cp -r packages/docs/.vitepress/dist/* docs/
-          touch docs/.nojekyll
+          echo "" > docs/.nojekyll
+          echo "Created .nojekyll file to disable Jekyll processing"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
