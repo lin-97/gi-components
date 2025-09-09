@@ -51,6 +51,7 @@ jobs:
         run: |
           mkdir -p docs
           cp -r packages/docs/.vitepress/dist/* docs/
+          touch docs/.nojekyll
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
