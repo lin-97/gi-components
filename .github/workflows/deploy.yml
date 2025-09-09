@@ -24,16 +24,18 @@ jobs:
         with:
           fetch-depth: 0
 
-      # 2️⃣ 安装 Node
+      # 2️⃣ 安装 pnpm
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10.6.5
+
+      # 3️⃣ 安装 Node 并启用 pnpm 缓存
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: pnpm
-
-      # 3️⃣ 安装 pnpm
-      - name: Install pnpm
-        run: npm install -g pnpm@10.6.5
 
       # 4️⃣ 确认 pnpm 可用
       - name: Check pnpm version
@@ -47,17 +49,36 @@ jobs:
       - name: Build VitePress
         run: pnpm build:docs
 
-      # 7️⃣ 添加 .nojekyll，防止 GitHub Pages 忽略 _ 文件夹
-      - name: Add .nojekyll
-        run: touch packages/docs/.vitepress/dist/.nojekyll
+      # 7️⃣ 检查构建产物
+      - name: Check build output
+        run: |
+          echo "Checking VitePress build output..."
+          ls -la packages/docs/.vitepress/
+          ls -la packages/docs/.vitepress/dist/ || echo "dist directory not found"
 
-      # 8️⃣ 创建 docs 目录并复制构建产物
+      # 8️⃣ 添加 .nojekyll，防止 GitHub Pages 忽略 _ 文件夹
+      - name: Add .nojekyll
+        run: |
+          if [ -d "packages/docs/.vitepress/dist" ]; then
+            touch packages/docs/.vitepress/dist/.nojekyll
+            echo "Created .nojekyll file"
+          else
+            echo "Error: VitePress dist directory not found"
+            exit 1
+          fi
+
+      # 9️⃣ 创建 docs 目录并复制构建产物
       - name: Create docs directory and copy artifacts
         run: |
           mkdir -p docs
-          cp -r packages/docs/.vitepress/dist/* docs/
-          echo "Copied VitePress build artifacts to docs directory"
-          ls -la docs/
+          if [ -d "packages/docs/.vitepress/dist" ]; then
+            cp -r packages/docs/.vitepress/dist/* docs/
+            echo "Copied VitePress build artifacts to docs directory"
+            ls -la docs/
+          else
+            echo "Error: Cannot copy - VitePress dist directory not found"
+            exit 1
+          fi
 
       # 9️⃣ 配置 GitHub Pages
       - name: Setup GitHub Pages
