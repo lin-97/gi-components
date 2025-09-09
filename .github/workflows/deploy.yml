@@ -53,7 +53,12 @@ jobs:
       - name: Check build output
         run: |
           echo "Checking VitePress build output..."
-          ls -la packages/docs/.vitepress/
+          echo "Current working directory: $(pwd)"
+          echo "Contents of packages/docs:"
+          ls -la packages/docs/
+          echo "Contents of packages/docs/.vitepress:"
+          ls -la packages/docs/.vitepress/ || echo ".vitepress directory not found"
+          echo "Contents of packages/docs/.vitepress/dist:"
           ls -la packages/docs/.vitepress/dist/ || echo "dist directory not found"
 
       # 8️⃣ 添加 .nojekyll，防止 GitHub Pages 忽略 _ 文件夹
