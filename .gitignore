@@ -18,7 +18,6 @@ packages/docs/.vitepress/dist/
 
 # GitHub Pages deployment artifacts
 docs/
-packages/docs/.vitepress/dist/
 
 # Turbo
 .turbo/
