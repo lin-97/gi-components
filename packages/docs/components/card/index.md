@@ -14,7 +14,7 @@ import DemoInner from './DemoInner.vue'
 <Demo></Demo>
 
 ::: details 查看代码
-<<< ./demo.vue
+<<< ./Demo.vue
 :::
 
 ## 内置类名
