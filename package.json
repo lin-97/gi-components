@@ -1,59 +1,52 @@
 {
-  "name": "@gi-components/el",
+  "name": "gi-components",
   "type": "module",
-  "version": "0.0.8",
-  "description": "Vue3中基于Element Plus二次封装基础组件库",
-  "author": "lin",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/lin-97/gi-components.git"
+  "private": true,
+  "packageManager": "pnpm@10.6.5",
+  "engines": {
+    "node": ">=18"
   },
-  "main": "dist/index.umd.js",
-  "module": "dist/index.es.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist",
-    "packages"
-  ],
-  "keywords": [
-    "element-plus",
-    "vitepress",
-    "vue3",
-    "gi-components",
-    "二次封装组件",
-    "封装组件"
-  ],
   "scripts": {
-    "dev": "vite --host",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs",
-    "build:lib": "vite build --mode lib",
-    "prepublishOnly": "npm run build:lib"
-  },
-  "peerDependencies": {
-    "element-plus": "^2.11.2",
-    "vue": "^3.5.15"
+    "build": "pnpm build:el && pnpm build:docs",
+    "build:el": "cd apps/el && pnpm build",
+    "build:docs": "cd packages/docs && pnpm build",
+    "publish:el": "cd apps/el && npm publish",
+    "publish:el:beta": "cd apps/el && npm publish --tag beta",
+    "dev:el": "cd apps/el && pnpm dev",
+    "dev:docs": "cd packages/docs && pnpm dev",
+    "dev": "pnpm run dev:el",
+    "format": "prettier --write \"**/*.{ts,tsx,md,vue}\"",
+    "check-types": "cd apps/el && pnpm type-check && cd ../../packages/docs && pnpm type-check",
+    "lint": "oxlint ./apps/el/src ./packages/docs",
+    "lint:fix": "oxlint ./apps/el/src ./packages/docs --fix",
+    "lint:eslint": "cd apps/el && pnpm lint && cd ../../packages/docs && pnpm lint",
+    "lint:ic": "eslint --inspect-config",
+    "eslint": "eslint .",
+    "eslint:fix": "eslint --fix",
+    "lint-staged": "lint-staged",
+    "prepare": "husky",
+    "cz": "cz"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^5.2.1",
-    "@element-plus/icons-vue": "^2.3.1",
-    "@vitejs/plugin-vue": "^5.2.4",
-    "@vitejs/plugin-vue-jsx": "^4.2.0",
-    "element-plus": "^2.11.2",
-    "eslint": "^9.27.0",
-    "markdown-it": "^14.1.0",
-    "markdown-it-container": "^4.0.0",
-    "sass": "^1.89.0",
-    "sass-loader": "^16.0.5",
-    "terser": "^5.44.0",
-    "typescript": "^5.8.3",
-    "unplugin-vue-components": "^28.8.0",
-    "vite": "6.3.5",
-    "vite-plugin-dts": "^4.5.4",
-    "vitepress": "1.6.4",
-    "vue": "^3.5.15",
-    "vue-tsc": "^2.2.10"
+    "@antfu/eslint-config": "^4.16.1",
+    "@changesets/cli": "^2.29.5",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "commitizen": "^4.3.1",
+    "cz-git": "^1.11.2",
+    "eslint": "^9.30.0",
+    "eslint-plugin-format": "^1.0.1",
+    "eslint-plugin-oxlint": "^0.16.12",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
+    "oxlint": "^0.16.12",
+    "prettier": "^3.6.2",
+    "stylelint": "^16.21.0",
+    "typescript": "5.8.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
   }
 }
