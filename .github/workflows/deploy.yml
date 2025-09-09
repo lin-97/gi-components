@@ -47,10 +47,14 @@ jobs:
         run: pnpm install
       - name: Build with VitePress
         run: pnpm build:docs
+      - name: Create docs directory and copy build artifacts
+        run: |
+          mkdir -p docs
+          cp -r packages/docs/.vitepress/dist/* docs/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: packages/docs/.vitepress/dist
+          path: docs
 
   # 部署工作
   deploy:
