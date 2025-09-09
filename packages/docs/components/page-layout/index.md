@@ -1,38 +1,38 @@
 # PageLayout 页面布局
 
 <script setup>
-import Demo1 from './Demo1.vue'
-import Demo2 from './Demo2.vue'
-import Demo3 from './Demo3.vue'
-import Demo4 from './Demo4.vue'
+import Demo1 from './demo1.vue'
+import Demo2 from './demo2.vue'
+import Demo3 from './demo3.vue'
+import Demo4 from './demo4.vue'
 </script>
 
 ## 基础用法
 
 <Demo1></Demo1>
 ::: details 查看代码
-<<<./Demo1.vue
+<<<./demo1.vue
 :::
 
 ## 搜索
 
 <Demo2></Demo2>
 ::: details 查看代码
-<<<./Demo2.vue
+<<<./demo2.vue
 :::
 
 ## 搜索 + 按钮
 
 <Demo3></Demo3>
 ::: details 查看代码
-<<<./Demo3.vue
+<<<./demo3.vue
 :::
 
 ## 左侧树
 
 <Demo4></Demo4>
 ::: details 查看代码
-<<<./Demo4.vue
+<<<./demo4.vue
 :::
 
 ## API
