@@ -8,13 +8,6 @@ export default defineConfig({
   base: '/gi-components/',
   title: 'Gi Components',
   description: 'Vue3中基于Element Plus二次封装基础组件库',
-  vite: {
-    resolve: {
-      alias: {
-        '@gi-components/el': path.resolve(__dirname, '../../packages/index.ts')
-      }
-    }
-  },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
