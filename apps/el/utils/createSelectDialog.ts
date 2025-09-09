@@ -8,6 +8,7 @@ type CreateSelectDialogParams = {
   component: Component;
   componentProps?: Record<string, any>;
   tip?: string;
+  bodyClass?: string;
 };
 
 interface DefOption {
@@ -42,6 +43,8 @@ export const createSelectDialog = <T, Q extends DefOption = DefOption>(
           queryParams,
           ...params.componentProps
         }),
+      style: { maxWidth: '960px' },
+      bodyClass: params.bodyClass,
       onBeforeOk: async () => {
         if (!DialogTableRef.value.getSelectedData) {
           ElMessage.error('组件必须暴露getSelectedData方法');

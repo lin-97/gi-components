@@ -1,5 +1,5 @@
 <template>
-  <GiPageLayout bordered :size="120">
+  <GiPageLayout>
     <template #left>
       <Tree></Tree>
     </template>

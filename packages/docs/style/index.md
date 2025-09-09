@@ -2,10 +2,8 @@
 
 ```css
 body {
-  // 基础边距
   --padding: 14px;
   --margin: 14px;
-  // 内边距
   --padding-x: 14px;
   --padding-x-small: 10px;
   --padding-y: 10px;
