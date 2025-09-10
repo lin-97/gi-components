@@ -2,10 +2,17 @@
   "compilerOptions": {
     "target": "ESNext",
     "jsx": "preserve",
-    "lib": ["ESNext", "DOM"],
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "types": ["vite/client", "vitepress/client"],
+    "types": [
+      "vite/client",
+      "vitepress/client",
+      "element-plus/global"
+    ],
     "allowImportingTsExtensions": true,
     "strict": true,
     "noEmit": true,
@@ -13,8 +20,22 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "paths": {
+      "@gi-components/el": [
+        "../../apps/el/index.ts"
+      ]
+    }
   },
-  "include": ["**/*.ts", "**/*.d.ts", "**/*.tsx", "**/*.vue"],
-  "exclude": ["node_modules", ".vitepress/dist"]
+  "include": [
+    "**/*.ts",
+    "**/*.d.ts",
+    "**/*.tsx",
+    "**/*.vue",
+    "../../apps/el/components.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".vitepress/dist"
+  ]
 }

@@ -1,6 +1,6 @@
 import { defineConfig } from 'vitepress'
 import path from 'node:path'
-// import packageJson from '@gi-components/el/package.json'
+import packageJson from '../node_modules/@gi-components/el/package.json'
 
 export default defineConfig({
   title: 'GI Components',
@@ -20,7 +20,7 @@ export default defineConfig({
       { text: '组件', link: '/components/button' },
       { text: '工具', link: '/tools/createSelectDialog' },
       { text: '内置CSS类名', link: '/style' },
-      // { text: `v${packageJson.version}`, link: '' }
+      { text: `v${packageJson.version}`, link: '' }
     ],
 
     sidebar: {
