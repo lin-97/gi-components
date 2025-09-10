@@ -4,7 +4,7 @@ import path from 'node:path';
 export default defineConfig({
   resolve: {
     alias: {
-      '_apis': path.resolve(__dirname, '_apis')
+      '@apis': path.resolve(__dirname, '_apis')
     }
   }
 });

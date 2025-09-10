@@ -21,10 +21,14 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
+     "baseUrl": ".",
     "paths": {
       "@gi-components/el": [
         "../../apps/el/index.ts"
       ],
+      "@api": [
+        "./_apis"
+      ]
     }
   },
   "include": [
