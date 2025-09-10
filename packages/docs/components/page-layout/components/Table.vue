@@ -24,7 +24,7 @@ import {
   fetchTableData,
   type TableData,
   type PaginationParams
-} from '../../../_utils/mockTable';
+} from '@/apis/mockTable';
 
 const columns: TableColumnItem[] = [
   { type: 'selection', width: 55, align: 'center', fixed: 'left' },

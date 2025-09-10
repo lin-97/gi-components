@@ -22,6 +22,9 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "paths": {
+      "@": [
+        "../_common"
+      ],
       "@gi-components/el": [
         "../../apps/el/index.ts"
       ]
