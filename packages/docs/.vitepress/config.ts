@@ -11,7 +11,6 @@ export default defineConfig({
       conditions: ['development'], // 开发环境优先使用源码入口
       alias: {
         '@gi-components/el': path.resolve(__dirname, '../../../apps/el'),
-        '@': path.resolve(__dirname, '../_common')
       }
     }
   },
