@@ -1,6 +1,5 @@
 import { defineConfig } from 'vitepress'
 import path from 'node:path'
-import packageJson from '../node_modules/@gi-components/el/package.json'
 
 export default defineConfig({
   title: 'GI Components',
@@ -8,9 +7,8 @@ export default defineConfig({
   base: '/gi-components/',
   vite: {
     resolve: {
-      conditions: ['development'], // 开发环境优先使用源码入口
       alias: {
-        '@gi-components/el': path.resolve(__dirname, '../../../apps/el'),
+        // '@gi-components/el': path.resolve(__dirname, '../../../apps/el'),
       }
     }
   },
@@ -21,7 +19,7 @@ export default defineConfig({
       { text: '组件', link: '/components/button' },
       { text: '工具', link: '/tools/createSelectDialog' },
       { text: '内置CSS类名', link: '/style' },
-      { text: `v${packageJson.version}`, link: '' }
+      // { text: `v${packageJson.version}`, link: '' }
     ],
 
     sidebar: {
