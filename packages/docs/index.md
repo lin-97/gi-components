@@ -3,16 +3,13 @@
 layout: home
 
 hero:
-  name: 'Gi Components'
+  name: '@gi-componets/el不再提供维护'
   text: '一个基于Element Plus二次封装的组件库'
-  tagline: 提供高效组件，大幅度提高您的开发速度
+  tagline: 2025年10月15号，该文档下线，npm包已迁移至gi-component，点击右上角github图标进入项目
   actions:
-    - theme: brand
-      text: 开始使用
-      link: /guide/quick-start
     - theme: alt
       text: Github
-      link: https://github.com/lin-97/gi-components
+      link: https://github.com/lin-97/gi-component
 
 features:
   - title: 基于Element Plus

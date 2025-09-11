@@ -15,10 +15,10 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: '首页', link: '/' },
-      { text: '指南', link: '/guide/introduction' },
-      { text: '组件', link: '/components/button' },
-      { text: '工具', link: '/tools/createSelectDialog' },
-      { text: '内置CSS类名', link: '/style' },
+      // { text: '指南', link: '/guide/introduction' },
+      // { text: '组件', link: '/components/button' },
+      // { text: '工具', link: '/tools/createSelectDialog' },
+      // { text: '内置CSS类名', link: '/style' },
       // { text: `v${packageJson.version}`, link: '' }
     ],
 
@@ -78,7 +78,7 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/lin-97/gi-components' }
+      { icon: 'github', link: 'https://github.com/lin-97/gi-component' }
     ]
   }
 })

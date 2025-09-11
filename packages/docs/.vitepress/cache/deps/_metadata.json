@@ -1,37 +1,37 @@
 {
-  "hash": "41434daf",
+  "hash": "4c543bb0",
   "configHash": "43fca8ad",
-  "lockfileHash": "aa553309",
-  "browserHash": "b4698ec9",
+  "lockfileHash": "4c80fbd7",
+  "browserHash": "5ec2813d",
   "optimized": {
     "vue": {
       "src": "../../../../../node_modules/.pnpm/vue@3.5.21_typescript@5.9.2/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "e3e8e86a",
+      "fileHash": "5fad5da4",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../../../node_modules/.pnpm/@vue+devtools-api@7.7.7/node_modules/@vue/devtools-api/dist/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "806b5380",
+      "fileHash": "11e2d86d",
       "needsInterop": false
     },
     "vitepress > @vueuse/core": {
       "src": "../../../../../node_modules/.pnpm/@vueuse+core@12.8.2_typescript@5.9.2/node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "bbf6aa26",
+      "fileHash": "2798063a",
       "needsInterop": false
     },
     "element-plus": {
-      "src": "../../../../../node_modules/.pnpm/element-plus@2.11.1_vue@3.5.21_typescript@5.9.2_/node_modules/element-plus/es/index.mjs",
+      "src": "../../../../../node_modules/.pnpm/element-plus@2.11.2_vue@3.5.21_typescript@5.9.2_/node_modules/element-plus/es/index.mjs",
       "file": "element-plus.js",
-      "fileHash": "0224d85c",
+      "fileHash": "7e15f46c",
       "needsInterop": false
     },
     "element-plus/es/locale/lang/zh-cn": {
-      "src": "../../../../../node_modules/.pnpm/element-plus@2.11.1_vue@3.5.21_typescript@5.9.2_/node_modules/element-plus/es/locale/lang/zh-cn.mjs",
+      "src": "../../../../../node_modules/.pnpm/element-plus@2.11.2_vue@3.5.21_typescript@5.9.2_/node_modules/element-plus/es/locale/lang/zh-cn.mjs",
       "file": "element-plus_es_locale_lang_zh-cn.js",
-      "fileHash": "6947af15",
+      "fileHash": "8f318e5b",
       "needsInterop": false
     }
   },
